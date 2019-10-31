@@ -1,0 +1,134 @@
+header {
+  background-color: $MainColor;
+  height: 75px;
+  @media (max-width: 991px) {
+    height: 88px;
+  }
+  .headerContent {
+    height: 75px;
+    align-items: center;
+    @media (max-width: 991px) {
+      height: 88px;
+      padding-top: 5px;
+    }
+    .searchBox {
+      position: relative;
+      .searchIcon {
+        position: absolute;
+        right: 15px;
+        top: 5px;
+      }
+    }
+    .headerList {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (max-width: 991px) {
+        margin: 10px 0px;
+      }
+      li {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        margin: 0px 8px;
+        .iconBox,.textBox {
+          display: block;
+        }
+        .textBox {
+          font-size: 16px;
+          color: $whiteColor;
+          @media (max-width: 991px) {
+            display: none;
+          }
+        }
+        .iconBox {
+          position: relative;
+          .notiCount {
+            font-size: 12px;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $whiteColor;
+            background-color: $YellowColor;
+            position: absolute;
+            left: 30px;
+            top: 0;
+          }
+        }
+        .iconBox.Notification{
+          .notiCount{
+            left: 40px;
+          }
+        }
+        @media (max-width: 991px) {
+          .iconBox.Friends {
+            .notiCount {
+              left: 18px;
+            }
+          }
+          .iconBox.Messages {
+            .notiCount {
+              left: 14px;
+            }
+          }
+          .iconBox.Notification {
+            .notiCount {
+              left: 10px;
+            }
+          }
+        }
+        @media (min-width: 991px){
+          &.burgerMenu {
+            display: none;
+          }
+        }
+        &.hasChild {
+          position: relative;
+          .textBox{
+            position: relative;
+            &:before {
+              content: "";
+              width: 0;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 5px solid $whiteColor;
+              position: absolute;
+              top: 50%;
+              right: -15px;
+            }
+          }
+          .subMenu {
+            background-color: #ffffff69;
+            z-index: 9;
+            display: none;
+            li {
+              display: block;
+              margin: 0px;
+              padding: 0px 40px;
+              min-width: 200px;
+              &:hover {
+              background-color: #ffffff;
+                }
+            }
+          }
+          &:hover   .subMenu {
+            display: block;
+            position: absolute;
+          }
+        }
+        &.hasChild.user {
+          @media (max-width: 991px) {
+            display: none;
+          }
+        }
+        .userBox {
+          @include userBox(40px,40px,$whiteColor);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+a,a:hover {
+  text-decoration: none;
+  color: $mainTextColor;
+}
+ul{
+  margin: 0px;
+  list-style: none;
+}
+img{
+  max-width: 100%;
+}
+p{
+  margin: 0;
+}
+body{
+  background-color: $bgColor;
+  font-family: $primary_font;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+body.opened {
+  overflow: hidden;
+}
+
+
+
+

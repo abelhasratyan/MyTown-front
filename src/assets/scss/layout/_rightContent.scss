@@ -1,0 +1,23 @@
+.rightContent {
+  transition: all 0.3s ease-in-out;
+  .tightSectionBar {
+    margin: 0px 0px 20px;
+    .linkList{
+      li {
+        a{
+          color: $mainTextColor;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+.rightContent.opened {
+  position: absolute;
+  top: 88px;
+  z-index: 9;
+  background-color: #e6ecf2;
+  border: 0px;
+  box-shadow: none;
+  height: 100%;
+}

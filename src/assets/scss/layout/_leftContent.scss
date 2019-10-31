@@ -1,0 +1,207 @@
+.leftContent{
+  .newsText{
+    color: $headingcolor;
+    font-size: 14px;
+  }
+  .friendBox{
+    .userBox {
+      @include userBox(45px,45px,$mainTextColor);
+    }
+    .imgBox{
+      display: block;
+      width: 100%;
+      img{
+        width: 50px;
+        height: 50px;
+      }
+      .friend-name{
+        position: relative;
+        top: -10px;
+        left: 3px;
+      }
+      .last-visited{
+        position: relative;
+        left: -63px;
+        top: 4px;
+      }
+      .dott{
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        position: relative;
+        top: 16px;
+        left: -132px;
+        &-active{
+          background: #009749;
+        }
+        &-offline{
+          background: #9d0505;
+        }
+        &-away{
+          background: #ffc000;
+        }
+      }
+    }
+  }
+  .addGroupBox {
+    .textBox {
+      .title {
+        font-size: 14px;
+        color: $mainTextColor;
+      }
+      .subscribeCount {
+        font-size: 12px;
+        color: $mainTextColor;
+      }
+    }
+  }
+  .myInfo {
+    .title {
+      font-size: 22px;
+      color: $mainTextColor;
+    }
+    .description {
+      font-size: 18px;
+      color: $mainTextColor
+    }
+  }
+  .photoGallery {
+    .photoList {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      flex-wrap: wrap;
+      li {
+        width: 104px;
+        margin: 1px;
+        height: 59px;
+        overflow: hidden;
+      }
+    }
+  }
+  .friendRequest {
+    .title {
+      font-size: 14px;
+      color: $textColor;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .mainLink {
+      text-transform: uppercase;
+    }
+    .imgBox {
+      text-align: center;
+    }
+  }
+  .funderesiserBox {
+    .title {
+      font-size: 18px;
+      color: $textColor;
+      text-align: center;
+    }
+    .description {
+      font-size: 18px;
+      color: $mainTextColor;
+      text-align: center;
+    }
+    .imgBox {
+      text-align: center;
+    }
+  }
+  .groupInfoBox{
+    .groupInfoList {
+      padding: 10px 0;
+      li {
+        font-size: 16px;
+        color: $mainTextColor;
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+    .infoList {
+      li {
+        padding: 5px 20px;
+        &:hover {
+          background-color: #dcdbe4;
+        }
+      }
+    }
+    .btnBox {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: end;
+      .btnelem {
+        width: calc(50% - 10px);
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        img {
+          margin: 5px;
+          width: 15px;
+        }
+      }
+    }
+    .rateList {
+      display: flex;
+      align-items: center;
+      li {
+        margin: 5px
+      }
+    }
+    .chatBox {
+      max-height: 450px;
+      overflow-y: scroll;
+      .leftChatContent {
+        .userBox {
+          @include userBox(45px,45px,$mainTextColor);
+        }
+        .messageBox{
+          background-color: $bgColor;
+          border-bottom-right-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom-left-radius: 50px;
+          margin-left: 50px;
+        }
+      }
+      .rightChatContent {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        .userBox {
+          @include userBox(45px,45px,$mainTextColor);
+        }
+        .messageBox{
+          background-color: $bgColor;
+          border-bottom-left-radius: 20px;
+          border-top-left-radius: 20px;
+          border-bottom-right-radius: 50px;
+          margin-right: 50px;
+        }
+      }
+      .writeComment{
+        z-index: 0;
+        background: #e7edf3;
+      }
+      .userImgCircle{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+
+    }
+    .choozBtnGroup{
+      position: absolute;
+      right: 0;
+      .iconBtn{
+        position: relative;
+        z-index: 1;
+        top: 1px;
+        margin-right: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+
+}

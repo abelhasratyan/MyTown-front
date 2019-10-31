@@ -1,0 +1,24 @@
+@mixin userBox($width,$height,$TextColor) {
+  display: flex;
+  align-items: center;
+  .imgBox {
+    width: $width;
+    height: $height;
+    img {
+      width: $width;
+      height: $height;
+    }
+  }
+  .infoBox {
+    color: $TextColor;
+    margin-left: 10px;
+  }
+}
+//
+//@mixin border($direction, $width, $style, $color) {
+//  border-#{$direction}: $width $style $color;
+//}
+
+
+
+

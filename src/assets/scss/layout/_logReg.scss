@@ -1,0 +1,18 @@
+.logReg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(100vh - 38px);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  .logRegBox {
+    background: #0000009c;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    .chechInfo {
+      font-size: 12px;
+    }
+  }
+}

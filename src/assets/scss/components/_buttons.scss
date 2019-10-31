@@ -1,0 +1,37 @@
+.btn_1 {
+  background-color: #bebebe;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    margin-right: 10px;
+  }
+}
+
+.btn_2 {
+  background-color: $MainColor;
+  border: 1px solid $MainColor ;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.btn_3 {
+  background-color: #bebebe;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 15px;
+}
+
+.btn_4 {
+  background-color: $YellowColor;
+  border: 1px solid $YellowColor ;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

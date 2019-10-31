@@ -1,0 +1,402 @@
+.centerContent {
+  .addNewsContent {
+    .addNewsBox {
+      position: relative;
+      .addNewsArea {
+        border-color: transparent;
+        resize: none;
+      }
+      .userBox{
+        position: absolute;
+        left: 20px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        @include userBox(45px,45px,$headingcolor);
+        .infoBox{
+          font-size: 20px;
+        }
+      }
+    }
+    .emojiBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .moreDetalsBox {
+        .detalsList {
+          display: flex;
+          align-items: center;
+          li {
+            display: flex;
+            align-items: center;
+            .iconBox {
+              margin: 10px;
+            }
+            .textBox {
+              margin-left: 5px;
+              color: $headingcolor;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .newsContent{
+    .userBox{
+      .user-name{
+        margin-left: 10px;
+      }
+      .add-photo{
+        font-size: 0.75rem;
+        color: $mainLightTextColor;
+        font-family: $primary_medium_font;
+        margin-left: 5px;
+      }
+      .albom-name{
+        font-size: 0.90rem;
+        color: $MainColor;
+      }
+      .about-hours{
+        font-size: 0.75rem;
+        color: $mainTextColor;
+        font-family: $primary_light_font;
+        display: block;
+        position: relative;
+        left: 53px;
+        top: -10px;
+      }
+    }
+    .aboutPhotoBox{
+      .aboutPhoto-txt{
+        font-size: 0.75rem;
+      }
+    }
+    .photoLikeBox{
+      display: flex;
+      .icon-group{
+        margin-right: 5px;
+      }
+      .like-count {
+        position: relative;
+        top: 2px;
+        margin-right: 3px;
+        color: $mainTextColor;
+      }
+      .icon-txt-group{
+        font-size: 0.75rem;
+        font-family: $primary_medium_font;
+      }
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+      color: #fff;
+      border-color: $MainColor;
+      background-color: $MainColor;
+    }
+    .videoBox{
+      position: relative;
+      .videoContent{
+        width: 100%;
+      }
+      .playIcon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+    }
+
+    .commentForm{
+      .writeComment{
+        z-index: 0;
+        background: #e7edf3;
+      }
+      .userImgCircle{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+      .choozBtnGroup{
+        position: absolute;
+        right: 0;
+        .iconBtn{
+          position: relative;
+          z-index: 1;
+          top: 1px;
+          margin-right: 6px;
+          cursor: pointer;
+        }
+      }
+      .commentTxtBox{
+        width: 93%;
+      .commentTxt{
+        background: #ededf1;
+        font-size: 12px;
+        font-family: $primary_medium_font;
+        height: auto;
+        }
+        .commentBtnGroup{
+          font-size: 12px;
+          a{
+            color: $MainColor;
+            margin-right: 5px;
+          }
+          span{
+            font-family: $primary_light_font;
+            margin-right: 7px;
+          }
+          .iconBtn{
+            top: 5px;
+          }
+        }
+      }
+
+    }
+
+  }
+  .mailBox {
+    .chatBox {
+      display: flex;
+      align-items: center;
+      .userInfoBox {
+        display: flex;
+        align-items: center;
+        .userInfo {
+          display: flex;
+          align-items: center;
+          .name {
+            font-size: 16px;
+            color: $mainTextColor;
+          }
+        }
+        .lastMessage {
+          font-size: 16px;
+          color: $MainColor;
+        }
+      }
+    }
+  }
+  .chatBox {
+    .leftChatContent {
+      .userBox {
+        @include userBox(45px,45px,$mainTextColor);
+      }
+      .messageBox{
+        background-color: $bgColor;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 50px;
+        margin-left: 50px;
+      }
+    }
+    .rightChatContent {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      .userBox {
+        @include userBox(45px,45px,$mainTextColor);
+      }
+      .messageBox{
+        background-color: $bgColor;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 50px;
+        margin-right: 50px;
+      }
+    }
+    .writeComment{
+      z-index: 0;
+      background: #e7edf3;
+    }
+    .userImgCircle{
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    .choozBtnGroup{
+      position: absolute;
+      right: 0;
+      .iconBtn{
+        position: relative;
+        z-index: 1;
+        top: 1px;
+        margin-right: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+  .friendListBox {
+    .infoBox {
+      .description {
+        color: $mainTextColor;
+        font-size: 16px;
+      }
+    }
+    .friendList {
+      display: flex;
+      flex-wrap: wrap;
+      .userBox {
+        margin: 5px;
+        @include userBox(50px,50px,$mainTextColor);
+      }
+    }
+  }
+  .fundreiserslist {
+    .fundreisersBox{
+      flex-direction: row;
+      display: flex;
+      align-items: start;
+      @media (max-width: 776px) {
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .imgBox {
+        flex: 0 0 35%;
+        margin: 5px ;
+        @media (max-width: 776px) {
+          margin: auto;
+        }
+        img {
+          border-radius: 10px;
+        }
+      }
+      .infoBox {
+        .title {
+          font-size: 16px;
+          color: $mainTextColor;
+          margin: 0px;
+        }
+        .description,.activityTime {
+          font-size: 12px;
+          color: $mainTextColor;
+        }
+        .catName {
+          font-size: 12px;
+          color: $mainTextColor;
+          .category{
+            color: #c12664;
+          }
+        }
+        .eventIconList {
+          display: flex;
+          align-items: center;
+          @media (max-width: 776px) {
+            justify-content: center;
+          }
+          li {
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            img {
+              margin: 0px 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .groupBox {
+    .title {
+      font-size: 18px;
+      color: $mainTextColor;
+    }
+    .description{
+      font-size: 14px;
+      color: $mainTextColor;
+    }
+  }
+  .eventBox {
+    .moreElem {
+      position: relative;
+      .minusElement {
+        position: absolute;
+        right: 11px;
+        top: 29px;
+        cursor: pointer;
+      }
+    }
+  }
+  .photoListBox {
+    .photoList {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      li {
+        position: relative;
+        margin: 5px;
+        width: calc((100%/3) - 10px );
+        cursor: pointer;
+        height:250px;
+        @media (max-width: 768px) {
+          width: calc((100%/2) - 10px );
+        }
+        a {
+          width:100%;
+          height:250px;
+          &:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #00000047;
+            transition: background-color 0.3s ease-in-out;
+          }
+          &:hover:before {
+            background-color: #00000070;
+          }
+        }
+        .infoBox {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          color: #fff;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 10px;
+          .title {
+            font-size: 14px;
+            width: 100%;
+          }
+          .description {
+            font-size: 12px;
+            width: 100%;
+          }
+        }
+        img {
+          width: 100%;
+          height:100%;
+        }
+
+      }
+    }
+  }
+  .searchBox {
+    .btnBox {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      .btn_2 {
+        margin: 5px;
+      }
+    }
+    .searchContent {
+      position: relative;
+      .searchIcon {
+        position: absolute;
+        right: 15px;
+        top: 5px;
+      }
+    }
+    .userBox {
+      margin: 10px 5px;
+      @include userBox(45px,45px,$MainColor);
+    }
+  }
+}

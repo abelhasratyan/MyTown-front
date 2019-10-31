@@ -1,7 +1,22 @@
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router from './router/index'
+import store from './store/index'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+library.add(faUserSecret)
+
+Vue.use(BootstrapVue)
+Vue.use(VueSweetalert2)
+
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import './assets/scss/main.css';
 
 Vue.config.productionTip = false
 

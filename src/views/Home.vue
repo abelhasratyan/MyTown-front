@@ -1,18 +1,42 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <Header :msg="users.user.user" />
+        <div id="app">
+            <router-view :msg="users.user.user"></router-view>  
+        </div>
+        <Footer />
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+import { mapState, mapActions } from 'vuex'
+import { APIService } from '@/APIService'
+
+const apiService = new APIService()
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+    name: 'Home',
+    data() {
+        return {
+            user: {}
+        }
+    },
+    components: {
+        Header,
+        Footer
+    },
+    methods: {
+        ...mapActions(['getUser'])
+    },
+    created() {
+        this.getUser(apiService.getToken()).then(user => {
+            this.user = user.user
+        })
+    },
+    computed: mapState([
+        'users'
+    ]),
 }
 </script>
