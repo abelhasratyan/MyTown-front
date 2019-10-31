@@ -128,7 +128,6 @@ export default {
                 } else {
                     this.$swal.noop
                 }
-                
             }).catch(this.$swal.noop)
         },
         addAlbum() {
@@ -161,7 +160,6 @@ export default {
                 } else {
                     this.$swal.noop
                 }
-                
             }).catch(this.$swal.noop)
         },
 

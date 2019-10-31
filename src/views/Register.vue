@@ -7,7 +7,7 @@
                         <div class="col-md-5 m-auto">
                             <form class="logRegBox">
                                 <div class="text-center py-2">
-                                    <img src="../assets/images/logo.png" alt="">
+                                    <img src="@/assets/images/logo.png" alt="">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput3">First Name</label>
@@ -61,7 +61,7 @@ export default {
         Footer
     },
     methods: {
-        ...mapActions('users', ['register']),
+        ...mapActions(['Register']),
 
         registerUser() {
             let data = {
@@ -71,7 +71,10 @@ export default {
                 password: this.password,
                 c_password: this.c_password
             };
-            this.register(data)
+            this.Register(data).then(res => {
+                console.log('user', res);
+                
+            })
         }
     },
     created() {

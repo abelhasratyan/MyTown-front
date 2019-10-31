@@ -24,6 +24,11 @@ const mutations = {
           localStorage.setItem('user', JSON.stringify(user))
         }
     },
+    
+    REGISTER: (state, user) => {
+        state.user = user
+    },
+
     GET_USERS: (state, users) => {
         state.users = users.filter(user => user._id != apiService.getId())
     },

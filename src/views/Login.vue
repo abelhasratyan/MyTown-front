@@ -7,7 +7,7 @@
                         <div class="col-md-5 m-auto">
                             <form class="logRegBox">
                                 <div class="text-center py-2">
-                                    <img src="../assets/images/logo.png" alt="">
+                                    <img src="@/assets/images/logo.png" alt="">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Email address</label>
