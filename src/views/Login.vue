@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput2">Password</label>
-                                    <input v-model="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="Password">
+                                    <input v-on:keyup.enter="userLogin" v-model="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <input type="button" class="btn_4 w-100" value="Sign In" @click="userLogin">
