@@ -14,6 +14,12 @@ export const actions = {
         }
     },
     
+
+
+
+
+
+    
     async Register ({ commit }, data) {        
         const response = await axios.post('/registration', data, {
           headers: {
