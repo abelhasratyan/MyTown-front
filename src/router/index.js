@@ -28,7 +28,7 @@ const Friends = () => import('@/views/Friends/Friends')
 Vue.use(Router)
 
 const router = new Router({
-    mode: '',
+    mode: 'history',
     linkActiveClass: 'open active!',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
