@@ -14,22 +14,15 @@ export const actions = {
         }
     },
     
-
-
-
-
-
-    
     async Register ({ commit }, data) {        
         const response = await axios.post('/registration', data, {
           headers: {
             'Content-Type': 'application/json'
           }
         })
-        
-        if (response.data.status === 'success') {
+        if (response.data.success) {
           commit('REGISTER', response.data)
-          return response
+          return response.data
         }
     },
 

@@ -51,6 +51,7 @@
                                 <div class="addNewsBox">
                                     <div class="userBox">
                                         <div class="imgBox pl-3 pr-3 pt-3">
+                                            {{ users }}
                                             <img src="@/assets/images/userImg.png" alt="user img" class="rounded-circle">
                                             <span class="user-name">Abel Hasratyan</span>
                                             <span class="add-photo">added a new photo &#45; </span>

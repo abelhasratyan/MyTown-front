@@ -72,8 +72,8 @@ export default {
                 c_password: this.c_password
             };
             this.Register(data).then(res => {
-                console.log('user', res);
-                
+                console.log('user', res); 
+                this.$router.push('/profile')
             })
         }
     },

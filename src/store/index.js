@@ -2,7 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import users from './modules/users/user'
 import photo from './modules/photos/photo'
-// import category from './modules/category'
+import friends from './modules/friends/friends'
 // import story from './modules/story'
 // import profession from './modules/profession'
 // import notification from './modules/notification'
@@ -14,6 +14,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
         users,
-        photo
+        photo,
+        friends
     }
 })

@@ -27,6 +27,9 @@ const mutations = {
     
     REGISTER: (state, user) => {
         state.user = user
+        if (user.success) {
+            localStorage.setItem('user', JSON.stringify(user))
+          }
     },
 
     GET_USERS: (state, users) => {

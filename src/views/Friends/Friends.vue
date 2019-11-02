@@ -2,6 +2,7 @@
     <div>
         <ProfileHeader :msg="users.user.user" />
         <div class="container">
+            {{ friends }}
             <div class="row my-3">
                 <List />
                 <Requests />
@@ -16,6 +17,9 @@ import ProfileHeader from '@/components/ProfileHeader'
 import List from './FriendComponents/FriendsList'
 import Requests from './FriendComponents/Requests'
 import { mapState, mapActions } from 'vuex'
+import { APIService } from '@/APIService'
+
+const apiService = new APIService()
 
 export default {
     name: 'Friends',
@@ -24,8 +28,18 @@ export default {
         List,
         Requests
     },
+    methods: {
+        ...mapActions(['getFriends'])
+    },
+    created() {
+        this.getFriends({
+            token: apiService.getToken()
+        }).then(friends => {
+            console.log(friends);
+        })
+    },
     computed: {
-        ...mapState(['users'])
+        ...mapState([ 'users', 'friends'])
     },
 }
 </script>
