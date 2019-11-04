@@ -62,6 +62,9 @@
                                         <li><router-link :to="{name: 'groups'}">Groups</router-link></li>
                                     </ul>
                                 </li>
+                                  <li style="cursor:pointer" @click="test">
+                                    Send friend request
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -73,18 +76,41 @@
 
 <script>
 //   import { apiEndPoint } from '@/links';
-  import { mapState, mapActions } from 'vuex'
-
+  import { mapState, mapActions, mapGetters} from 'vuex'
+  import { Token } from '../router/Auth'
     export default {
 
       data() {
         return {
           currentUser: null,
+          currentUserId:'',
+          friendRequestId:''
         //   apiEndPoint,
         }
       },
       props: {
           msg: Object
+      },
+      methods: {
+          ...mapActions(['friendRequest']),
+
+            test() {
+                console.log(this.currentUserId,'testts')
+           /* this.friendRequest({
+                currentUserId: this.currentUserId,
+                friendRequestId: this.friendRequestId
+            }).then(res => {
+                if (res.data.status === 'success') {
+                    this.$router.push('/')
+                }
+            })*/
+            if (Token.get.user()) {
+                let currentUser = JSON.parse(Token.get.user());
+                this.currentUserId = currentUser.user._id;
+            console.log(this.currentUserId,'test')
+        }
+        }
+        
       }
 
     //   computed: {

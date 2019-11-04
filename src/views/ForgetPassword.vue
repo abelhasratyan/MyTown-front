@@ -11,67 +11,52 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Email address</label>
-                                    <input v-model="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input v-model="email" type="email" class="form-control" id="exampleFormControlInput1">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput2">Password</label>
-                                    <input v-on:keyup.enter="userLogin" v-model="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="Password">
+                                    <input type="button" class="btn_4 w-100" value="Send message" @click="sendMessage()">
                                 </div>
-                                <div class="form-group">
-                                    <input type="button" class="btn_4 w-100" value="Sign In" @click="userLogin">
-                                </div>
-                                <hr>
-                                <span style="display: flex;justify-content: center;cursor:pointer" @click="GoToForgetPass">
-                                    Forget password?
-                                </span>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
-            <forgertPassword v-if="forget"></forgertPassword>
         </main>
         <Footer/>
     </div>
 </template>
-
 <script>
 import Footer from '@/components/Footer.vue'
-import forgertPassword from '@/views/ForgetPassword.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import { Token } from '../router/Auth'
 
 export default {
-
+name: "ForgetPassword",
+  props: {},
     components: {
-        Footer,
-        forgertPassword
+        Footer
     },
     data() {
         return {
             email: '',
-            password: '',
-            forget:false
         }
     },
     methods: {
-        ...mapActions(['Login']),
+        ...mapActions(['ForgetPass']),
         
-        userLogin() {
-            this.Login({
+        sendMessage() {
+            this.ForgetPass({
                 email: this.email,
-                password: this.password
             }).then(res => {
                 if (res.data.status === 'success') {
-                    this.$router.push('/')
+                    console.log('yessssss')
                 }
-            })
-        },
+            }).catch((err) => {
+                console.log(err)
+            }
 
-        GoToForgetPass(){
-            this.$router.push('/forgetPassword');
-            this.forget = true;
-        }
+            )
+        },
     },
     created() {        
         if (Token.get.user()) {

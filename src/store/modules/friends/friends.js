@@ -16,7 +16,7 @@ const getters = {};
 
 const mutations = {
     GET_FRIENDS: (state, friends) => {
-        state.friends = friends
+        state.friends = (friends && friends.friends && friends.friends.friends)?friends.friends.friends:null
     }
 };
 

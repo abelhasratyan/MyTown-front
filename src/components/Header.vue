@@ -91,7 +91,7 @@
                                   <router-link tag="li" :to="{ name: 'Profile'}">
                                       <a class="pointer">Profile</a>
                                   </router-link>
-                                  <li  @click="logOut">
+                                  <li style="cursor:pointer" @click="logOut">
                                       <a class="pointer">Log Out</a>
                                   </li>
                               </ul>
@@ -112,12 +112,14 @@
 <script>
 //   import { apiEndPoint } from '@/links';
 import { mapState, mapActions } from 'vuex'
+  import { Token } from '../router/Auth'
 
     export default {
         name: 'Header',
         data() {
             return {
             //   apiEndPoint,
+              currentUserId:'',
             }
         },
         props: {
@@ -128,8 +130,16 @@ import { mapState, mapActions } from 'vuex'
             ...mapActions(['logout', 'getSelectedUser']),
 
             logOut() {
-            //   this.$router.push({ name: 'login' });
-            //   this.logout();
+                console.log(this.currentUserId,'testts')
+            if (Token.get.user()) {
+                let currentUser = JSON.parse(Token.get.user());
+                this.currentUserId = currentUser.user._id;
+            console.log(this.currentUserId,'test');
+            
+            localStorage.removeItem('user');
+        }
+               this.$router.push('/login');
+               //this.logout();
             }
         },
         computed: {

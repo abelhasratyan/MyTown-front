@@ -25,11 +25,24 @@ const mutations = {
         }
     },
     
+    FORGETPASS: (state, user) => {
+        state.user = user
+        if (user.status === 'success') {
+          localStorage.setItem('user', JSON.stringify(user))
+        }
+    },
     REGISTER: (state, user) => {
         state.user = user
         if (user.success) {
             localStorage.setItem('user', JSON.stringify(user))
           }
+    },
+
+    FRIENDREQUEST: (state, data) => {
+        state.data = data
+        if (data.status === 'success') {
+          localStorage.setItem('data', JSON.stringify(data))
+        }
     },
 
     GET_USERS: (state, users) => {

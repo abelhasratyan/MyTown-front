@@ -2,7 +2,6 @@
     <div>
         <ProfileHeader :msg="users.user.user" />
         <div class="container">
-            {{ friends }}
             <div class="row my-3">
                 <List />
                 <Requests />
@@ -37,6 +36,7 @@ export default {
         }).then(friends => {
             console.log(friends);
         })
+        console.log(this.friends,'friends in first')
     },
     computed: {
         ...mapState([ 'users', 'friends'])
