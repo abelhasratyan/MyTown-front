@@ -39,7 +39,12 @@
             <div class="imgBox">
               <img src="@/assets/images/friends.png" alt="user" />
             </div>
-            <div class="infoBox">{{friend.name}}</div>
+            <div class="friendName"> 
+              <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
+                <template v-slot:button-content>{{friend.name}}<span><i class="far fa-chevron-down"></i></span></template>
+                <b-dropdown-item href="#">Delete Friend</b-dropdown-item>
+              </b-dropdown>
+            </div>
           </li>
         </ul>
       </div>
@@ -74,3 +79,8 @@ export default {
   }
 };
 </script>
+<style  scoped>
+.friendName/deep/.btn-link{
+    color:black !important
+}
+</style>

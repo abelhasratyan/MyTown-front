@@ -22,16 +22,16 @@
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do et dolore magna aliqua.</p>
                                 <img src="../../assets/images/loadPhoto.jpg" alt="Loaded Photo" class="fullWidthImg">
                             </div>
-                            <div class="photoLikeBox p-2">
+                            <div class="photoLikeBox p-3">
                                 <div class="col-md-6 p-0">
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/like-icon.png" alt="icon"></a> <span class="like-count">23</span>
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/talk-icon.png" alt="icon"></a><span class="like-count">23</span>
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/share-option.png" alt="icon"></a><span class="like-count">2</span>
                                 </div>
                                 <div class="col-md-6 text-right p-0">
-                                    <a href="#" class="icon-txt-group text-uppercase mr-4">Like</a>
-                                    <a href="#" class="icon-txt-group text-uppercase mr-4">Comment</a>
-                                    <a href="#" class="icon-txt-group text-uppercase">Share</a>
+                                    <a href="#" class="icon-txt-group mr-3">Like</a>
+                                    <a href="#" class="icon-txt-group mr-3">Comment</a>
+                                    <a href="#" class="icon-txt-group">Share</a>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="photoLikeBox p-2">
+                            <div class="photoLikeBox p-3">
                                 <div class="col-md-6 p-0">
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/like-icon.png" alt="icon"></a> <span class="like-count">23</span>
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/talk-icon.png" alt="icon"></a><span class="like-count">23</span>
@@ -105,7 +105,7 @@
                                     <img src="../../assets/images/icons/play-icon.png" alt="icon" class="playIcon">
                                 </div>
                             </div>
-                            <div class="photoLikeBox p-2 underLine">
+                            <div class="photoLikeBox p-3 underLine">
                                 <div class="col-md-6 p-0">
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/like-icon.png" alt="icon"></a> <span class="like-count">23</span>
                                     <a href="#" class="icon-group"><img src="../../assets/images/icons/talk-icon.png" alt="icon"></a><span class="like-count">23</span>
@@ -155,7 +155,7 @@
                                                 <span>18hr</span>
                                                 <a href="#" >Like</a>
                                                 <a href="#" >Reply</a>
-                                                <div class="replayComment mt-1">
+                                                <div class="replayComment mt-3">
                                                     <div class="input-group input-group-sm mb-3">
                                                         <span class="userImgCircle">
                                                             <img src="../../assets/images/userImgBoy.png" alt="User Img" class="rounded-circle">

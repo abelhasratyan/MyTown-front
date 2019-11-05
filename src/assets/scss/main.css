@@ -64,14 +64,12 @@ body.opened {
 
 .title_1 {
   color: #404040;
-  font-size: 16px;
-  text-decoration: underline;
-  text-transform: uppercase;
+  font-size: 18px;
 }
 
 .title-md {
   color: #404040;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 16px;
 }
 
@@ -82,7 +80,6 @@ body.opened {
 }
 .headingBox .title {
   color: #919090;
-  text-transform: uppercase;
   font-size: 16px;
 }
 
@@ -285,24 +282,29 @@ header .headerContent .searchBox .searchIcon {
 header .headerContent .headerList {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 @media (max-width: 991px) {
   header .headerContent .headerList {
     margin: 10px 0px;
   }
 }
+
+
 header .headerContent .headerList li {
   display: inline-block;
   position: relative;
   text-align: center;
-  margin: 0px 8px;
+  margin: 0px 20px;
+}
+header .headerContent .headerList li.user {
+  margin-right: 0;
 }
 header .headerContent .headerList li .iconBox, header .headerContent .headerList li .textBox {
   display: block;
 }
 header .headerContent .headerList li .textBox {
-  font-size: 16px;
+  font-size: 14px;
   color: #ffffff;
 }
 @media (max-width: 991px) {
@@ -312,6 +314,9 @@ header .headerContent .headerList li .textBox {
 }
 header .headerContent .headerList li .iconBox {
   position: relative;
+}
+.emojiBox .iconBox img, .emojiBox .smileBox img{
+  width: 90%;
 }
 header .headerContent .headerList li .iconBox .notiCount {
   font-size: 12px;
@@ -324,11 +329,11 @@ header .headerContent .headerList li .iconBox .notiCount {
   color: #ffffff;
   background-color: #f7cc48;
   position: absolute;
-  left: 30px;
-  top: 0;
+  left: 35px;
+  top: -5px;
 }
-header .headerContent .headerList li .iconBox.Notification .notiCount {
-  left: 40px;
+header .headerContent .headerList li .iconBox.Friends .notiCount {
+  left: 25px;
 }
 @media (max-width: 991px) {
   header .headerContent .headerList li .iconBox.Friends .notiCount {
@@ -360,7 +365,7 @@ header .headerContent .headerList li.hasChild .textBox:before {
   border-right: 5px solid transparent;
   border-top: 5px solid #ffffff;
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: -15px;
 }
 header .headerContent .headerList li.hasChild .subMenu {
@@ -397,6 +402,7 @@ header .headerContent .headerList li .userBox .imgBox {
 header .headerContent .headerList li .userBox .imgBox img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
 }
 header .headerContent .headerList li .userBox .infoBox {
   color: #ffffff;
@@ -409,11 +415,20 @@ header .headerContent .headerList li .userBox .infoBox {
 .rightContent .tightSectionBar {
   margin: 0px 0px 20px;
 }
+.rightContent .tightSectionBar .linkList{
+  margin: 20px 0;
+}
+.rightContent .tightSectionBar .linkList li{
+  margin: 5px 0;
+}
 .rightContent .tightSectionBar .linkList li a {
-  color: #404040;
+  color: #505050;
   font-size: 16px;
 }
-
+.rightContent .tightSectionBar .linkList li a img {
+  width: 15px;
+  margin-right: 5px;
+}
 .rightContent.opened {
   position: absolute;
   top: 88px;
@@ -433,7 +448,7 @@ header .headerContent .headerList li .userBox .infoBox {
   align-items: center;
 }
 .leftContent .friendBox .userBox .imgBox {
-  width: 45px;
+  min-width: 45px;
   height: 45px;
 }
 .leftContent .friendBox .userBox .imgBox img {
@@ -488,12 +503,15 @@ header .headerContent .headerList li .userBox .infoBox {
   color: #404040;
 }
 .leftContent .myInfo .title {
-  font-size: 22px;
+  font-size: 14px;
   color: #404040;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 .leftContent .myInfo .description {
-  font-size: 18px;
-  color: #404040;
+  font-size: 16px;
+  color: #505050;
+  margin-bottom: 10px;
 }
 .leftContent .photoGallery .photoList {
   display: flex;
@@ -649,19 +667,15 @@ header .headerContent .headerList li .userBox .infoBox {
 
 .centerContent .addNewsContent .addNewsBox {
   position: relative;
+  height: 70px;
 }
 .centerContent .addNewsContent .addNewsBox .addNewsArea {
   border-color: transparent;
   resize: none;
 }
 .centerContent .addNewsContent .addNewsBox .userBox {
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .centerContent .addNewsContent .addNewsBox .userBox .imgBox {
   width: 45px;
@@ -673,7 +687,9 @@ header .headerContent .headerList li .userBox .infoBox {
 }
 .centerContent .addNewsContent .addNewsBox .userBox .infoBox {
   color: #919090;
-  margin-left: 10px;
+  margin: 5px 10px;
+  width: calc(100% - 45px);
+
 }
 .centerContent .addNewsContent .addNewsBox .userBox .infoBox {
   font-size: 20px;
@@ -692,12 +708,12 @@ header .headerContent .headerList li .userBox .infoBox {
   align-items: center;
 }
 .centerContent .addNewsContent .emojiBox .moreDetalsBox .detalsList li .iconBox {
-  margin: 10px;
+  margin: 10px 7px;
 }
 .centerContent .addNewsContent .emojiBox .moreDetalsBox .detalsList li .textBox {
-  margin-left: 5px;
+  margin-right: 10px;
   color: #919090;
-  font-size: 14px;
+  font-size: 12px;
 }
 .centerContent .newsContent .userBox .user-name {
   margin-left: 10px;
@@ -730,11 +746,15 @@ header .headerContent .headerList li .userBox .infoBox {
 .centerContent .newsContent .photoLikeBox .icon-group {
   margin-right: 5px;
 }
+.centerContent .newsContent .photoLikeBox .icon-group img{
+  width: 17px;
+}
 .centerContent .newsContent .photoLikeBox .like-count {
   position: relative;
   top: 2px;
-  margin-right: 3px;
+  margin-right: 15px;
   color: #404040;
+  font-size: 15px; 
 }
 .centerContent .newsContent .photoLikeBox .icon-txt-group {
   font-size: 0.75rem;
@@ -771,6 +791,7 @@ header .headerContent .headerList li .userBox .infoBox {
 .centerContent .newsContent .commentForm .choozBtnGroup {
   position: absolute;
   right: 0;
+  top: 2px;
 }
 .centerContent .newsContent .commentForm .choozBtnGroup .iconBtn {
   position: relative;
@@ -778,6 +799,9 @@ header .headerContent .headerList li .userBox .infoBox {
   top: 1px;
   margin-right: 6px;
   cursor: pointer;
+}
+.centerContent .newsContent .commentForm .choozBtnGroup .iconBtn img{
+  width: 17px;
 }
 .centerContent .newsContent .commentForm .commentTxtBox {
   width: 93%;
@@ -1037,6 +1061,7 @@ header .headerContent .headerList li .userBox .infoBox {
   flex-wrap: wrap;
   padding: 10px;
 }
+
 .centerContent .photoListBox .photoList li .infoBox .title {
   font-size: 14px;
   width: 100%;
@@ -1116,7 +1141,7 @@ footer .copyrightText {
 }
 .profile .userBox .profileUserBox {
   position: relative;
-  top: -100px;
+  top: -110px;
   margin-bottom: -100px;
 }
 @media (max-width: 991px) {
@@ -1153,6 +1178,8 @@ footer .copyrightText {
   display: flex;
   align-items: center;
   height: 100%;
+  width: 91.5%;
+  margin-left: auto;
 }
 .profile .userBox .userList li {
   height: 100%;
@@ -1167,7 +1194,6 @@ footer .copyrightText {
   position: absolute;
   height: 100%;
   width: 1px;
-  background-color: #404040;
   right: -18px;
 }
 .profile .userBox .userList li:first-child:after {
@@ -1175,7 +1201,6 @@ footer .copyrightText {
   position: absolute;
   height: 100%;
   width: 1px;
-  background-color: #404040;
   left: -18px;
 }
 .profile .userBox .userList li.hasChild {
@@ -1189,7 +1214,7 @@ footer .copyrightText {
   border-right: 5px solid transparent;
   border-top: 5px solid #404040;
   position: absolute;
-  top: 50%;
+  top: 45%;
   right: -15px;
 }
 .profile .userBox .userList li.hasChild .subMenu {

@@ -6,52 +6,11 @@
                     <div class="row my-3">
                         <LeftBar />
                         <div class="centerContent col-lg-6 col-md-12">
-                            <div class="shadow p-3 mb-2 bg-white  addNewsContent">
-                                <div class="headingBox"><h1 class="title">News Feed</h1></div>
-                                <form class="addNewsBox underLine">
-                                    <textarea class="form-control addNewsArea" rows="3"></textarea>
-                                    <div class="userBox">
-                                        <div class="imgBox"><img :srcset="msg.avatar" alt="user img"></div>
-                                        <div class="infoBox">What's on your mind, Adel?</div>
-                                    </div>
-                                </form>
-                                <div class="emojiBox">
-                                    <div class="smileBox">
-                                        <img src="@/assets/images/icons/smileIcon.png" alt="icon">
-                                    </div>
-                                    <div class="moreDetalsBox">
-                                        <ul class="detalsList">
-                                            <li>
-                                                <div class="iconBox">
-                                                    <img src="@/assets/images/icons/cameraIcon.png" alt="icon">
-                                                </div>
-                                                <div class="textBox">
-                                                    Photo/Video
-                                                </div>
-        
-                                            </li>
-                                            <li>
-                                                <div class="iconBox">
-                                                    <img src="@/assets/images/icons/grupIcon.png" alt="icon">
-                                                </div>
-                                                <div class="textBox">
-                                                    Grup
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="iconBox">
-                                                    <img src="@/assets/images/icons/moreIcon.png" alt="icon">
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                           <AddNewsContent :msg="users.user.user" />
                             <div class="shadow  mb-2 bg-white newsContent">
                                 <div class="addNewsBox">
                                     <div class="userBox">
                                         <div class="imgBox pl-3 pr-3 pt-3">
-                                            {{ users }}
                                             <img src="@/assets/images/userImg.png" alt="user img" class="rounded-circle">
                                             <span class="user-name">Abel Hasratyan</span>
                                             <span class="add-photo">added a new photo &#45; </span>
@@ -318,6 +277,7 @@
 import LeftBar from '@/components/LeftBar'
 import { mapState, mapActions } from 'vuex'
 import { APIService } from '@/APIService'
+import AddNewsContent from '../Profile/ProfileComponents/AddNewsContent'
 
 const apiService = new APIService()
 
@@ -327,7 +287,7 @@ export default {
         msg: Object
     },
     components: {
-        LeftBar
+        LeftBar,AddNewsContent
     },
     computed: {
         ...mapState(['users']),

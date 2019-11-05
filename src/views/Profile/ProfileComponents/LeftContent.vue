@@ -1,10 +1,10 @@
 <template>
     <div class="leftContent col-lg-4 col-md-4 d-none d-lg-block" v-if="msg">
         <div class="shadow  mb-2 bg-white">
-            <p class="title-md  underLine  p-2">my info</p>
+            <p class="title-md  underLine  p-3">my info</p>
             <div class="myInfo p-3">
                 <h3 class="title">Full Name</h3>
-                <p class="description"><strong>{{ msg.name }} {{ msg.surname }}</strong></p>
+                <p class="description">{{ msg.name }} {{ msg.surname }}</p>
                 <h3 class="title">Birthday</h3>
                 <p class="description">undefined</p>
                 <h3 class="title">Age</h3>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="shadow  mb-2 bg-white">
-            <div class="underLine spaceBox p-2">
+            <div class="underLine spaceBox p-3">
                 <p class="title-md">Photo</p>
                 <a href="javascript:void(0);" class="mainLink">Add Photo</a>
             </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="shadow  mb-2 bg-white">
-            <div class="underLine spaceBox p-2">
+            <div class="underLine spaceBox p-3">
                 <p class="title-md">Location</p>
                 <a href="javascript:void(0);" class="mainLink">Add Location</a>
             </div>
