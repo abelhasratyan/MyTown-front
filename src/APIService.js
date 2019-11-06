@@ -1,6 +1,6 @@
 export class APIService{
 
-    getToken() {
+getToken() {
         const { token } = JSON.parse(localStorage.getItem("user"));
         return `Bearer ${token}`
     };

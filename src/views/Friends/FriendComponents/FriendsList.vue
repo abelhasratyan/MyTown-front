@@ -80,7 +80,8 @@ export default {
       this.deleteFriend({
         deleteFriendId: friend._id,
         currentUserId: this.users.user.user._id ,
-        token
+        //token
+        token: `Bearer ${token}`
       })
         .then(res => {
           if (res.data.status === "success") {
