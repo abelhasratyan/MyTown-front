@@ -10,6 +10,20 @@ export const actions = {
         console.log(response);
         commit('GET_FRIENDS', response.data)
         return response.data
-    }
+    },
     
+    async deleteFriend({ commit }, data) {
+        const response = await axios.delete('/friend', {
+          headers: {
+            Authorization: data.token,
+            //'Content-Type': 'application/json'
+          },
+          data
+        })
+    
+        if (response.data.status === 'true') {
+          commit('DELETEFRIEND', response.data)
+          return response
+        }
+      },
 };

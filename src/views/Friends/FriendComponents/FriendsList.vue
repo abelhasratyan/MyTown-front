@@ -35,14 +35,14 @@
           </div>
         </div>
         <ul class="friendList py-3" v-if="friends.length != 0">
-          <li class="userBox" v-for="friend in friends.friends" :key="friend._id">
+          <li class="userBox" v-for="(friend, friend_index) of friends.friends" :key="friend_index">
             <div class="imgBox">
               <img src="@/assets/images/friends.png" alt="user" />
             </div>
             <div class="friendName"> 
               <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                 <template v-slot:button-content>{{friend.name}}<span><i class="far fa-chevron-down"></i></span></template>
-                <b-dropdown-item href="#">Delete Friend</b-dropdown-item>
+                <b-dropdown-item href="#" @click="deleteFriend_req(friend)">Delete Friend</b-dropdown-item>
               </b-dropdown>
             </div>
           </li>
@@ -60,11 +60,38 @@ const apiService = new APIService();
 
 export default {
   name: "FriendsList",
+  data(){
+    return{
+      currentUserId:'',
+      friendId:'',
+    }
+  },
   props: {
     msg: Object
   },
   methods: {
-    ...mapActions(["getFriends"])
+    ...mapActions(["getFriends", "deleteFriend"]),
+
+    deleteFriend_req(friend){
+     // this.friendId = id;
+     // this.currentUserId = this.users.user.user._id 
+      console.log(this.friendId,'test',this.currentUserId);
+      const {token} = JSON.parse(localStorage.getItem('user'));
+      this.deleteFriend({
+        deleteFriendId: friend._id,
+        currentUserId: this.users.user.user._id ,
+        token
+      })
+        .then(res => {
+          if (res.data.status === "success") {
+           // this.$router.push("/");
+           console.log('success',res)
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        });
+    },
   },
   created() {
     this.getFriends({
