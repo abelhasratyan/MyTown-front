@@ -5,6 +5,9 @@ const Token = require('./Auth').Token
 const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
 const ForgetPassword = () => import('@/views/ForgetPassword')
+const ValidateEmail = () => import('@/views/ValidateEmail')
+const CreateNewPassword = () => import('@/views/CreateNewPassword')
+
 //Users
 
 const Dashboard = () => import('@/views/Home')
@@ -121,6 +124,16 @@ const router = new Router({
             path: '/forgetPassword',
             name: 'ForgetPassword',
             component: ForgetPassword
+        },
+        {
+            path: '/validateEmail',
+            name: 'ValidateEmail',
+            component: ValidateEmail
+        },
+        {
+            path: '/createNewPassword',
+            name: 'CreateNewPassword',
+            component: CreateNewPassword
         }
     ]
 })

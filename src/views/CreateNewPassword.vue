@@ -10,19 +10,23 @@
                   <img src="@/assets/images/logo.png" alt />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Email address</label>
+                  <label for="exampleFormControlInput1">Create new password</label>
                   <input
-                    v-model="email"
-                    type="email"
+                    v-model="password"
+                    type="password"
                     class="form-control"
                     id="exampleFormControlInput1"
                   />
                 </div>
-                <div
-                  v-if="notFound"
-                  class="alert alert-danger"
-                  role="alert"
-                >The email is not found!</div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Confirm new password</label>
+                  <input
+                    v-model="c_password"
+                    type="password"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
                 <div class="form-group">
                   <input
                     type="button"
@@ -36,49 +40,41 @@
           </div>
         </div>
       </section>
-
-      <ValidateEmail v-if="emailValid"></ValidateEmail>
     </main>
-    <Footer />
   </div>
 </template>
 <script>
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
-import ValidateEmail from "./ValidateEmail";
 
 export default {
-  name: "ForgetPassword",
+  name: "createNewPassword",
   props: {},
   components: {
-    Footer,
-    ValidateEmail
+    Footer
   },
   data() {
     return {
-      email: "",
-      emailValid: false,
-      notFound: false
+      password: " ",
+      c_password: " "
     };
   },
   methods: {
-    ...mapActions(["ForgetPass"]),
+    ...mapActions(["createNewPassword"]),
 
     sendMessage() {
-      this.ForgetPass({
-        email: this.email
+      this.createNewPassword({
+        password: this.password,
+        c_password: this.c_password
       })
         .then(res => {
           console.log(res);
           if (res.data.success) {
-            this.emailValid = true;
-            this.$router.push("/validateEmail");
-            console.log("yessssss", this.emailValid);
+            console.log("yessssss", res);
           }
         })
         .catch(err => {
-          this.notFound = true;
           console.log(err);
         });
     }

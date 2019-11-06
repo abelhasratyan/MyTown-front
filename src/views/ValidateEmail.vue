@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+    <div id="home">
     <main>
       <section class="logReg">
         <div class="container">
@@ -10,19 +10,15 @@
                   <img src="@/assets/images/logo.png" alt />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Email address</label>
+                  <label for="exampleFormControlInput1">Enter number</label>
                   <input
-                    v-model="email"
-                    type="email"
+                    v-model="value"
+                    type="text"
                     class="form-control"
                     id="exampleFormControlInput1"
+                    maxlength="6"
                   />
                 </div>
-                <div
-                  v-if="notFound"
-                  class="alert alert-danger"
-                  role="alert"
-                >The email is not found!</div>
                 <div class="form-group">
                   <input
                     type="button"
@@ -36,56 +32,45 @@
           </div>
         </div>
       </section>
-
-      <ValidateEmail v-if="emailValid"></ValidateEmail>
+      <CreateNewPassword v-if="mailValid"></CreateNewPassword>
     </main>
-    <Footer />
-  </div>
+    </div>
 </template>
 <script>
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
-import ValidateEmail from "./ValidateEmail";
+import CreateNewPassword from "./CreateNewPassword"
 
 export default {
-  name: "ForgetPassword",
+  name: "ValidateEmail",
   props: {},
   components: {
-    Footer,
-    ValidateEmail
+    Footer,CreateNewPassword
   },
   data() {
     return {
-      email: "",
-      emailValid: false,
-      notFound: false
+      value: "",
+      mailValid:false
     };
   },
   methods: {
-    ...mapActions(["ForgetPass"]),
+    ...mapActions(["ValidEmail"]),
 
     sendMessage() {
-      this.ForgetPass({
-        email: this.email
+      this.ValidEmail({
+        value: this.value
       })
         .then(res => {
           console.log(res);
           if (res.data.success) {
-            this.emailValid = true;
-            this.$router.push("/validateEmail");
-            console.log("yessssss", this.emailValid);
+              this.mailValid = true;
+            console.log("yessssss", res);
           }
         })
         .catch(err => {
-          this.notFound = true;
           console.log(err);
         });
-    }
-  },
-  created() {
-    if (Token.get.user()) {
-      this.$router.push("/");
     }
   },
   ...mapState(["users"])

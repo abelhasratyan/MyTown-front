@@ -15,13 +15,37 @@ export const actions = {
   },
 
   async ForgetPass({ commit }, data) {
-    const response = await axios.post('/forget', data, {
+    const response = await axios.post('/validateuser', data, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    if (response.data.status === 'success') {
+    if (response.data.success) {
       commit('FORGETPASS', response.data)
+      return response
+    }
+  },
+
+  async ValidEmail({ commit }, data) {
+    const response = await axios.post('/validatenumber', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.data.success) {
+      commit('VALIDEMAIL', response.data)
+      return response
+    }
+  },
+
+  async createNewPassword({ commit }, data) {
+    const response = await axios.post('/newpassword', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.data.success) {
+      commit('CREATENEWPASSWORD', response.data)
       return response
     }
   },

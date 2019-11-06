@@ -19,8 +19,7 @@ export const actions = {
             //'Content-Type': 'application/json'
           },
           data
-        })
-    
+        })    
         if (response.data.success) {
           commit('DELETEFRIEND', { response: response.data, deleteFriendId: data.deleteFriendId })
           return response

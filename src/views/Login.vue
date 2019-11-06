@@ -30,7 +30,11 @@
                     placeholder="Password"
                   />
                 </div>
-                      <div v-if="notFound" class="alert alert-danger" role="alert">The email or password you entered is incorrect</div>
+                <div
+                  v-if="notFound"
+                  class="alert alert-danger"
+                  role="alert"
+                >The email or password you entered is incorrect</div>
 
                 <div class="form-group">
                   <input type="button" class="btn_4 w-100" value="Sign In" @click="userLogin" />

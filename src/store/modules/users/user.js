@@ -27,15 +27,24 @@ const mutations = {
     
     FORGETPASS: (state, user) => {
         state.user = user
-        if (user.status === 'success') {
+        /*if (user.success) {
           localStorage.setItem('user', JSON.stringify(user))
-        }
+        }*/
     },
     REGISTER: (state, user) => {
         state.user = user
         if (user.success) {
             localStorage.setItem('user', JSON.stringify(user))
           }
+    },
+    VALIDEMAIL: (state, user) => {
+        state.user = user
+    },
+    CREATENEWPASSWORD: (state, user) => {
+        state.user = user
+        if (user.status === 'success') {
+          localStorage.setItem('user', JSON.stringify(user))
+        }
     },
 
     FRIENDREQUEST: (state, data) => {
