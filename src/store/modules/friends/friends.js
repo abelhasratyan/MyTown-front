@@ -18,11 +18,9 @@ const mutations = {
     GET_FRIENDS: (state, friends) => {
         state.friends = (friends && friends.friends && friends.friends.friends)?friends.friends.friends:null
     },
-    DELETEFRIEND: (state, friends) => {
-        state.friends = friends
-        if (friends.success === 'success') {
-          localStorage.setItem('friends', JSON.stringify(friends))
-        }
+    DELETEFRIEND: (state, payload) => {
+        const newState = state.friends.filter((friend) => friend._id !== payload.deleteFriendId);
+        state.friends = newState
     },
 };
 

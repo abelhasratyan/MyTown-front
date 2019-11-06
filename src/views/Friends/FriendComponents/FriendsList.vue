@@ -39,9 +39,14 @@
             <div class="imgBox">
               <img src="@/assets/images/friends.png" alt="user" />
             </div>
-            <div class="friendName"> 
+            <div class="friendName">
               <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
-                <template v-slot:button-content>{{friend.name}}<span><i class="far fa-chevron-down"></i></span></template>
+                <template v-slot:button-content>
+                  {{friend.name}}
+                  <span>
+                    <i class="far fa-chevron-down"></i>
+                  </span>
+                </template>
                 <b-dropdown-item href="#" @click="deleteFriend_req(friend)">Delete Friend</b-dropdown-item>
               </b-dropdown>
             </div>
@@ -60,11 +65,11 @@ const apiService = new APIService();
 
 export default {
   name: "FriendsList",
-  data(){
-    return{
-      currentUserId:'',
-      friendId:'',
-    }
+  data() {
+    return {
+      currentUserId: "",
+      friendId: ""
+    };
   },
   props: {
     msg: Object
@@ -72,27 +77,22 @@ export default {
   methods: {
     ...mapActions(["getFriends", "deleteFriend"]),
 
-    deleteFriend_req(friend){
-     // this.friendId = id;
-     // this.currentUserId = this.users.user.user._id 
-      console.log(this.friendId,'test',this.currentUserId);
-      const {token} = JSON.parse(localStorage.getItem('user'));
+    deleteFriend_req(friend) {
+      const { token } = JSON.parse(localStorage.getItem("user"));
       this.deleteFriend({
         deleteFriendId: friend._id,
-        currentUserId: this.users.user.user._id ,
-        //token
+        currentUserId: this.users.user.user._id,
         token: `Bearer ${token}`
       })
         .then(res => {
-          if (res.data.status === "success") {
-           // this.$router.push("/");
-           console.log('success',res)
+          if (res.data.status) {
+            // this.$router.push("/");
           }
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
         });
-    },
+    }
   },
   created() {
     this.getFriends({
@@ -108,7 +108,7 @@ export default {
 };
 </script>
 <style  scoped>
-.friendName/deep/.btn-link{
-    color:black !important
+.friendName/deep/.btn-link {
+  color: black !important;
 }
 </style>

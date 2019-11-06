@@ -21,8 +21,8 @@ export const actions = {
           data
         })
     
-        if (response.data.status === 'true') {
-          commit('DELETEFRIEND', response.data)
+        if (response.data.success) {
+          commit('DELETEFRIEND', { response: response.data, deleteFriendId: data.deleteFriendId })
           return response
         }
       },
