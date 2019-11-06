@@ -37,7 +37,7 @@
         </div>
       </section>
 
-      <ValidateEmail v-if="emailValid"></ValidateEmail>
+      <ValidateEmail v-if="emailValid" :email="email" ></ValidateEmail>
     </main>
     <Footer />
   </div>

@@ -50,14 +50,16 @@ import { Token } from "../router/Auth";
 
 export default {
   name: "createNewPassword",
-  props: {},
+    props: {
+       email: String,
+  },
   components: {
     Footer
   },
   data() {
     return {
-      password: " ",
-      c_password: " "
+      password: "",
+      c_password: ""
     };
   },
   methods: {
@@ -83,6 +85,8 @@ export default {
     if (Token.get.user()) {
       this.$router.push("/");
     }
+          console.log(this.email,'teteteteteteteteEMAIL')
+
   },
   ...mapState(["users"])
 };

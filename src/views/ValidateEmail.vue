@@ -32,7 +32,7 @@
           </div>
         </div>
       </section>
-      <CreateNewPassword v-if="mailValid"></CreateNewPassword>
+      <CreateNewPassword v-if="mailValid" :email="mail"></CreateNewPassword>
     </main>
     </div>
 </template>
@@ -44,14 +44,17 @@ import CreateNewPassword from "./CreateNewPassword"
 
 export default {
   name: "ValidateEmail",
-  props: {},
+  props: {
+       email: String,
+  },
   components: {
     Footer,CreateNewPassword
   },
   data() {
     return {
       value: "",
-      mailValid:false
+      mailValid:false,
+      mail : this.email
     };
   },
   methods: {
@@ -72,6 +75,9 @@ export default {
           console.log(err);
         });
     }
+  },
+  created(){
+      console.log(this.mail, 'testMEIL')
   },
   ...mapState(["users"])
 };
