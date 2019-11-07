@@ -32,7 +32,6 @@ export const actions = {
         'Content-Type': 'application/json'
       }
     })
-    console.log(response,'teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
     if (response.data.success) {
       commit('VALIDEMAIL', response.data)
       return response
@@ -40,7 +39,7 @@ export const actions = {
   },
 
   async createNewPassword({ commit }, data) {
-    const response = await axios.post('/newpassword', data, {
+    const response = await axios.put('/changepassword', data, {
       headers: {
         'Content-Type': 'application/json'
       }

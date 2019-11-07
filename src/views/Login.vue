@@ -39,6 +39,9 @@
                 <div class="form-group">
                   <input type="button" class="btn_4 w-100" value="Sign In" @click="userLogin" />
                 </div>
+                  <div class="form-group">
+                  <input type="button" class="btn_4 w-100" value="Create new account" @click="userRegister" />
+                </div>
                 <hr />
                 <span
                   style="display: flex;justify-content: center;cursor:pointer"
@@ -90,6 +93,9 @@ export default {
         .catch(err => {
           this.notFound = true;
         });
+    },
+    userRegister(){
+      this.$router.push('/register')
     },
 
     GoToForgetPass() {

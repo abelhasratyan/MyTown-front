@@ -65,7 +65,7 @@ export default {
     return {
       password: "",
       c_password: "",
-      notFound: false
+      notFound:false
     };
   },
   methods: {

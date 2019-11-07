@@ -36,8 +36,7 @@
           </div>
         </div>
       </section>
-
-      <ValidateEmail v-if="emailValid" :email="email" ></ValidateEmail>
+      <ValidateEmail :usermail="userData" v-if="emailValid" ></ValidateEmail>
     </main>
     <Footer />
   </div>
@@ -59,7 +58,8 @@ export default {
     return {
       email: "",
       emailValid: false,
-      notFound: false
+      notFound: false,
+      userData: null
     };
   },
   methods: {
@@ -73,6 +73,7 @@ export default {
           console.log(res);
           if (res.data.success) {
             this.emailValid = true;
+            this.userData = JSON.parse(res.config.data).email;
             this.$router.push("/validatemail");
           }
         })

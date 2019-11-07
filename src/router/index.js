@@ -128,6 +128,7 @@ const router = new Router({
         {
             path: '/validatemail',
             name: 'ValidateEmail',
+            props: true,
             component: ValidateEmail
         },
         {

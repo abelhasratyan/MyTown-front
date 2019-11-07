@@ -10,7 +10,8 @@
                   <img src="@/assets/images/logo.png" alt />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Enter number</label>
+                  <label for="exampleFormControlInput1">Enter number</label><br>
+                  <span style="font-size: 0.9rem;">You will receive messages on your mail, please enter the number in the input filed.</span>
                   <input
                     v-model="value"
                     type="number"
@@ -38,7 +39,7 @@
           </div>
         </div>
       </section>
-      <CreateNewPassword v-if="mailValid" :email="mail"></CreateNewPassword>
+      <CreateNewPassword v-if="mailValid" ></CreateNewPassword>
     </main>
   </div>
 </template>
@@ -50,9 +51,10 @@ import CreateNewPassword from "./CreateNewPassword";
 
 export default {
   name: "ValidateEmail",
-  props: {
-    email: String
-  },
+     props: {
+          usermail: String
+      },
+ 
   components: {
     Footer,
     CreateNewPassword
@@ -62,20 +64,22 @@ export default {
       value: "",
       mailValid: false,
       notFound: false,
-      mail: this.email
+      mail: this.usermail
     };
   },
   methods: {
     ...mapActions(["ValidEmail"]),
 
     sendMessage() {
+      console.log(this.mail,'test')
       this.ValidEmail({
-        value: this.value
+        value: this.value,
+        mail: this.mail
       })
         .then(res => {
           if (res.data.success) {
             this.mailValid = true;
-            this.$router.push('/createnewpassword')
+            this.$router.push("/createnewpassword");
           }
         })
         .catch(err => {
@@ -83,9 +87,11 @@ export default {
         });
     }
   },
-  mounted() {
-    console.log(this.mail, "ValidateEmail");
-  },
+        mounted(){
+
+        console.log(this.mail,"MEEEEEEEEEEEEEE")
+
+        },
   ...mapState(["users"])
 };
 </script>

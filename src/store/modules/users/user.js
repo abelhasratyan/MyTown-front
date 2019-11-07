@@ -39,8 +39,6 @@ const mutations = {
     },
     VALIDEMAIL: (state, user) => {
         state.user = user
-        console.log(user,"++++++++++++++++++++++++++++")
-
     },
     CREATENEWPASSWORD: (state, user) => {
         state.user = user
