@@ -27,6 +27,11 @@
                     id="exampleFormControlInput1"
                   />
                 </div>
+                <div
+                  v-if="notFound"
+                  class="alert alert-danger"
+                  role="alert"
+                >Does not math!</div>
                 <div class="form-group">
                   <input
                     type="button"
@@ -59,13 +64,17 @@ export default {
   data() {
     return {
       password: "",
-      c_password: ""
+      c_password: "",
+      notFound: false
     };
   },
   methods: {
     ...mapActions(["createNewPassword"]),
 
     sendMessage() {
+      if(this.password !== this.c_password){
+        this.notFound = true;
+      }
       this.createNewPassword({
         password: this.password,
         c_password: this.c_password
@@ -73,6 +82,7 @@ export default {
         .then(res => {
           console.log(res);
           if (res.data.success) {
+            this.$router.push('/')
             console.log("yessssss", res);
           }
         })

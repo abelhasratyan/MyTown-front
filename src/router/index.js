@@ -121,17 +121,17 @@ const router = new Router({
             component: Register
         },
         {
-            path: '/forgetPassword',
+            path: '/forgetpassword',
             name: 'ForgetPassword',
             component: ForgetPassword
         },
         {
-            path: '/validateEmail',
+            path: '/validatemail',
             name: 'ValidateEmail',
             component: ValidateEmail
         },
         {
-            path: '/createNewPassword',
+            path: '/createnewpassword',
             name: 'CreateNewPassword',
             component: CreateNewPassword
         }

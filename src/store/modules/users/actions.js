@@ -32,6 +32,7 @@ export const actions = {
         'Content-Type': 'application/json'
       }
     })
+    console.log(response,'teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
     if (response.data.success) {
       commit('VALIDEMAIL', response.data)
       return response

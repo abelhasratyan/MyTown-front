@@ -93,7 +93,7 @@ export default {
     },
 
     GoToForgetPass() {
-      this.$router.push("/forgetPassword");
+      this.$router.push("/forgetpassword");
       this.forget = true;
     }
   },

@@ -1,5 +1,5 @@
 <template>
-    <div id="home">
+  <div id="home">
     <main>
       <section class="logReg">
         <div class="container">
@@ -13,17 +13,23 @@
                   <label for="exampleFormControlInput1">Enter number</label>
                   <input
                     v-model="value"
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="exampleFormControlInput1"
                     maxlength="6"
                   />
                 </div>
+                <div
+                  v-if="notFound"
+                  class="alert alert-danger"
+                  role="alert"
+                >Please,enter correct number!</div>
                 <div class="form-group">
                   <input
                     type="button"
                     class="btn_4 w-100"
                     value="Send message"
+                    maxlength="6"
                     @click="sendMessage()"
                   />
                 </div>
@@ -34,27 +40,29 @@
       </section>
       <CreateNewPassword v-if="mailValid" :email="mail"></CreateNewPassword>
     </main>
-    </div>
+  </div>
 </template>
 <script>
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
-import CreateNewPassword from "./CreateNewPassword"
+import CreateNewPassword from "./CreateNewPassword";
 
 export default {
   name: "ValidateEmail",
   props: {
-       email: String,
+    email: String
   },
   components: {
-    Footer,CreateNewPassword
+    Footer,
+    CreateNewPassword
   },
   data() {
     return {
       value: "",
-      mailValid:false,
-      mail : this.email
+      mailValid: false,
+      notFound: false,
+      mail: this.email
     };
   },
   methods: {
@@ -65,20 +73,26 @@ export default {
         value: this.value
       })
         .then(res => {
-          console.log(res);
           if (res.data.success) {
-              this.mailValid = true;
-            console.log("yessssss", res);
+            this.mailValid = true;
+            this.$router.push('/createnewpassword')
           }
         })
         .catch(err => {
-          console.log(err);
+          this.notFound = true;
         });
     }
   },
-  created(){
-      console.log(this.mail, 'testMEIL')
+  mounted() {
+    console.log(this.mail, "ValidateEmail");
   },
   ...mapState(["users"])
 };
 </script>
+<style scoped>
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+</style>

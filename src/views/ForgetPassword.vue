@@ -73,8 +73,7 @@ export default {
           console.log(res);
           if (res.data.success) {
             this.emailValid = true;
-            this.$router.push("/validateEmail");
-            console.log("yessssss", this.emailValid);
+            this.$router.push("/validatemail");
           }
         })
         .catch(err => {
