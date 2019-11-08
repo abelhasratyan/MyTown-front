@@ -51,9 +51,6 @@ import CreateNewPassword from "./CreateNewPassword";
 
 export default {
   name: "ValidateEmail",
-     props: {
-          usermail: String
-      },
  
   components: {
     Footer,
@@ -71,7 +68,6 @@ export default {
     ...mapActions(["ValidEmail"]),
 
     sendMessage() {
-      console.log(this.mail,'test')
       this.ValidEmail({
         value: this.value,
         mail: this.mail
@@ -87,11 +83,6 @@ export default {
         });
     }
   },
-        mounted(){
-
-        console.log(this.mail,"MEEEEEEEEEEEEEE")
-
-        },
   ...mapState(["users"])
 };
 </script>

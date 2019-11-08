@@ -36,7 +36,7 @@
           </div>
         </div>
       </section>
-      <ValidateEmail :usermail="userData" v-if="emailValid" ></ValidateEmail>
+      <ValidateEmail  v-if="emailValid" ></ValidateEmail>
     </main>
     <Footer />
   </div>
@@ -81,11 +81,6 @@ export default {
           this.notFound = true;
           console.log(err);
         });
-    }
-  },
-  created() {
-    if (Token.get.user()) {
-      this.$router.push("/");
     }
   },
   ...mapState(["users"])

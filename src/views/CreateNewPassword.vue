@@ -55,9 +55,6 @@ import { Token } from "../router/Auth";
 
 export default {
   name: "createNewPassword",
-    props: {
-       email: String,
-  },
   components: {
     Footer
   },
@@ -72,15 +69,14 @@ export default {
     ...mapActions(["createNewPassword"]),
 
     sendMessage() {
-      /*if(this.password !== this.c_password){
+      if(this.password !== this.c_password){
         this.notFound = true;
-      }*/
+      }
       this.createNewPassword({
         password: this.password,
         c_password: this.c_password
       })
         .then(res => {
-          console.log(res,'yeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssss');
           if (res.data.success) {
             this.$router.push('/')
           }
@@ -94,8 +90,6 @@ export default {
     if (Token.get.user()) {
       this.$router.push("/");
     }
-          console.log(this.email,'teteteteteteteteEMAIL')
-
   },
   ...mapState(["users"])
 };

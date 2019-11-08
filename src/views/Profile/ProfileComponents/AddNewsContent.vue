@@ -3,19 +3,17 @@
     <div class="headingBox">
       <h1 class="title">News Feed</h1>
     </div>
-    <form class="addNewsBox underLine">
+    <form class="addNewsBox underLine" onsubmit="return false">
       <div class="userBox">
         <div class="imgBox">
           <img :src="msg.avatar" alt="user img" />
         </div>
+
         <div class="infoBox">
-     
-          <textarea v-on:keyup.enter="addNews"
-            class="addNews"
-            v-model="newsValue"
-            :placeholder="'What is on your mind, ' + [[ msg.name ]]" rows="2"></textarea>
-            <button type="btn success" class="post">Add</button>
+          <textarea  class="addNews"  v-model="newsValue" :placeholder="'What is on your mind, ' + [[ msg.name ]]" rows="2"></textarea>
+          <button   class="addNews_post" @click="addNews">Add</button>
         </div>
+
       </div>
     </form>
     <div class="emojiBox">
@@ -44,15 +42,23 @@
         </ul>
       </div>
     </div>
+    <span>{{news}} werwerwer</span>
   </div>
 </template>
 
 <script>
+/*<textarea v-on:keyup.enter="addNews"
+            class="addNews"
+            v-model="newsValue"
+            :placeholder="'What is on your mind, ' + [[ msg.name ]]" rows="2"></textarea>
+            <button type="btn success" class="post">Add</button>*/
+        
 export default {
   name: "AddNewsContent",
   data() {
     return {
-        newsValue:''
+        newsValue:'',
+        news: null
     };
   },
   props: {
@@ -60,7 +66,9 @@ export default {
   },
   methods:{
       addNews(){
-          console.log(this.newsValue,'test Add news');
+         localStorage.setItem("newPost", JSON.stringify(this.newsValue));
+          this.news = JSON.parse(localStorage.getItem("newPost"));
+          console.log(this.news,'test Add news');
       }
   }
 };
@@ -77,8 +85,7 @@ export default {
     .addNews:focus{
         border:none
     }
-    .post{
-        display: none;
+    .addNews_post{
         position: absolute;
         top: 15px;
         right: 0;
@@ -89,7 +96,10 @@ export default {
         padding: 2px 15px;
         border-radius: 3px;
     }
-    .addNews:focus + .post{
+    /*.addNews:focus + .addNews_post{
+        display: block
+    }*/
+    .addNews:focus {
         display: block
     }
 </style>
