@@ -72,18 +72,17 @@ export default {
     ...mapActions(["createNewPassword"]),
 
     sendMessage() {
-      if(this.password !== this.c_password){
+      /*if(this.password !== this.c_password){
         this.notFound = true;
-      }
+      }*/
       this.createNewPassword({
         password: this.password,
         c_password: this.c_password
       })
         .then(res => {
-          console.log(res);
+          console.log(res,'yeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssss');
           if (res.data.success) {
             this.$router.push('/')
-            console.log("yessssss", res);
           }
         })
         .catch(err => {

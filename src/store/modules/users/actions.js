@@ -39,7 +39,8 @@ export const actions = {
   },
 
   async createNewPassword({ commit }, data) {
-    const response = await axios.put('/changepassword', data, {
+    console.log(data, 'ACTIONJS')
+    const response = await axios.post('/changepassword',{ data} , {
       headers: {
         'Content-Type': 'application/json'
       }

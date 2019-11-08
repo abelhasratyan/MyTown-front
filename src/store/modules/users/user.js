@@ -42,7 +42,7 @@ const mutations = {
     },
     CREATENEWPASSWORD: (state, user) => {
         state.user = user
-        if (user.status === 'success') {
+        if (user.success) {
           localStorage.setItem('user', JSON.stringify(user))
         }
     },
