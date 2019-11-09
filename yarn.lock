@@ -8013,6 +8013,11 @@ vue-birth-datepicker@^0.2.7:
   resolved "https://registry.yarnpkg.com/vue-birth-datepicker/-/vue-birth-datepicker-0.2.7.tgz#91175b7c72b4563090d10dd07e56047e6cf1aabc"
   integrity sha512-WJZuDvR3BaOItOdmmZIRNrDRDOg18auypAgtaxT9xK4mu5cXR6NHl2QU9kiSOorfkyY4H12jZYEmpG0YCwLWvA==
 
+vue-emoji-picker@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-emoji-picker/-/vue-emoji-picker-1.0.1.tgz#0c893b21fb2ac46c6b5803476d744ae3d420f98b"
+  integrity sha512-phisHAaSg+7xnpi7xlOxFGD46npaQXCLit2T6nAHMlEcFNT1ZUqu/NO3P5FDp6RgjP7o4ueduktnxk9ul0IS9Q==
+
 vue-functional-data-merge@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz#08a7797583b7f35680587f8a1d51d729aa1dc657"
