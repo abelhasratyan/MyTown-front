@@ -95,6 +95,7 @@ export default {
       search: "",
       album: "",
       title: "",
+      user_id: "",
       image: {}
     };
   },
@@ -111,8 +112,8 @@ export default {
 
     addImage() {
       this.$swal({
-        title: "Input something",
-        html: `<input type="file" id="swal-input1" class="swal2-input">`,
+        title: `<span style="color: #64636b;font-weight: 500;">Add Image</span>`,
+        html: `<input type="file" id="swal-input1">`,
         showCancelButton: true,
         confirmButtonClass: "btn btn-success btn-fill",
         cancelButtonClass: "btn btn-danger btn-fill",
@@ -167,6 +168,7 @@ export default {
         //postText: this.postText,
         postValue: this.value,
         postImg: this.image,
+        userId: this.users.user.user._id,
         token: apiService.getToken()
       })
         .then(res => {
@@ -184,8 +186,11 @@ export default {
       }
     }
   },
+  mounted(){
+    console.log(this.users.user.user._id,'USER')
+  },
   computed: {
-    ...mapState(["photo"])
+    ...mapState(["photo","users"])
   }
 };
 </script>
@@ -307,5 +312,8 @@ export default {
 }
 textarea {
   resize: none;
+}
+textarea:focus{
+ 
 }
 </style>
