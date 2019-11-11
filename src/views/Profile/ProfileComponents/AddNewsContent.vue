@@ -47,7 +47,6 @@
               </div>
             </emoji-picker>
           </div>
-          <button class="addNews_post" @click="addNews">Add</button>
         </div>
       </div>
     </form>
@@ -72,16 +71,26 @@
               <img src="@/assets/images/icons/moreIcon.png" alt="icon" />
             </div>
           </li>
+          <li>
+            <button class="addNews_post" @click="addNews">Add</button>
+          </li>
         </ul>
       </div>
     </div>
-    <span>{{news}}</span>
   </div>
 </template>
 
 <script>
+/*    <div id="app">
+      <h2>Dynamically inserted:</h2>
+      <div ref="container">
+        <button @click="onClick">Click to insert</button>
+      </div>
+    </div> 
+    <button class="addNews_post" @click="addNews">Add</button>*/
 import { mapState, mapActions, mapMutations } from "vuex";
 import { APIService } from '@/APIService'
+
 
 const apiService = new APIService()
 
@@ -109,10 +118,9 @@ export default {
     append(emoji) {
       this.value += emoji;
     },
-
     addImage() {
       this.$swal({
-        title: `<span style="color: #64636b;font-weight: 500;">Add Image</span>`,
+        title: `<span style="color: #64636b;font-weight: 500;" class="test">Add Image</span>`,
         html: `<input type="file" id="swal-input1">`,
         showCancelButton: true,
         confirmButtonClass: "btn btn-success btn-fill",
@@ -164,7 +172,8 @@ export default {
 
     addNews() {
       console.log(this.image)
-      this.AddNewPost({
+            this.bus.$emit('your-call', {test:'test'}) 
+                 this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
         postImg: this.image,
@@ -207,7 +216,6 @@ export default {
   border: none;
 }
 .addNews_post {
-  position: absolute;
   top: 45px;
   right: 0;
   border: none;
@@ -313,7 +321,9 @@ export default {
 textarea {
   resize: none;
 }
-textarea:focus{
- 
+textarea:focus {
+}
+./deep/.test {
+  color: red;
 }
 </style>
