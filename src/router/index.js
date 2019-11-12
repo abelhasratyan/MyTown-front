@@ -28,6 +28,10 @@ const Album = () => import('@/views/Photo/PhotoComponents/Album')
 
 const Friends = () => import('@/views/Friends/Friends')
 
+//Events
+const AddEvents = () => import('@/views/Events/AddEvents')
+
+
 Vue.use(Router)
 
 const router = new Router({
@@ -109,6 +113,11 @@ const router = new Router({
                     component: Friends
                 }
             ]
+        },
+        {
+            path: '/addevents',
+            name: 'AddEvents',
+            component: AddEvents
         },
         {
             path: '/login',

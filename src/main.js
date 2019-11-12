@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { EmojiPickerPlugin } from 'vue-emoji-picker'
-
 library.add(faUserSecret)
 
 Vue.use(BootstrapVue)

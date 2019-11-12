@@ -5,72 +5,54 @@
         <div class="container">
           <div class="row my-3">
             <div class="col-md-5 m-auto">
-              <form class="logRegBox">
+              <form class="logRegBox" @submit.prevent="registerUser">
                 <div class="text-center py-2">
                   <img src="@/assets/images/logo.png" alt />
                 </div>
+             <div class="form-group">
+                  <label for="name">
+                     Name
+                    <span style="color:red">*</span>
+                  </label>
+                  <input v-model="name" type="text" class="form-control" id="name" />
+                </div>                   
                 <div class="form-group">
-                  <label for="exampleFormControlInput3">First Name</label>
-                  <input
-                    v-model="name"
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput3"
-                  />
+                  <label for="lastname">
+                    Last Name
+                    <span style="color:red">*</span>
+                  </label>
+                  <input v-model="surname" type="text" class="form-control" id="lastname" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput4">Last Name</label>
-                  <input
-                    v-model="surname"
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput4"
-                  />
+                  <label for="birthday">Birthday date</label>
+                  <input v-model="birthday" type="text" class="form-control" id="birthday" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput4">Birthday date</label>
-                  <input
-                    v-model="birthday"
-                    type="number"
-                    class="form-control"
-                    id="exampleFormControlInput4"
-                  />
+                  <label for="country">Country</label>
+                  <input v-model="country" type="text" class="form-control" id="country" />
+                  <label for="city">City</label>
+                  <input v-model="city" type="text" class="form-control" id="city" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput4">Address</label>
-                  <input
-                    v-model="address"
-                    type="address"
-                    class="form-control"
-                    id="exampleFormControlInput4"
-                  />
+                  <label for="mail">
+                    Email
+                    <span style="color:red">*</span>
+                  </label>
+                  <input v-model="email" type="email" class="form-control" id="mail" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Email</label>
-                  <input
-                    v-model="email"
-                    type="email"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                  />
+                  <label for="password">
+                    Password
+                    <span style="color:red">*</span>
+                  </label>
+                  <input v-model="password" type="password" class="form-control" id="password" />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput2">Password</label>
-                  <input
-                    v-model="password"
-                    type="password"
-                    class="form-control"
-                    id="exampleFormControlInput2"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput5">Confirm Password</label>
-                  <input
-                    v-model="c_password"
-                    type="password"
-                    class="form-control"
-                    id="exampleFormControlInput5"
-                  />
+                  <label for="c_password">
+                    Confirm Password
+                    <span style="color:red">*</span>
+                  </label>
+                  <input v-model="c_password" type="password" class="form-control" id="c_password" />
                 </div>
                 <div class="form-group">
                   <input
@@ -98,35 +80,39 @@ import { Token } from "../router/Auth";
 export default {
   data() {
     return {
-      name: "",
-      surname: "",
-      email: "",
-      birthday: "",
-      address: "",
-      password: "",
-      c_password: ""
+      errors: [],
+      name: null,
+      surname: null,
+      email: null,
+      birthday: null,
+      country: null,
+      city: null,
+      password: null,
+      c_password: null
     };
   },
   components: {
-    Footer
+    Footer,
   },
   methods: {
     ...mapActions(["Register"]),
 
     registerUser() {
-      let data = {
+
+    let data = {
         name: this.name,
         surname: this.surname,
         email: this.email,
         birthday: this.birthday,
-        address: this.address,
+        country: this.country,
+        city: this.city,
         password: this.password,
         c_password: this.c_password
       };
       this.Register(data).then(res => {
         console.log("user", res);
         this.$router.push("/profile");
-      });
+      })
     }
   },
   created() {
