@@ -369,7 +369,7 @@ header .headerContent .headerList li.hasChild .textBox:before {
   right: -15px;
 }
 header .headerContent .headerList li.hasChild .subMenu {
-  background-color: #ffffff69;
+  background-color: #e7edf3;;
   z-index: 9;
   display: none;
 }
