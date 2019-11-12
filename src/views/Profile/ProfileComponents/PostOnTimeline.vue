@@ -4,7 +4,7 @@
         <div class="userBox">
             <div class="imgBox pl-3 pr-3 pt-3">
                 <img src="../../../assets/images/userImg.png" alt="user img" class="rounded-circle">
-                <span class="user-name">Abel Hasratyan</span>
+                <span class="user-name">{{users.user.user.name}}</span>
                 <span class="add-photo">added a new photo &#45; </span>
                 <span class="albom-name"> My city </span>
                 <span class="about-hours">about 18 hours ago</span>
@@ -31,7 +31,21 @@
     </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-    name:"PostOnTimeline"
+    name:"PostOnTimeline",
+    data(){
+        return{
+        user_name: 'this.users.user.user.name'
+        }
+    },
+    created(){
+            console.log(this.users.user.user.name,"POSTONTIMELINE")
+    },
+    computed:{
+     ...mapState(['users'])
+    }
+    
 }
 </script>
