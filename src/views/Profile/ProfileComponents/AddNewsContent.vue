@@ -91,7 +91,6 @@
 import { mapState, mapActions, mapMutations } from "vuex";
 import { APIService } from '@/APIService'
 
-
 const apiService = new APIService()
 
 export default {
@@ -118,6 +117,7 @@ export default {
     append(emoji) {
       this.value += emoji;
     },
+
     addImage() {
       this.$swal({
         title: `<span style="color: #64636b;font-weight: 500;" class="test">Add Image</span>`,
@@ -171,9 +171,7 @@ export default {
     },
 
     addNews() {
-      console.log(this.image)
-            this.bus.$emit('your-call', {test:'test'}) 
-                 this.AddNewPost({
+            this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
         postImg: this.image,
@@ -184,6 +182,7 @@ export default {
           console.log(res);
         })
         .catch(err => {
+          this.bus.$emit('your-call', {test:'test'}) 
           console.log(err);
         });
     }
@@ -196,7 +195,8 @@ export default {
     }
   },
   mounted(){
-    console.log(this.users.user.user._id,'USER')
+    console.log(this.users.user.user._id,'USER');
+   
   },
   computed: {
     ...mapState(["photo","users"])

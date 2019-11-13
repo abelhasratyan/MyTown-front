@@ -92,5 +92,17 @@ export const actions = {
       commit('GET_USER', response.data)
       return response.data
     }
-  }
+  },
+  async updateUser({ commit }, data) {
+    const response = await axios.post('/updateuser',data  , {
+      headers: {
+        "Authorization": data.token
+      }
+    })
+    if (response.data.success) {
+      commit('UPDATE_USER', response.data)
+      return response
+    }
+  },
+
 };

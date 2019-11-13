@@ -10,6 +10,7 @@ const state = {
     users: [],
     user: [],
     pass: [],
+    data: [],
     token: ''
 };
 
@@ -21,7 +22,7 @@ const mutations = {
     ADDPOST: (state, data) => {
         state.data = data
         if (data.success) {
-          //localStorage.setItem('user', JSON.stringify(user))
+           //localStorage.setItem('user', JSON.stringify(user))
         }
     },
 };
