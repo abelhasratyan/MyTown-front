@@ -14,6 +14,7 @@ Vue.use(Vuex);
 //Create store
 export default new Vuex.Store({
     modules: {
+        namespaced: true,
         users,
         photo,
         friends,

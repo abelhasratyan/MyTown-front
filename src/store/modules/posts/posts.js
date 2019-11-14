@@ -7,7 +7,7 @@ import VueAxios from 'vue-axios'
 
 
 const state = {
-    users: [],
+    data: [],
     user: [],
     pass: [],
     data: [],
@@ -20,8 +20,9 @@ const getters = {};
 
 const mutations = {
     ADDPOST: (state, data) => {
-        state.data = data
         if (data.success) {
+            state.data = data
+            console.log(data,'POSTSTATE')
            //localStorage.setItem('user', JSON.stringify(user))
         }
     },

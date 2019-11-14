@@ -40,12 +40,17 @@ export default {
        // user_name: 'this.users.user.user.name'
         }
     },
-    created(){
-            //console.log(this.users.user.user.name,"POSTONTIMELINE")
+    methods:{
+        myTest(){
+         console.log(this.data,"POSTONTIMELINE")
+        }
     },
-   /* computed:{
-     ...mapState(['users'])
+    created(){
+            console.log(this.data,"POSTONTIMELINE")
+    },
+   computed:{
+     ...mapState(['data'])
     }
-    */
+    
 }
 </script>

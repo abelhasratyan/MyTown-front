@@ -171,7 +171,7 @@ export default {
     },
 
     addNews() {
-            this.AddNewPost({
+        this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
         postImg: this.image,
@@ -179,10 +179,10 @@ export default {
         token: apiService.getToken()
       })
         .then(res => {
-          console.log(res);
+        this.bus.$emit('your-call', {test:'test'}) 
+          console.log("----------------", res);
         })
         .catch(err => {
-          this.bus.$emit('your-call', {test:'test'}) 
           console.log(err);
         });
     }
