@@ -6,7 +6,7 @@
                 <LeftContent :msg="users.user.user" />
                 <div class="centerContent col-lg-8 col-md-12">
                     <AddNewsContent :msg="users.user.user" />
-                    <PostOnTimeline></PostOnTimeline>
+                    <PostOnTimeline  ref="p"></PostOnTimeline>
                     <div class="shadow  mb-2 bg-white newsContent">
                         <div class="addNewsBox">
                             <div class="userBox">

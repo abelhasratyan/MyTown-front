@@ -1,5 +1,8 @@
 <template>
-    <div class="shadow  mb-2 bg-white newsContent">
+    <div>
+        <img :src="postParams.file.path">
+
+        <div class="shadow  mb-2 bg-white newsContent">
     <div class="addNewsBox">
         <div class="userBox">
             <div class="imgBox pl-3 pr-3 pt-3">
@@ -29,21 +32,36 @@
         </div>
     </div>
     </div>
+    </div>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
 
 export default {
     name:"PostOnTimeline",
+    props: {
+        postParams: {
+            type: Object,
+            required: true,
+        }
+    },
+
     data(){
         return{
        // user_name: 'this.users.user.user.name'
         }
     },
     methods:{
+      
+    },
+    watch:{
         myTest(){
-         console.log(this.data,"POSTONTIMELINE")
-        }
+         console.log(this.value,"POSTONTIMELINE")
+        },
+
+        postParams(val) {
+            console.log('Called the postParams wather!!!!!!!'. val);
+        },
     },
     created(){
             console.log(this.data,"POSTONTIMELINE")

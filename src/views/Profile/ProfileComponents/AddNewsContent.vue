@@ -179,8 +179,8 @@ export default {
         token: apiService.getToken()
       })
         .then(res => {
-        this.bus.$emit('your-call', {test:'test'}) 
-          console.log("----------------", res);
+          this.bus.$emit('your-call', res) 
+          console.log(res);
         })
         .catch(err => {
           console.log(err);

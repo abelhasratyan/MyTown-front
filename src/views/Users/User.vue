@@ -7,9 +7,14 @@
             <LeftBar />
             <div class="centerContent col-lg-6 col-md-12">
               <AddNewsContent :msg="users.user.user" />
-                <div ref="container">
+               <div ref="container">
+                 <PostOnTimeline 
+                  v-for="(postElement, postIndex) of postsList"
+                  :key="postIndex"
+                  :postParams="postElement"
+                 ></PostOnTimeline>
                 </div>
-              <PostOnTimeline ></PostOnTimeline>
+              
               <div class="shadow mb-2 bg-white newsContent">
                 <div class="addNewsBox">
                   <div class="userBox">
@@ -373,17 +378,30 @@ export default {
   computed: {
     ...mapState(["users"])
   },
+
+  data() {
+    return {
+      postsList: [],
+    }
+  },
+
   methods: {},
   mounted() {
-    this.bus.$on("your-call", () => {
-      var ComponentClass = Vue.extend(PostOnTimeline);
+    this.bus.$on("your-call", (res) => {
+      const postItem = res.data.result;
+      this.postsList.push(postItem);
+      this.postsList.reverse();
+      console.log('postsList: ====================', this.postsList);
+
+      /*var ComponentClass = Vue.extend(PostOnTimeline);
       var instance = new ComponentClass({
-        propsData: { type: "primary" }
+        propsData: { type: "primary",
+                      value: "tesxt" }
       });
       //instance.$slots.default = ['Click me!']
       instance.$mount(); // pass nothing
       // console.log(this.$refs)
-      this.$refs.container.appendChild(instance.$el);
+      this.$refs.container.appendChild(instance.$el);*/
     });
   }
 };
