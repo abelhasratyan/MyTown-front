@@ -6,13 +6,11 @@
                 <h3 class="title">Full Name</h3>
                 <p class="description">{{ msg.name }} {{ msg.surname }}</p>
                 <h3 class="title">Birthday</h3>
-                <p class="description">undefined</p>
-                <h3 class="title">Age</h3>
-                <p class="description">unknown</p>
+                <p class="description">{{ msg.birthday }}</p>
                 <h3 class="title">Country</h3>
-                <p class="description">Anglia</p>
+                <p class="description">{{ msg.country }}</p>
                 <h3 class="title">City</h3>
-                <p class="description">London</p>
+                <p class="description">{{ msg.city }}</p>
             </div>
         </div>
         <div class="shadow  mb-2 bg-white">
