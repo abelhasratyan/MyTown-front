@@ -167,11 +167,9 @@ export default {
     ...mapActions(["logout", "getSelectedUser"]),
 
     logOut() {
-      console.log(this.currentUserId, "testts");
       if (Token.get.user()) {
         let currentUser = JSON.parse(Token.get.user());
         this.currentUserId = currentUser.user._id;
-        console.log(this.currentUserId, "test");
 
         localStorage.removeItem("user");
       }

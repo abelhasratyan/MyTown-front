@@ -1,22 +1,19 @@
 <template>
     <div>
-        <img :src="postParams.file.path">
-
         <div class="shadow  mb-2 bg-white newsContent">
     <div class="addNewsBox">
         <div class="userBox">
             <div class="imgBox pl-3 pr-3 pt-3">
                 <img src="../../../assets/images/userImg.png" alt="user img" class="rounded-circle">
-                <span class="user-name">name</span>
+                <span class="user-name">{{users.user.user.name}}</span>
                 <span class="add-photo">added a new photo &#45; </span>
                 <span class="albom-name"> My city </span>
-                <span class="about-hours">about 18 hours ago</span>
+                <span class="about-hours">at {{postParams.created}}</span>
             </div>
         </div>
         <div class="aboutPhotoBox pb-3 underLine">
-            <p class="aboutPhoto-txt text-left pl-3 pr-3 mb-3">Lorem ipsum dolor sit ametvoluptatem.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do et dolore magna aliqua.</p>
-            <img src="../../../assets/images/loadPhoto.jpg" alt="Loaded Photo" class="fullWidthImg">
+            <p class="aboutPhoto-txt text-left pl-3 pr-3 mb-3">{{postParams.text}}</p>
+            <span v-if="postParams.file"><img :src="postParams.file.path" alt="Loaded Photo" class="fullWidthImg"></span>
         </div>
         <div class="photoLikeBox p-3">
             <div class="col-md-6 p-0">
@@ -33,7 +30,7 @@
     </div>
     </div>
     </div>
-</template>
+</template>     
 <script>
 import { mapState, mapActions } from 'vuex'
 
@@ -42,32 +39,11 @@ export default {
     props: {
         postParams: {
             type: Object,
-            required: true,
+            //required: true,
         }
-    },
-
-    data(){
-        return{
-       // user_name: 'this.users.user.user.name'
-        }
-    },
-    methods:{
-      
-    },
-    watch:{
-        myTest(){
-         console.log(this.value,"POSTONTIMELINE")
-        },
-
-        postParams(val) {
-            console.log('Called the postParams wather!!!!!!!'. val);
-        },
-    },
-    created(){
-            console.log(this.data,"POSTONTIMELINE")
     },
    computed:{
-     ...mapState(['data'])
+     ...mapState(['users'])
     }
     
 }

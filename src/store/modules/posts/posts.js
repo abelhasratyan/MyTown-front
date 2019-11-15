@@ -22,10 +22,17 @@ const mutations = {
     ADDPOST: (state, data) => {
         if (data.success) {
             state.data = data
-            console.log(data,'POSTSTATE')
+
            //localStorage.setItem('user', JSON.stringify(user))
         }
     },
+    GETPOSTS:(state, data) => {
+        if (data.success) {
+            state.data = data
+
+           //localStorage.setItem('user', JSON.stringify(user))
+        }
+    }
 };
 
 export default {

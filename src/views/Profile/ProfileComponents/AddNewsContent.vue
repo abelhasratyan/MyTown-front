@@ -137,7 +137,6 @@ export default {
       })
         .then(result => {
           if (result.value) {
-            console.log(result.value,'RESULTMEEE')
             this.image = result.value
           /*  this.createImage({
               data: result.value,
@@ -171,6 +170,7 @@ export default {
     },
 
     addNews() {
+
         this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
@@ -180,7 +180,8 @@ export default {
       })
         .then(res => {
           this.bus.$emit('your-call', res) 
-          console.log(res);
+          this.value = "";
+         this.image = "";
         })
         .catch(err => {
           console.log(err);
@@ -195,7 +196,6 @@ export default {
     }
   },
   mounted(){
-    console.log(this.users.user.user._id,'USER');
    
   },
   computed: {

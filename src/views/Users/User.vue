@@ -361,6 +361,7 @@ import { mapState, mapActions } from "vuex";
 import { APIService } from "@/APIService";
 import AddNewsContent from "../Profile/ProfileComponents/AddNewsContent";
 import PostOnTimeline from "../Profile/ProfileComponents/PostOnTimeline";
+import { Token } from "../../router/Auth";
 import Vue from "vue";
 
 const apiService = new APIService();
@@ -385,14 +386,17 @@ export default {
     }
   },
 
-  methods: {},
+  methods: {
+    ...mapActions(["getPosts",]),
+  },
   mounted() {
     this.bus.$on("your-call", (res) => {
-      const postItem = res.data.result;
-      this.postsList.push(postItem);
-      this.postsList.reverse();
-      console.log('postsList: ====================', this.postsList);
-
+      if(res){
+        if(res.data) {
+          const postItem = res.data.result;
+          this.postsList.unshift(postItem);
+        }
+      }
       /*var ComponentClass = Vue.extend(PostOnTimeline);
       var instance = new ComponentClass({
         propsData: { type: "primary",
@@ -403,6 +407,21 @@ export default {
       // console.log(this.$refs)
       this.$refs.container.appendChild(instance.$el);*/
     });
+    if(Token.get.user()) {
+        let currentUser = JSON.parse(Token.get.user());
+        this.getPosts({
+          token: apiService.getToken(),
+          userId: currentUser.user._id
+        })
+        .then(res => {
+            this.postsList = res.data.postsList
+            console.log(res);
+          })
+        .catch(err => {
+            console.log(err);
+      });
+    }
+    
   }
 };
 </script>
