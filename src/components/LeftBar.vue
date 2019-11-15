@@ -1,5 +1,5 @@
 <template>
-    <div class="rightContent col-lg-2 d-none d-lg-block">
+    <div class="rightContent col-lg-2 d-lg-block">
         <div class="tightSectionBar">
             <h4 class="title_1">Shortcuts</h4>
             <ul class="linkList">

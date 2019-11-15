@@ -1,7 +1,7 @@
 <template>
-  <div class="shadow pt-3 px-3 mb-2 bg-white addNewsContent" v-if="msg">
+  <div class="shadow mb-2 bg-white addNewsContent" v-if="msg">
     <div class="headingBox">
-      <h1 class="title">News Feed</h1>
+      <h2 class="title">News Feed</h2>
     </div>
     <form class="addNewsBox underLine" onsubmit="return false">
       <div class="userBox">
@@ -11,7 +11,14 @@
         <div class="infoBox">
           <div class="wrapper">
             <textarea class="regular-input" v-model="value"></textarea>
-            <emoji-picker @emoji="append" :search="search">
+            
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="emojiBox">
+      <div class="smileBox">
+        <emoji-picker @emoji="append" :search="search">
               <div
                 class="emoji-invoker"
                 slot="emoji-invoker"
@@ -46,12 +53,7 @@
                 </div>
               </div>
             </emoji-picker>
-          </div>
-        </div>
       </div>
-    </form>
-    <div class="emojiBox">
-      <div class="smileBox"></div>
       <div class="moreDetalsBox">
         <ul class="detalsList">
           <li>
@@ -236,23 +238,26 @@ export default {
 .wrapper {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .regular-input {
   padding: 0.5rem 1rem;
   border-radius: 3px;
   border: none;
-  width: 27rem;
-  height: 4rem;
+  max-width: 450px;
+  width: 100%;
+  height: 65px;
   outline: none;
 }
 
 .regular-input:focus {
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  /* box-shadow: 0 0 0 3px rgba(55, 3, 139, 0.5); */
+  border-bottom: 1px solid rebeccapurple
+  
 }
 
 .emoji-invoker {
-  position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   width: 1.5rem;
@@ -260,7 +265,6 @@ export default {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s;
-  margin: 64px 455px 0px -456px;
 }
 .emoji-invoker:hover {
   transform: scale(1.1);

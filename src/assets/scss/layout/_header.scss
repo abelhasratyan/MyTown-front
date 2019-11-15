@@ -1,8 +1,7 @@
 header {
   background-color: $MainColor;
-  height: 75px;
   @media (max-width: 991px) {
-    height: 88px;
+    padding: 5px 0px 10px;
   }
   .headerContent {
     height: 75px;
@@ -13,10 +12,46 @@ header {
     }
     .searchBox {
       position: relative;
+      max-width: 500px;
+      width: 100%;
+
+      @media (max-width: 992px) {
+        max-width: 100%;
+        margin-top: 5px;
+      }
       .searchIcon {
         position: absolute;
-        right: 15px;
-        top: 5px;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+      }
+
+      .search-result{
+        position: absolute;
+        top: calc(100% + 5px);
+        width: 100%;
+        max-height: 175px;
+        overflow-y: auto;
+        background: #ffffff;
+        z-index: 1;
+        border-radius:3px;
+        box-shadow: 0 10px 25px rgba(34, 34, 34, .4);
+        display: none;
+
+        &.open{
+          display: block;
+        }
+
+        &-item{
+          padding: 5px 0 5px 10px;
+          border-bottom: 1px solid #cccccc;
+          cursor: pointer;
+          transition: .2s;
+
+          &:hover{
+            background: #e8e8e8;
+          }
+        }
       }
     }
     .headerList {
@@ -43,6 +78,7 @@ header {
         }
         .iconBox {
           position: relative;
+          display: inline-block;
           .notiCount {
             font-size: 12px;
             width: 15px;
@@ -54,13 +90,13 @@ header {
             color: $whiteColor;
             background-color: $YellowColor;
             position: absolute;
-            left: 30px;
+            left: 15px;
             top: 0;
           }
         }
         .iconBox.Notification{
           .notiCount{
-            left: 40px;
+            left: 10px;
           }
         }
         @media (max-width: 991px) {
@@ -87,6 +123,7 @@ header {
         }
         &.hasChild {
           position: relative;
+          cursor: pointer;
           .textBox{
             position: relative;
             &:before {
@@ -97,22 +134,39 @@ header {
               border-right: 5px solid transparent;
               border-top: 5px solid $whiteColor;
               position: absolute;
-              top: 50%;
+              top: 45%;
               right: -15px;
             }
           }
+
+          &.user{
+            .subMenu{
+              right: 0;
+            }
+          }
+
           .subMenu {
-            background-color: #ffffff69;
+            background-color: #ffffff;
             z-index: 9;
             display: none;
+            padding: 0;
+            border-radius: 3px;
+            overflow: hidden;
             li {
               display: block;
               margin: 0px;
-              padding: 0px 40px;
+              padding: 5px 0px;
               min-width: 200px;
+              cursor: pointer;
               &:hover {
-              background-color: #ffffff;
-                }
+                background-color: #e8e8e8;
+              }
+
+              .form-control{
+                cursor: pointer;
+              }
+
+              
             }
           }
           &:hover   .subMenu {
@@ -126,7 +180,22 @@ header {
           }
         }
         .userBox {
-          @include userBox(40px,40px,$whiteColor);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #cccccc;
+          position: relative;
+          overflow: hidden;
+
+          img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+          }
         }
       }
     }

@@ -1,5 +1,17 @@
 .centerContent {
   .addNewsContent {
+
+    .headingBox{
+      padding: 10px 0px 10px 15px;
+      color: #dddfe2;
+      background: #f5f6f7;
+      border-bottom:1px solid #dddfe2;
+      .title{
+        margin-bottom: 0;
+        font-size: 13px;
+      }
+    }
+
     .addNewsBox {
       position: relative;
       .addNewsArea {
@@ -7,14 +19,19 @@
         resize: none;
       }
       .userBox{
-        position: absolute;
-        left: 20px;
+        position: relative;
         top: 0;
         bottom: 0;
         margin: auto;
         @include userBox(45px,45px,$headingcolor);
         .infoBox{
           font-size: 20px;
+        }
+        .imgBox{
+          img{
+            max-width: 45px;
+            border-radius: 100px;
+          }
         }
       }
     }
@@ -42,6 +59,10 @@
       }
     }
   }
+
+
+
+
   .newsContent{
     .userBox{
       .user-name{
@@ -390,8 +411,9 @@
       position: relative;
       .searchIcon {
         position: absolute;
-        right: 15px;
-        top: 5px;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
       }
     }
     .userBox {

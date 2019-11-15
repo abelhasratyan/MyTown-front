@@ -2,20 +2,45 @@
   <header>
     <div class="container" v-if="msg">
       <div class="row headerContent">
-        <div class="col-lg-2 col-md-3 col-3">
+        <div class="col-lg-2 col-3 pr-0 pr-md-auto order-0">
           <router-link :to="{name: 'User'}">
             <img src="../assets/images/logo.png" alt />
           </router-link>
         </div>
-        <div class="col-lg-4 col-md-9 col-9">
+        <div class="col-lg-4 col-12 order-lg-1 order-2">
           <form class="searchBox">
             <input type="text" class="form-control" />
             <span class="searchIcon">
               <img src="../assets/images/icons/search.png" alt="search icon" />
             </span>
+
+            <ul class="search-result">
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+              <li class="search-result-item">
+                test
+              </li>
+
+            </ul>
           </form>
         </div>
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-6 col-9 order-lg-2 order-1">
           <nav>
             <ul class="headerList">
               <li class="hasChild">
@@ -26,7 +51,7 @@
                   </span>
                   <span class="textBox">Friends</span>
                 </a>
-                <ul class="subMenu shadow pt-3 pb-3 rounded">
+                <ul class="subMenu shadow rounded">
                   <li>
                     <router-link :to="{name: 'messages', params: { type: 'inbox'}}">Friend request1</router-link>
                   </li>
@@ -46,7 +71,7 @@
                   </span>
                   <span class="textBox">Messages</span>
                 </a>
-                <ul class="subMenu shadow pt-3 pb-3 rounded">
+                <ul class="subMenu shadow  rounded">
                   <li>
                     <router-link :to="{name: 'messages', params: { type: 'inbox'}}">Inbox(0)</router-link>
                   </li>
@@ -67,7 +92,7 @@
                     </span>
                     <span class="textBox">Notification</span>
                   </a>
-                  <ul class="subMenu shadow pt-3 pb-3 rounded">
+                  <ul class="subMenu shadow  rounded">
                     <li>
                       <router-link :to="{name: 'messages', params: { type: 'inbox'}}">Notification 1</router-link>
                     </li>
@@ -87,7 +112,7 @@
                   </span>
                   <span class="textBox">Location</span>
                 </a>
-                <ul class="subMenu shadow pt-3 pb-3 rounded">
+                <ul class="subMenu shadow  rounded">
                   <li class="p-2">
                     <select class="form-control">
                       <option>Canada</option>
@@ -122,7 +147,7 @@
                   </div>
                   <!-- <div class="infoBox textBox">{{user && user.name}}</div> -->
                 </div>
-                <ul class="subMenu shadow pt-3 pb-3 rounded">
+                <ul class="subMenu shadow rounded">
                   <router-link tag="li" :to="{ name: 'Profile'}">
                     <a class="pointer">Profile</a>
                   </router-link>
@@ -184,3 +209,4 @@ export default {
   }
 };
 </script>
+

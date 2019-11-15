@@ -276,8 +276,9 @@ header .headerContent .searchBox {
 }
 header .headerContent .searchBox .searchIcon {
   position: absolute;
-  right: 15px;
-  top: 5px;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }
 header .headerContent .headerList {
   display: flex;
@@ -1191,7 +1192,7 @@ footer .copyrightText {
 }
 .profile .userBox .userList li:before {
   content: "";
-  position: absolute;
+  /* position: absolute; */
   height: 100%;
   width: 1px;
   right: -18px;
@@ -1260,3 +1261,5 @@ footer .copyrightText {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+
