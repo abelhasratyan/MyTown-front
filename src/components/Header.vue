@@ -9,9 +9,9 @@
         </div>
         <div class="col-lg-4 col-md-9 col-9">
           <form class="searchBox">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="searchUser"/>
             <span class="searchIcon">
-              <img src="../assets/images/icons/search.png" alt="search icon" />
+              <img src="../assets/images/icons/search.png" alt="search icon" style="cursor:pointer" @click="Search"/>
             </span>
           </form>
         </div>
@@ -150,13 +150,17 @@
 //   import { apiEndPoint } from '@/links';
 import { mapState, mapActions } from "vuex";
 import { Token } from "../router/Auth";
+import { APIService } from '@/APIService'
 
+const apiService = new APIService()
 export default {
   name: "Header",
   data() {
     return {
       //   apiEndPoint,
-      currentUserId: ""
+      currentUserId: null,
+      searchUser: null,
+        token: null,
     };
   },
   props: {
@@ -164,7 +168,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["logout", "getSelectedUser"]),
+    ...mapActions(["logout", "getSelectedUser", "findeUser"]),
 
     logOut() {
       if (Token.get.user()) {
@@ -175,6 +179,21 @@ export default {
       }
       this.$router.push("/login");
       //this.logout();
+    },
+    Search(){  
+      this.findeUser({
+        searchUser : this.searchUser,
+          token:  apiService.getToken()
+      })
+        .then(res => {
+          console.log(res.data.result.length,"USEEEEERRRRRRR")
+          if(res.data.result.length){
+            
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   computed: {

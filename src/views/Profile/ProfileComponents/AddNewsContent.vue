@@ -170,7 +170,7 @@ export default {
     },
 
     addNews() {
-
+        if(this.value || this.image ){
         this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
@@ -186,6 +186,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
+        }
     }
   },
   directives: {
