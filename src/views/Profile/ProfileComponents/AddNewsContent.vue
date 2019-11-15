@@ -139,7 +139,6 @@ export default {
       })
         .then(result => {
           if (result.value) {
-            console.log(result.value,'RESULTMEEE')
             this.image = result.value
           /*  this.createImage({
               data: result.value,
@@ -173,6 +172,7 @@ export default {
     },
 
     addNews() {
+        if(this.value || this.image ){
         this.AddNewPost({
         //postText: this.postText,
         postValue: this.value,
@@ -181,12 +181,14 @@ export default {
         token: apiService.getToken()
       })
         .then(res => {
-        this.bus.$emit('your-call', {test:'test'}) 
-          console.log("----------------", res);
+          this.bus.$emit('your-call', res) 
+          this.value = "";
+         this.image = "";
         })
         .catch(err => {
           console.log(err);
         });
+        }
     }
   },
   directives: {
@@ -197,7 +199,6 @@ export default {
     }
   },
   mounted(){
-    console.log(this.users.user.user._id,'USER');
    
   },
   computed: {

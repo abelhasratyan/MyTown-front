@@ -8,7 +8,6 @@ import VueAxios from 'vue-axios'
 
 const state = {
     data: [],
-    user: [],
     pass: [],
     data: [],
     token: ''
@@ -19,14 +18,8 @@ const getters = {};
 
 
 const mutations = {
-    ADDPOST: (state, data) => {
-        if (data.success) {
-            state.data = data
 
-           //localStorage.setItem('user', JSON.stringify(user))
-        }
-    },
-    GETPOSTS:(state, data) => {
+    GETUSER:(state, data) => {
         if (data.success) {
             state.data = data
 
