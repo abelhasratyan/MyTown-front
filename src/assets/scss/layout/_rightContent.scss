@@ -1,23 +1,54 @@
 .rightContent {
   transition: all 0.3s ease-in-out;
   .tightSectionBar {
-    margin: 0px 0px 20px;
+    &:not(:last-child){
+      margin: 0px 0px 20px;
+    }
+    
     .linkList{
       li {
+
+        @media(max-width: 992px){
+          text-align: center;
+          padding: 5px 0;
+          border-bottom: 1px solid #ccc;
+        }
+
         a{
           color: $mainTextColor;
           font-size: 16px;
+          width: 130px;
+          display: flex;
+          align-items: center;
+          margin: 0 auto;
+
+          img{
+            display: block;
+            margin-right: 10px;
+          }
         }
       }
     }
   }
+
+  .title_1{
+    display: none;
+  }
+
+  @media (max-width: 992px) {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    max-width: 200px;
+    height: 100vh;
+    background: #fff;
+    z-index: 10;
+    overflow-y: auto;
+    padding: 0;
+    box-shadow: -10px 0 15px rgba(34,34,34,.2);
+    transition: .2s;
+  }
 }
 .rightContent.opened {
-  position: absolute;
-  top: 88px;
-  z-index: 9;
-  background-color: #e6ecf2;
-  border: 0px;
-  box-shadow: none;
-  height: 100%;
+  right: 0%;
 }

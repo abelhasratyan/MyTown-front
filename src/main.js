@@ -18,7 +18,7 @@ Vue.use(EmojiPicker)
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import './assets/scss/main.css';
+import './assets/scss/main.scss';
 
 Vue.config.productionTip = false
 
