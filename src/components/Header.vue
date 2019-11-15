@@ -155,12 +155,14 @@ import { APIService } from '@/APIService'
 const apiService = new APIService()
 export default {
   name: "Header",
+
   data() {
     return {
       //   apiEndPoint,
       currentUserId: null,
       searchUser: null,
         token: null,
+        result: [],
     };
   },
   props: {
@@ -188,7 +190,8 @@ export default {
         .then(res => {
           console.log(res.data.result.length,"USEEEEERRRRRRR")
           if(res.data.result.length){
-            
+            this.result = res.data.result
+            console.log(this.result,"RESULT")
           }
         })
         .catch(err => {
