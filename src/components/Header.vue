@@ -8,37 +8,24 @@
           </router-link>
         </div>
         <div class="col-lg-4 col-12 order-lg-1 order-2">
-          <form class="searchBox">
-            <input type="text" class="form-control" v-model="searchUser"/>
-            <span class="searchIcon">
+          <div class="searchBox">
+            <input type="text" class="form-control"  v-model="searchUser"  v-on:keyup.enter="Search"/>
+            <span class="searchIcon"  >
               <img src="../assets/images/icons/search.png" alt="search icon" style="cursor:pointer" @click="Search"/>
             </span>
 
-            <ul class="search-result">
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-              <li class="search-result-item">
-                test
-              </li>
-
+            <ul v-if="isActive"  class="search-result">
+              <div v-if="result.length > 0">
+                <li v-for="(selectUser, selectedId) of result" :key="selectedId" @click="goSearchPage">
+                  <img :src="selectUser.avatar" width="15%"  style="padding: 5px;" > 
+                  <span>{{selectUser.name}}</span><span>{{selectUser.surname}}</span>
+                </li>
+              </div>
+              <div v-else>
+                <li>No result</li>
+              </div>
             </ul>
-          </form>
+          </div>
         </div>
         <div class="col-lg-6 col-9 order-lg-2 order-1">
           <nav>
@@ -188,6 +175,7 @@ export default {
       searchUser: null,
         token: null,
         result: [],
+        isActive: false
     };
   },
   props: {
@@ -207,14 +195,16 @@ export default {
       this.$router.push("/login");
       //this.logout();
     },
-    Search(){  
+    Search(){ 
+       this.isActive = true; 
+       console.log( this.isActive,"ACTIVE")
       this.findeUser({
         searchUser : this.searchUser,
           token:  apiService.getToken()
       })
         .then(res => {
           console.log(res.data.result.length,"USEEEEERRRRRRR")
-          if(res.data.result.length){
+          if(res.data.result.length > 0){
             this.result = res.data.result
             console.log(this.result,"RESULT")
           }
@@ -222,6 +212,10 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    goSearchPage(){
+      this.$router.push("/search");
+      this.isActive = false
     }
   },
   computed: {
