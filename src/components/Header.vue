@@ -196,7 +196,8 @@ export default {
       //this.logout();
     },
     Search(){ 
-       this.isActive = true; 
+      this.isActive = true;
+      this.result = [];
        console.log( this.isActive,"ACTIVE")
       this.findeUser({
         searchUser : this.searchUser,
@@ -204,10 +205,7 @@ export default {
       })
         .then(res => {
           console.log(res.data.result.length,"USEEEEERRRRRRR")
-          if(res.data.result.length > 0){
-            this.result = res.data.result
-            console.log(this.result,"RESULT")
-          }
+          this.result = res.data.result
         })
         .catch(err => {
           console.log(err);

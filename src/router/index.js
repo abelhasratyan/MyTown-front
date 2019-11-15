@@ -33,6 +33,7 @@ const AddEvents = () => import('@/views/Events/AddEvents')
 
 //Search
 const Search = () => import('@/views/Search/Search')
+const SearchedUserProfile = () => import('@/views/Profile/SearchedUserProfile')
 
 Vue.use(Router)
 
@@ -128,6 +129,11 @@ const router = new Router({
             path: '/addevents',
             name: 'AddEvents',
             component: AddEvents
+        },
+        {
+            path: '/searcheduser',
+            name: 'SearchedUserProfile',
+            component: SearchedUserProfile
         },
         {
             path: '/login',

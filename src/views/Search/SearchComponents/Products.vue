@@ -28,39 +28,24 @@
         </form>
       </div>
     </div>
-    <div class="shadow mb-2 bg-white newsContent">
-      <div class="searchBox p-3">
-        <div class="userBox">
-          <div class="imgBox">
-            <img src="../../../assets/images/userImg.png" alt="user image" />
-          </div>
-          <div class="infoBox">Tomas Hobbing</div>
+    <router-link :to="'/searchedusers'">
+        <div class="shadow mb-2 bg-white newsContent">
+        <div class="searchBox p-3" v-if="search.data.result">
+            <div class="userBox" v-for="(user,index) of search.data.result" :key="index">
+            <div class="imgBox">
+                <img :src="user.avatar" alt="user image" />
+            </div>
+            <div class="infoBox">{{user.name}} {{user.surname}}</div>
+            </div>
         </div>
-        <div class="userBox">
-          <div class="imgBox">
-            <img src="../../../assets/images/userImg.png" alt="user image" />
-          </div>
-          <div class="infoBox">Tomas Hobbing</div>
         </div>
-        <div class="userBox">
-          <div class="imgBox">
-            <img src="../../../assets/images/userImg.png" alt="user image" />
-          </div>
-          <div class="infoBox">Tomas Hobbing</div>
-        </div>
-        <div class="userBox">
-          <div class="imgBox">
-            <img src="../../../assets/images/userImg.png" alt="user image" />
-          </div>
-          <div class="infoBox">Tomas Hobbing</div>
-        </div>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex';
 export default {
+
     methods:{
 
     },
