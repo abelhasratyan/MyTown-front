@@ -28,32 +28,63 @@
         </form>
       </div>
     </div>
-    <router-link :to="'/searchedusers'">
-        <div class="shadow mb-2 bg-white newsContent">
+    <router-link :to="'/searcheduser'">
+      <div class="shadow mb-2 bg-white newsContent">
         <div class="searchBox p-3" v-if="search.data.result">
-            <div class="userBox" v-for="(user,index) of search.data.result" :key="index">
+          <div
+            class="userBox"
+            v-for="(user,index) of search.data.result"
+            :key="index"
+            @click="finde"
+          >
             <div class="imgBox">
-                <img :src="user.avatar" alt="user image" />
+              <img :src="user.avatar" alt="user image" />
             </div>
             <div class="infoBox">{{user.name}} {{user.surname}}</div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </router-link>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from "vuex";
+import { APIService } from "@/APIService";
+
+const apiService = new APIService();
+
 export default {
-
-    methods:{
-
-    },
-    mounted(){
-        console.log(this.search,"SEARCH")
-    },
-    computed:{
-        ...mapState(['search'])
+  mounted() {
+    console.log(this.search, "SEARCH");
+  },
+  computed: {
+    ...mapState(["search"])
+  },
+  data() {
+    return {
+      token: null,
+      id: null
+    };
+  },
+  methods: {
+    ...mapActions(['searcheduser']),
+      finde() {
+      this.searcheduser({
+        id: this.search.data.result.id,
+        token: this.token
+      })
+        .then(res => {
+          if (res.data.success) {
+             console.log(res, "RESPONSE");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
-}
+  },
+  created() {
+    this.token = apiService.getToken();
+  }
+};
 </script>

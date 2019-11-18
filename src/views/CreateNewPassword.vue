@@ -60,9 +60,9 @@ export default {
   },
   data() {
     return {
-      password: "",
-      c_password: "",
-      notFound:false
+      password: null,
+      c_password: null,
+      notFound:false,
     };
   },
   methods: {
@@ -72,9 +72,12 @@ export default {
       if(this.password !== this.c_password){
         this.notFound = true;
       }
+      else{
+      const mail =  JSON.parse(localStorage.getItem("mail"));
       this.createNewPassword({
         password: this.password,
-        c_password: this.c_password
+        c_password: this.c_password,
+        mail: mail
       })
         .then(res => {
           if (res.data.success) {
@@ -84,6 +87,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
+      }
     }
   },
   created() {

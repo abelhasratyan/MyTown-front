@@ -265,16 +265,16 @@
 <script>
 import ProfileHeader from '@/components/ProfileHeader.vue'
 import { APIService } from "@/APIService";
-import LeftContent from './ProfileComponents/LeftContent'
-import AddNewsContent from './ProfileComponents/AddNewsContent'
-import PostOnTimeline from './ProfileComponents/PostOnTimeline'
+import LeftContent from '../Profile/ProfileComponents/LeftContent'
+import AddNewsContent from '../Profile/ProfileComponents/AddNewsContent'
+import PostOnTimeline from '../Profile/ProfileComponents/PostOnTimeline'
 import { mapState, mapActions } from 'vuex'
 import { Token } from "../../router/Auth";
 import Vue from "vue";
 
 const apiService = new APIService();
 export default {
-    name: 'SearchedUserProfile',
+    name: 'SearchedUser',
     components: {
         ProfileHeader,
         LeftContent,

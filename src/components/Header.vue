@@ -16,7 +16,7 @@
 
             <ul v-if="isActive"  class="search-result">
               <div v-if="result.length > 0">
-                <li v-for="(selectUser, selectedId) of result" :key="selectedId" @click="goSearchPage">
+                <li v-for="(selectUser, selectedId) of result" :key="selectedId" @click="goSearchPage" style="cursor:pointer">
                   <img :src="selectUser.avatar" width="15%"  style="padding: 5px;" > 
                   <span>{{selectUser.name}}</span><span>{{selectUser.surname}}</span>
                 </li>

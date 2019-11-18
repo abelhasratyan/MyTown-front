@@ -20,7 +20,12 @@ const mutations = {
 
     GETUSER:(state, data) => {
         state.data = data
+    },
+
+    SEARCHEDUSER:(state,data) => {
+        state.data = data
     }
+
 };
 
 export default {

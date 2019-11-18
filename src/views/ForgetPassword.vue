@@ -74,7 +74,9 @@ export default {
           if (res.data.success) {
             this.emailValid = true;
             this.userData = JSON.parse(res.config.data).email;
+            localStorage.setItem('mail', JSON.stringify(this.email))
             this.$router.push("/validatemail");
+
           }
         })
         .catch(err => {
