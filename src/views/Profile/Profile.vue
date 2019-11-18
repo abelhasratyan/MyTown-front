@@ -225,8 +225,7 @@
                                 src="../../assets/images/userImgBoy.png"
                                 alt="User Img"
                                 class="rounded-circle"
-                              />
-                            </span>
+                              /></span>
                             <input
                               type="text"
                               class="form-control rounded writeComment"

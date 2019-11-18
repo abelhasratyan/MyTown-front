@@ -2,10 +2,7 @@
   <div id="home">
     <main>
       <section class="logReg">
-        <div class="container">
-          <div class="row my-3">
-            <div class="col-md-5 m-auto">
-              <form class="logRegBox">
+        <form class="logRegBox">
                 <div class="text-center py-2">
                   <img src="@/assets/images/logo.png" alt />
                 </div>
@@ -48,9 +45,6 @@
                   @click="GoToForgetPass"
                 >Forget password?</span>
               </form>
-            </div>
-          </div>
-        </div>
       </section>
       <forgertPassword v-if="forget"></forgertPassword>
     </main>
