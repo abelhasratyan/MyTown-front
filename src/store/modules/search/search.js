@@ -9,6 +9,7 @@ import VueAxios from 'vue-axios'
 const state = {
     pass: [],
     data: [],
+    searcheduser: [],
     token: ''
 };
 
@@ -22,8 +23,8 @@ const mutations = {
         state.data = data
     },
 
-    SEARCHEDUSER:(state,data) => {
-        state.data = data
+    SEARCHEDUSER:(state,searcheduser) => {
+        state.searcheduser = searcheduser
     }
 
 };

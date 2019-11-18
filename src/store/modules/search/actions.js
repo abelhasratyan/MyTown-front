@@ -19,13 +19,14 @@ export const actions = {
   },
 
   async searcheduser ({ commit }, data = {}) {
-    //console.log('searching user =>>', data.sea)
-    const response = await axios.get('/user/?id', {
+    console.log('searching user =>>', data.id)
+    const response = await axios.get(`/user/${data.id}`, {
       headers: {
         //'Content-Type': 'multipart/form-data',
         "Authorization": data.token
       }
     });
+    console.log(response,"RESSSSSSSSSSSSSSS")
     if (response.data.success) {
       console.log('in component search action response data = >>>', response.data)
       commit('SEARCHEDUSER', response.data)

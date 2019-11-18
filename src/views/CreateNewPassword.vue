@@ -80,7 +80,8 @@ export default {
         mail: mail
       })
         .then(res => {
-          if (res.data.success) {
+          if (res.data.success) {       
+            localStorage.removeItem("mail");
             this.$router.push('/')
           }
         })

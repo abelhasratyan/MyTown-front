@@ -35,7 +35,7 @@
             class="userBox"
             v-for="(user,index) of search.data.result"
             :key="index"
-            @click="finde"
+            @click="finde(index)"
           >
             <div class="imgBox">
               <img :src="user.avatar" alt="user image" />
@@ -68,9 +68,10 @@ export default {
   },
   methods: {
     ...mapActions(['searcheduser']),
-      finde() {
+      finde(index) {
+      //console.log(this.search.data.result[index].id,"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
       this.searcheduser({
-        id: this.search.data.result.id,
+        id: this.search.data.result[index].id,
         token: this.token
       })
         .then(res => {

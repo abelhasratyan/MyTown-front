@@ -3,16 +3,17 @@
     <ProfileHeader :msg="users.user.user" />
     <div class="container">
       <div class="row my-3">
-        <LeftContent :msg="users.user.user" />
+        <LeftContent :msg="search.searcheduser.user" />
         <div class="centerContent col-lg-8 col-md-12">
-          <AddNewsContent :msg="users.user.user" />
+          <AddNewsContent :msg="search.searcheduser.user" />
                <div ref="container">
                  <PostOnTimeline 
                   v-for="(postElement, postIndex) of postsList"
                   :key="postIndex"
                   :postParams="postElement"
                  ></PostOnTimeline>
-                </div>          <div class="shadow mb-2 bg-white newsContent">
+                </div> 
+             <div class="shadow mb-2 bg-white newsContent">
             <div class="addNewsBox">
               <div class="userBox">
                 <div class="imgBox pl-3 pr-3 pt-3">
@@ -282,7 +283,7 @@ export default {
         PostOnTimeline
     },
     computed: {
-        ...mapState(['users'])
+        ...mapState(['users','search'])
     },
       data() {
     return {
@@ -290,7 +291,6 @@ export default {
     }
   },
   
-
   methods: {
     ...mapActions(["getPosts",]),
   },
@@ -302,15 +302,6 @@ export default {
           this.postsList.unshift(postItem);
         }
       }
-      /*var ComponentClass = Vue.extend(PostOnTimeline);
-      var instance = new ComponentClass({
-        propsData: { type: "primary",
-                      value: "tesxt" }
-      });
-      //instance.$slots.default = ['Click me!']
-      instance.$mount(); // pass nothing
-      // console.log(this.$refs)
-      this.$refs.container.appendChild(instance.$el);*/
     });
     if(Token.get.user()) {
         let currentUser = JSON.parse(Token.get.user());
@@ -327,6 +318,6 @@ export default {
       });
     }
     
-  }
+  },
 }
 </script>
