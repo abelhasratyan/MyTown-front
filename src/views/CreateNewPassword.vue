@@ -36,7 +36,7 @@
                   <input
                     type="button"
                     class="btn_4 w-100"
-                    value="Send message"
+                    value="Sign In"
                     @click="sendMessage()"
                   />
                 </div>

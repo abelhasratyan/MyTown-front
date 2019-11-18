@@ -29,7 +29,7 @@
                   <input
                     type="button"
                     class="btn_4 w-100"
-                    value="Send message"
+                    value="Ckeck number"
                     maxlength="6"
                     @click="sendMessage()"
                   />
