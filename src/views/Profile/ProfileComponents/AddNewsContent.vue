@@ -183,7 +183,7 @@ export default {
         .then(res => {
           this.bus.$emit('your-call', res) 
           this.value = "";
-         this.image = "";
+          this.image = "";
         })
         .catch(err => {
           console.log(err);

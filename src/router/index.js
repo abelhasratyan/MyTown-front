@@ -31,6 +31,9 @@ const Friends = () => import('@/views/Friends/Friends')
 //Events
 const AddEvents = () => import('@/views/Events/AddEvents')
 
+//Search
+const Search = () => import('@/views/Search/Search')
+const SearchedUser = () => import('@/views/Search/SearchedUser')
 
 Vue.use(Router)
 
@@ -56,6 +59,22 @@ const router = new Router({
                     path: 'profile',
                     name: 'Profile',
                     component: Profile,
+                    meta: {
+                        requiresAuth: true
+                    }
+                },
+                {
+                    path: 'search',
+                    name: 'Search',
+                    component: Search,
+                    meta: {
+                        requiresAuth: true
+                    }
+                },
+                {
+                    path: 'searcheduser',
+                    name: 'SearchedUser',
+                    component: SearchedUser,
                     meta: {
                         requiresAuth: true
                     }

@@ -7,7 +7,6 @@ import VueAxios from 'vue-axios'
 
 
 const state = {
-    data: [],
     pass: [],
     data: [],
     token: ''
@@ -20,12 +19,13 @@ const getters = {};
 const mutations = {
 
     GETUSER:(state, data) => {
-        if (data.success) {
-            state.data = data
+        state.data = data
+    },
 
-           //localStorage.setItem('user', JSON.stringify(user))
-        }
+    SEARCHEDUSER:(state,data) => {
+        state.data = data
     }
+
 };
 
 export default {
