@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProfileHeader :msg="search.searcheduser.user" />
+    <ProfileHeaderSearchedUser :msg="search.searcheduser.user" />
     <div class="container">
       <div class="row my-3">
         <LeftContent :msg="search.searcheduser.user" />
@@ -264,7 +264,7 @@
 </template>
 
 <script>
-import ProfileHeader from '@/components/ProfileHeader.vue'
+import ProfileHeaderSearchedUser from '@/components/ProfileHeaderSearchedUser.vue'
 import { APIService } from "@/APIService";
 import LeftContent from '../Profile/ProfileComponents/LeftContent'
 import AddNewsContent from '../Profile/ProfileComponents/AddNewsContent'
@@ -277,10 +277,26 @@ const apiService = new APIService();
 export default {
     name: 'SearchedUser',
     components: {
-        ProfileHeader,
+        ProfileHeaderSearchedUser,
         LeftContent,
         AddNewsContent,
         PostOnTimeline
+    },
+    created(){
+      //console.log(this.search.data.result[index].id,"TTTTTTTTTT")
+      this.searcheduser({
+        id: this.$router.currentRoute.params.id,
+        token: apiService.getToken(),
+      })
+        .then(res => {
+          if (res.data.success) {
+             console.log(res, "RESPONSE");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+ 
     },
     computed: {
         ...mapState(['users','search'])
@@ -292,7 +308,7 @@ export default {
   },
   
   methods: {
-    ...mapActions(["getPosts",]),
+    ...mapActions(["getPosts","searcheduser"]),
   },
   mounted() {
     this.bus.$on("your-call", (res) => {

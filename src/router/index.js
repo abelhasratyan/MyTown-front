@@ -72,7 +72,7 @@ const router = new Router({
                     }
                 },
                 {
-                    path: 'searcheduser',
+                    path: 'searcheduser/:id',
                     name: 'SearchedUser',
                     component: SearchedUser,
                     meta: {

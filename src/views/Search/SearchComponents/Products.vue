@@ -28,13 +28,12 @@
         </form>
       </div>
     </div>
-    <router-link :to="'/searcheduser'">
+    <template  v-for="(user,index) of search.data.result">
+      <router-link :key="index" :to="`searcheduser/${user.id}`">
       <div class="shadow mb-2 bg-white newsContent">
         <div class="searchBox p-3" v-if="search.data.result">
           <div
             class="userBox"
-            v-for="(user,index) of search.data.result"
-            :key="index"
             @click="finde(index)"
           >
             <div class="imgBox">
@@ -45,6 +44,7 @@
         </div>
       </div>
     </router-link>
+    </template>
   </div>
 </template>
 <script>
@@ -76,6 +76,7 @@ export default {
       })
         .then(res => {
           if (res.data.success) {
+            localStorage.setItem('searchedUser', JSON.stringify(res.data))
              console.log(res, "RESPONSE");
           }
         })

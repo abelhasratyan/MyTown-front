@@ -205,7 +205,8 @@ export default {
       })
         .then(res => {
           console.log(res.data.result.length,"USEEEEERRRRRRR")
-          this.result = res.data.result
+          this.result = res.data.result;
+          this.searchUser = "";
         })
         .catch(err => {
           console.log(err);
