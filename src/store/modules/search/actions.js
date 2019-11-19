@@ -19,7 +19,7 @@ export const actions = {
   },
 
   async searcheduser ({ commit }, data = {}) {
-    //console.log('searching user =>>', data.id)
+    console.log('searching user =>>', data)
     const id = data.id;
     const response = await axios.get(`/user/${id}`, {
       headers: {

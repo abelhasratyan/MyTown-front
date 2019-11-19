@@ -32,7 +32,8 @@ export default {
     },
     created() {
         this.getUser(apiService.getToken()).then(user => {
-            this.user = user.user
+            this.user = user.user;
+            console.log('this.user',this.user)
         })
     },
     computed: mapState([

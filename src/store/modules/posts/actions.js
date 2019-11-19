@@ -25,7 +25,7 @@ export const actions = {
   },
 
   async getPosts({ commit }, data = {}) {
-        console.log(data)
+        console.log(data,"getPost")
     const response = await axios.get(`/user/${data.userId}/posts`,  {
       headers: { 
         //'Content-Type': 'multipart/form-data',
