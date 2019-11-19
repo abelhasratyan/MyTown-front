@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProfileHeader :msg="users.user.user" />
+    <ProfileHeader :msg="search.searcheduser.user" />
     <div class="container">
       <div class="row my-3">
         <LeftContent :msg="search.searcheduser.user" />
