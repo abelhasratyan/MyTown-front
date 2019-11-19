@@ -16,8 +16,8 @@
               <div class="profileUserBox">
                 <img :src="msg.avatar" alt="img" />
               </div>
-              <a class="iconBtn" >
-                <img src="../assets/images/icons/cameraIcon.png" alt="Icon" class="centeredIcon"/>
+              <a class="iconBtn centeredIcon">
+                <img src="../assets/images/icons/cameraIcon.png" alt="Icon" />
               </a>
             </div>
             <div class="col-lg-9 col-md-10 d-none d-md-block">
@@ -198,9 +198,30 @@ export default {
     position: absolute;
     margin-left: -60px;
     margin-top: -30px;
-    display: none}
-.userAvatar:hover + .centeredIcon {
+    display: none
+    }
+.userAvatar:hover > .centeredIcon {
     display: block;
+    cursor: pointer;
+}
+.profileUserBox {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.profileUserBox:hover:after {
+     opacity: 1;
+}
+.profileUserBox:after {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 50%;
 }
 </style>
 

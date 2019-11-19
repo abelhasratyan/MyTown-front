@@ -5,7 +5,7 @@
         <div class="userBox">
             <div class="imgBox pl-3 pr-3 pt-3">
                 <img src="../../../assets/images/userImg.png" alt="user img" class="rounded-circle">
-                <span class="user-name">{{users.user.user.name}}</span>
+                <span class="user-name">name</span>
                 <span class="add-photo">added a new photo &#45; </span>
                 <span class="albom-name"> My city </span>
                 <span class="about-hours">at {{postParams.created}}</span>
@@ -43,7 +43,7 @@ export default {
         }
     },
    computed:{
-     ...mapState(['users'])
+    // ...mapState(['users'])
     }
     
 }

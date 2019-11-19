@@ -290,7 +290,8 @@ export default {
       })
         .then(res => {
           if (res.data.success) {
-             console.log(res, "RESPONSE");
+            // console.log(res.data.posts.posts, "MEEEEEEEEEEEEE");
+             this.postsList = res.data.posts.posts
           }
         })
         .catch(err => {
@@ -311,15 +312,18 @@ export default {
     ...mapActions(["getPosts","searcheduser"]),
   },
   mounted() {
-    this.bus.$on("your-call", (res) => {
-      if(res){
+    //this.bus.$on("your-call", (res) => {
+      console.log(this.search,'testtesttest')
+     /* if(res){
         if(res.data) {
           const postItem = res.data.result;
           this.postsList.unshift(postItem);
         }
-      }
-    });
-    if(Token.get.user()) {
+      }*/
+   // });
+   this.postsList = this.search.searcheduser.posts;
+  // console.log(this.post)
+    /*if(Token.get.user()) {
         let currentUser = JSON.parse(Token.get.user());
         this.getPosts({
           token: apiService.getToken(),
@@ -332,7 +336,7 @@ export default {
         .catch(err => {
             console.log(err);
       });
-    }
+    }*/
     
   },
 }
