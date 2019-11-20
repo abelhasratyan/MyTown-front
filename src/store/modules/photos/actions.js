@@ -44,6 +44,33 @@ export const actions = {
         }
     },
 
+    async changeAvatar({ commit }, data) {
+        const file = data.file;
+        const id = data.id
+        const formData = new FormData()
+        if (file,id) {
+            formData.append('file', file)
+            formData.append('id', id)
+        } else {
+            return {
+                message: "fill in the field",
+                success: false
+            }
+        }
+        const response = await axios.post('/user/avatar/update', formData, {
+            headers: {
+                "Authorization": data.token
+            }
+        })
+        if (response.data) {
+            commit('CHANGE_AVATAR', response.data)
+            return {
+                success: true,
+                data: response.data
+            }
+        }
+    },
+
     async getMyAlbums({ commit }, data) {
         const response = await axios.get('/albums/user', {
             headers: {

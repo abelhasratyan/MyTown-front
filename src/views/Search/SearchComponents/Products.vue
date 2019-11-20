@@ -76,7 +76,7 @@ export default {
       })
         .then(res => {
           if (res.data.success) {
-            localStorage.setItem('searchedUser', JSON.stringify(res.data))
+           // localStorage.setItem('searchedUser', JSON.stringify(res.data))
              console.log(res, "RESPONSE");
           }
         })

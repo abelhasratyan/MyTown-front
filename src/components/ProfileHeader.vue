@@ -16,6 +16,32 @@
               <div class="profileUserBox">
                 <img :src="msg.avatar" alt="img" />
               </div>
+              <div class="iconBtn centeredIcon">
+                <div v-b-modal.changeAvatar>
+                  <img src="../assets/images/icons/cameraIcon.png" alt="Icon" />
+                </div>
+                <b-modal
+                  header-class="profile-edit-modal-header"
+                  id="changeAvatar"
+                  ref="modal"
+                  title="Edit Profile Photo"
+                  title-class="edit-modal-title"
+                  footer-class="edit-modal-footer"
+                  @ok="changePicture"
+                >
+                  <div class="my-4">
+                    <div v-if="!image">
+                      <h3>Select an image</h3>
+                      <input type="file" @change="onFileChange" />
+                    </div>
+                    <div v-else>
+                      <img :src="image" />
+                      <button @click="removeImage">Remove image</button>
+                    </div>
+                  </div>
+                </b-modal>
+              </div>
+              <div></div>
             </div>
             <div class="col-lg-9 col-md-10 d-none d-md-block">
               <ul class="userList">
@@ -106,33 +132,17 @@
             label-for="name-input"
             invalid-feedback="Name is required"
           >
-            <b-form-input
-              id="name-input"
-              v-model="users.user.user.name"
-              required
-            ></b-form-input>
+            <b-form-input id="name-input" v-model="users.user.user.name" required></b-form-input>
           </b-form-group>
           <b-form-group
             label="Last name"
             label-for="last-input"
             invalid-feedback="last name is required"
           >
-            <b-form-input
-              id="last-input"
-              v-model="users.user.user.surname"
-              required
-            ></b-form-input>
+            <b-form-input id="last-input" v-model="users.user.user.surname" required></b-form-input>
           </b-form-group>
-          <b-form-group
-            label="Email"
-            label-for="mail-input"
-            invalid-feedback="mail is required"
-          >
-            <b-form-input
-              id="mail-input"
-              v-model="users.user.user.email"
-              required
-            ></b-form-input>
+          <b-form-group label="Email" label-for="mail-input" invalid-feedback="mail is required">
+            <b-form-input id="mail-input" v-model="users.user.user.email" required></b-form-input>
           </b-form-group>
           <b-form-group
             label="Birthday"
@@ -140,34 +150,26 @@
             invalid-feedback="Birthday is required"
           >
             <the-mask
-            :mask="['####.##.##']"
-            placeholder="Birthday date"
-            class="input form-group"
-            id="Birthday-date"
-            v-model="users.user.user.birthday"
-          />
+              :mask="['####.##.##']"
+              placeholder="Birthday date"
+              class="input form-group"
+              id="Birthday-date"
+              v-model="users.user.user.birthday"
+            />
           </b-form-group>
-              <b-form-group
+          <b-form-group
             label="Country name"
             label-for="country-input"
             invalid-feedback="Country is required"
           >
-            <b-form-input
-              id="country-input"
-              v-model="users.user.user.country"
-              required
-            ></b-form-input>
+            <b-form-input id="country-input" v-model="users.user.user.country" required></b-form-input>
           </b-form-group>
-              <b-form-group
+          <b-form-group
             label="City name"
             label-for="city-input"
             invalid-feedback="City is required"
           >
-            <b-form-input
-              id="last-input"
-              v-model="users.user.user.city"
-              required
-            ></b-form-input>
+            <b-form-input id="last-input" v-model="users.user.user.city" required></b-form-input>
           </b-form-group>
         </form>
       </b-modal>
@@ -180,11 +182,11 @@
 //   import { apiEndPoint } from '@/links';
 import { mapState, mapActions, mapGetters } from "vuex";
 import { Token } from "../router/Auth";
-import { APIService } from '@/APIService'
+import { APIService } from "@/APIService";
 import EditUserData from "../views/EditUserData";
 import { TheMask } from "vue-the-mask";
 
-const apiService = new APIService()
+const apiService = new APIService();
 
 export default {
   components: {
@@ -194,13 +196,15 @@ export default {
   data() {
     return {
       currentUser: null,
-      currentUserId: "",
-      friendRequestId: "",
+      currentUserId: null,
+      friendRequestId: null,
       showEdit: false,
-      name: "",
+      name: null,
       submittedNames: [],
-      token: null
+      token: null,
       //   apiEndPoint,
+      image: "",
+      file: null,
     };
   },
   props: {
@@ -208,14 +212,34 @@ export default {
   },
 
   methods: {
-    ...mapActions(["friendRequest","updateUser"]),
+    ...mapActions(["friendRequest", "updateUser", "changeAvatar"]),
 
     showEditProfile() {
       this.showEdit = true;
     },
-    updateUserData(){
-      console.log('dataaaaaa');
-         this.updateUser({
+    onFileChange(e) {
+      this.file = e.target.files[0];
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = e => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function(e) {
+      this.image = "";
+    },
+
+    updateUserData() {
+      console.log("dataaaaaa");
+      this.updateUser({
         name: this.users.user.user.name,
         surname: this.users.user.user.surname,
         email: this.users.user.user.email,
@@ -229,7 +253,7 @@ export default {
       })
         .then(res => {
           localStorage.removeItem("user");
-          localStorage.setItem('user', JSON.stringify(res.data))
+          localStorage.setItem("user", JSON.stringify(res.data));
         })
         .catch(err => {
           console.log(err);
@@ -248,8 +272,22 @@ export default {
       if (Token.get.user()) {
         let currentUser = JSON.parse(Token.get.user());
         this.currentUserId = currentUser.user._id;
-
       }
+    },
+    changePicture() {
+      this.changeAvatar({
+        id: this.users.user.user._id,
+        file: this.file,
+        token: apiService.getToken()
+      })
+        .then(res => {
+          if (res.data.success) {
+            console.log(res.data.posts.posts, "MEEEEEEEEEEEEE");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
 
     //   computed: {
@@ -273,9 +311,8 @@ export default {
     //     this.currentUser = this.selectedUser ? this.selectedUser : this.user
     //   }
   },
-   created() {
-    this.token = apiService.getToken()
-    console.log(this.users.user.user);
+  created() {
+    this.token = apiService.getToken();
   },
   computed: {
     ...mapState(["users"])
@@ -292,5 +329,45 @@ export default {
 }
 .edit-modal-footer {
   background-color: white;
+}
+.centeredIcon {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: -30px;
+  opacity: 1;
+  cursor: pointer;
+}
+.userAvatar:hover > .centeredIcon {
+  opacity: 1;
+  cursor: pointer;
+}
+.profileUserBox {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.profileUserBox:hover:after {
+  opacity: 1;
+}
+.profileUserBox:after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+/*img {
+  width: 30%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+}*/
+button {
 }
 </style>

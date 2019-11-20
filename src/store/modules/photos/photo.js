@@ -42,6 +42,10 @@ const mutations = {
 
     CREATE_IMAGE: (state, image) => {
         state.image = image
+    },
+
+    CHANGE_AVATAR: (state, image) => {
+        state.image = image
     }
     
 };
