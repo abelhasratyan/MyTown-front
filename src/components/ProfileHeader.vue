@@ -5,9 +5,31 @@
       <div class="row">
         <div class="col-md-12">
           <div class="coverImg" :style="{ 'background-image': `url(${msg.coverPhoto})`}">
-            <!--<button class="changeImg">Change Cover
-                            <img :src="currentUser.coverPhoto" alt="">
-            </button>-->
+            <div class="iconBtn coverChange">
+              <div v-b-modal.changeCavor style="cursor:pointer">
+                <img src="../assets/images/icons/cameraIcon.png" alt="Icon" /><span style="font-size: 1rem;color: #757c7d;">Change Cover Photo</span>
+              </div>
+              <b-modal
+                header-class="profile-edit-modal-header"
+                id="changeCavor"
+                ref="modal"
+                title="Edit Cover  Photo"
+                title-class="edit-modal-title"
+                footer-class="edit-modal-footer"
+                @ok="changeCavor"
+              >
+                <div class="my-4">
+                  <div v-if="!image">
+                    <h3>Select an image</h3>
+                    <input type="file" @change="onCoverChange" />
+                  </div>
+                  <div v-else>
+                    <img :src="image" />
+                    <button @click="removeImage">Remove image</button>
+                  </div>
+                </div>
+              </b-modal>
+            </div>
           </div>
         </div>
         <div class="col-md-12">
@@ -204,7 +226,8 @@ export default {
       token: null,
       //   apiEndPoint,
       image: "",
-      file: null,
+      file_profile: null,
+      file_cover: null
     };
   },
   props: {
@@ -212,13 +235,33 @@ export default {
   },
 
   methods: {
-    ...mapActions(["friendRequest", "updateUser", "changeAvatar"]),
+    ...mapActions(["friendRequest", "updateUser", "changeAvatar","changeCavorPhoto" ]),
 
     showEditProfile() {
       this.showEdit = true;
     },
     onFileChange(e) {
-      this.file = e.target.files[0];
+      this.file_profile = e.target.files[0];
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = e => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function(e) {
+      this.image = "";
+    },
+
+       onCoverChange(e) {
+      this.file_cover = e.target.files[0];
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
@@ -277,12 +320,27 @@ export default {
     changePicture() {
       this.changeAvatar({
         id: this.users.user.user._id,
-        file: this.file,
+        file_profile: this.file_profile,
         token: apiService.getToken()
       })
         .then(res => {
           if (res.data.success) {
-            console.log(res.data.posts.posts, "MEEEEEEEEEEEEE");
+            console.log(res.data.posts.posts, "Profile");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    changeCavor() {
+      this.changeCavorPhoto({
+        id: this.users.user.user._id,
+        file_cover: this.file_cover,
+        token: apiService.getToken()
+      })
+        .then(res => {
+          if (res.data.success) {
+            console.log(res.data.posts.posts, "Cover");
           }
         })
         .catch(err => {
@@ -369,5 +427,10 @@ export default {
   margin-bottom: 10px;
 }*/
 button {
+}
+.coverChange{
+  right: 0;
+  position: absolute;
+  bottom: 0
 }
 </style>

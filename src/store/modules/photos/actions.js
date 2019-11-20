@@ -45,11 +45,11 @@ export const actions = {
     },
 
     async changeAvatar({ commit }, data) {
-        const file = data.file;
+        const file_profile = data.file_profile;
         const id = data.id
         const formData = new FormData()
-        if (file,id) {
-            formData.append('file', file)
+        if (file_profile,id) {
+            formData.append('file_profile', file_profile)
             formData.append('id', id)
         } else {
             return {
@@ -58,6 +58,33 @@ export const actions = {
             }
         }
         const response = await axios.post('/user/avatar/update', formData, {
+            headers: {
+                "Authorization": data.token
+            }
+        })
+        if (response.data) {
+            commit('CHANGE_AVATAR', response.data)
+            return {
+                success: true,
+                data: response.data
+            }
+        }
+    },
+
+    async changeCavorPhoto({ commit }, data) {
+        const file_cover = data.file_cover;
+        const id = data.id
+        const formData = new FormData()
+        if (file_cover,id) {
+            formData.append('file_cover', file_cover)
+            formData.append('id', id)
+        } else {
+            return {
+                message: "fill in the field",
+                success: false
+            }
+        }
+        const response = await axios.post('/user/cover/update', formData, {
             headers: {
                 "Authorization": data.token
             }
