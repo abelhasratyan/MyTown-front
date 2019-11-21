@@ -39,7 +39,7 @@
                     <label class="w-100">
                       Country
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="counntry" />
+                      <input type="text" class="form-control" v-model="country" />
                     </label>
                   </div>
                   <div class="form-group">
@@ -53,21 +53,21 @@
                     <label class="w-100">
                       Place Name
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="placeName" />
+                      <input type="text" class="form-control" v-model="place_name" />
                     </label>
                   </div>
                   <div class="form-group">
                     <label class="w-100">
                       Data Start
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="dataStart" />
+                      <input type="text" class="form-control" v-model="data_start" />
                     </label>
                   </div>
                   <div class="form-group">
                     <label class="w-100">
                       Data End
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="dataEnd" />
+                      <input type="text" class="form-control" v-model="data_end" />
                     </label>
                   </div>
                   <div class="form-group">
@@ -258,11 +258,11 @@ export default {
       tag: null,
       description: null,
       categories: null,
-      counntry: null,
+      country: null,
       city: null,
-      placeName: null,
-      dataStart: null,
-      dataEnd: null,
+      place_name: null,
+      data_start: null,
+      data_end: null,
       events: null,
       token: null
     };
@@ -278,11 +278,11 @@ export default {
         tag: this.tag,
         description: this.description,
         categories: this.categories,
-        counntry: this.counntry,
+        country: this.country,
         city: this.city,
-        place_name: this.placeName,
-        data_start: this.dataStart,
-        data_end: this.dataEnd,
+        place_name: this.place_name,
+        data_start: this.data_start,
+        data_end: this.data_end,
         events: this.events,
         token: this.token
       })
@@ -293,11 +293,11 @@ export default {
               this.tag = null,
               this.description = null,
               this.categories = null,
-              this.counntry = null,
+              this.country = null,
               this.city = null,
-              this.placeName = null,
-              this.dataNtart = null,
-              this.dataEnd = null,
+              this.place_name = null,
+              this.data_start = null,
+              this.data_end = null,
               this.events = null
           }
         })

@@ -24,4 +24,15 @@ export const actions = {
         commit('GET_EVENTS', response.data)
         return response.data
     },
+
+    async DeleteEvent({ commit }, data) {
+        const response = await axios.get(`/user/events/${data.index}`, {
+            headers: {
+                "Authorization": data.token
+            }
+        })
+        console.log(response);
+        commit('GET_EVENTS', response.data)
+        return response.data
+    },
 };
