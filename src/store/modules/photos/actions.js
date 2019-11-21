@@ -152,7 +152,7 @@ export const actions = {
             }
         })
         if (response.data) {
-            commit('GET_MY_COVER_PHOTOS', response.data)
+            commit('GET_USERS', response.data)
         }
     }
 }

@@ -5,9 +5,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="coverImg" :style="{ 'background-image': `url(${msg.coverPhoto})`}">
-            <div class="iconBtn coverChange">
+            <div class="iconBtn">
               <div v-b-modal.changeCavor style="cursor:pointer">
-                <img src="../assets/images/icons/cameraIcon.png" alt="Icon" /><span style="font-size: 1rem;color: #757c7d;">Change Cover Photo</span>
+                <button class="changeImg">Change Cover <img src="../assets/images/icons/changeCover.png" alt=""></button>
               </div>
               <b-modal
                 header-class="profile-edit-modal-header"
@@ -34,13 +34,13 @@
         </div>
         <div class="col-md-12">
           <div class="userBox row m-0">
-            <div class="col-lg-3 col-md-2 col-sm-12">
+            <div class="col-lg-3 col-md-2 col-sm-12 profileImageWrapper">
               <div class="profileUserBox">
                 <img :src="msg.avatar" alt="img" />
               </div>
               <div class="iconBtn centeredIcon">
                 <div v-b-modal.changeAvatar>
-                  <img src="../assets/images/icons/cameraIcon.png" alt="Icon" />
+                  <img src="../assets/images/icons/changeCover.png" alt="">
                 </div>
                 <b-modal
                   header-class="profile-edit-modal-header"
@@ -63,7 +63,6 @@
                   </div>
                 </b-modal>
               </div>
-              <div></div>
             </div>
             <div class="col-lg-9 col-md-10 d-none d-md-block">
               <ul class="userList">
@@ -325,6 +324,7 @@ export default {
       })
         .then(res => {
           if (res.data.success) {
+            this.image = null;
             console.log(res.data.posts.posts, "Profile");
           }
         })
@@ -340,6 +340,7 @@ export default {
       })
         .then(res => {
           if (res.data.success) {
+            this.image = null;
             console.log(res.data.posts.posts, "Cover");
           }
         })
@@ -394,20 +395,14 @@ export default {
   position: absolute;
   margin-left: -60px;
   margin-top: -30px;
-  opacity: 1;
+  opacity: 0;
   cursor: pointer;
 }
-.userAvatar:hover > .centeredIcon {
-  opacity: 1;
-  cursor: pointer;
-}
+
 .profileUserBox {
   position: relative;
   width: 150px;
   height: 150px;
-}
-.profileUserBox:hover:after {
-  opacity: 1;
 }
 .profileUserBox:after {
   content: "";
@@ -417,20 +412,12 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color:#d4d4d496;
   border-radius: 50%;
 }
-/*img {
-  width: 30%;
-  margin: auto;
-  display: block;
-  margin-bottom: 10px;
-}*/
 button {
 }
-.coverChange{
-  right: 0;
-  position: absolute;
-  bottom: 0
+.profileImageWrapper:hover > .profileUserBox:after, .profileImageWrapper:hover > .centeredIcon {
+  opacity:1
 }
 </style>
