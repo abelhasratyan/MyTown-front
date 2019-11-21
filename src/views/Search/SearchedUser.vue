@@ -283,14 +283,12 @@ export default {
         PostOnTimeline
     },
     created(){
-      //console.log(this.search.data.result[index].id,"TTTTTTTTTT")
       this.searcheduser({
         id: this.$router.currentRoute.params.id,
         token: apiService.getToken(),
       })
         .then(res => {
           if (res.data.success) {
-            // console.log(res.data.posts.posts, "MEEEEEEEEEEEEE");
              this.postsList = res.data.posts.posts
           }
         })
@@ -313,7 +311,6 @@ export default {
   },
   mounted() {
     //this.bus.$on("your-call", (res) => {
-      console.log(this.search,'testtesttest')
      /* if(res){
         if(res.data) {
           const postItem = res.data.result;

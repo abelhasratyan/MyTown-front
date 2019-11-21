@@ -53,21 +53,21 @@
                     <label class="w-100">
                       Place Name
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="place_name" />
+                      <input type="text" class="form-control" v-model="placeName" />
                     </label>
                   </div>
                   <div class="form-group">
                     <label class="w-100">
                       Data Start
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="data_start" />
+                      <input type="text" class="form-control" v-model="dataStart" />
                     </label>
                   </div>
                   <div class="form-group">
                     <label class="w-100">
                       Data End
                       <span class="importantFild">*</span>
-                      <input type="text" class="form-control" v-model="data_end" />
+                      <input type="text" class="form-control" v-model="dataEnd" />
                     </label>
                   </div>
                   <div class="form-group">
@@ -260,9 +260,9 @@ export default {
       categories: null,
       counntry: null,
       city: null,
-      place_name: null,
-      data_start: null,
-      data_end: null,
+      placeName: null,
+      dataStart: null,
+      dataEnd: null,
       events: null,
       token: null
     };
@@ -280,16 +280,25 @@ export default {
         categories: this.categories,
         counntry: this.counntry,
         city: this.city,
-        place_name: this.place_name,
-        data_start: this.data_start,
-        data_end: this.data_end,
+        place_name: this.placeName,
+        data_start: this.dataStart,
+        data_end: this.dataEnd,
         events: this.events,
         token: this.token
       })
         .then(res => {
           if (res.data.success) {
-            this.image = null;
-            console.log(res.data.posts.posts, "Profile");
+              this.$router.push('/events')
+            this.title = null,
+              this.tag = null,
+              this.description = null,
+              this.categories = null,
+              this.counntry = null,
+              this.city = null,
+              this.placeName = null,
+              this.dataNtart = null,
+              this.dataEnd = null,
+              this.events = null
           }
         })
         .catch(err => {
@@ -298,7 +307,6 @@ export default {
     },
   },
     mounted() {
-    console.log(this.users, "test");
   },
   computed: {
     ...mapState(["users"])

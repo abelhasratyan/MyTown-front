@@ -15,9 +15,13 @@ const getters = {};
 
 
 const mutations = {
-    GET_EVENTS: (state, events) => {
+    EVENT: (state, events) => {
         state.events = events
     },
+
+    GET_EVENTS: (state, events) => {
+        state.events = events
+    }
 };
 
 export default {

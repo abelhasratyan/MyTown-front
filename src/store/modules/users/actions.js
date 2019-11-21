@@ -39,7 +39,6 @@ export const actions = {
   },
 
   async createNewPassword({ commit }, data) {
-    console.log(data, 'ACTIONJS')
     const response = await axios.post('/changepassword',{ data} , {
       headers: {
         'Content-Type': 'application/json'
@@ -83,15 +82,12 @@ export const actions = {
 
 
   async getUser({ commit }, token) {
-    console.log('token ->>>>>>>>>>>>>', token)
     const response = await axios.post('/user', {}, {
       headers: {
         "Authorization": token
       }
     })
-    console.log('response--------',response.result)
     if (response.data.success) {
-      console.log('test', response.data)
       commit('GET_USER', response.data)
       return response.data
     }

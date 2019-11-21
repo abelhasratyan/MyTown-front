@@ -24,7 +24,6 @@ const mutations = {
     },
 
     SEARCHEDUSER:(state,searcheduser) => {
-        console.log(searcheduser.posts.posts,'STATWE')
         state.searcheduser = searcheduser
     }
 

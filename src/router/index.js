@@ -30,6 +30,7 @@ const Friends = () => import('@/views/Friends/Friends')
 
 //Events
 const AddEvents = () => import('@/views/Events/AddEvents')
+const Events = () => import('@/views/Events/Events')
 
 //Search
 const Search = () => import('@/views/Search/Search')
@@ -136,6 +137,12 @@ const router = new Router({
                     name: 'AddEvents',
                     component: AddEvents
                 },
+                {
+                    path: '/events',
+                    name: 'Events',
+                    component: Events
+                },
+
             ]
         },
         {

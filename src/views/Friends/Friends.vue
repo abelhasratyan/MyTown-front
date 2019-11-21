@@ -36,7 +36,6 @@ export default {
         }).then(friends => {
             console.log(friends);
         })
-        console.log(this.friends,'friends in first')
     },
     computed: {
         ...mapState([ 'users', 'friends'])

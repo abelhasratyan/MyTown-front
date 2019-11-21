@@ -95,7 +95,7 @@
                   <router-link to="/photos">Photos</router-link>
                 </li>
                 <li>
-                  <router-link :to="{name: ''}">Blog</router-link>
+                  <router-link to="/events">Blog</router-link>
                 </li>
                 <li class="hasChild">
                   <a>
@@ -107,9 +107,6 @@
                     </li>
                     <li>
                       <router-link :to="'addevents'">Add Events</router-link>
-                    </li>
-                    <li>
-                      <router-link :to="'events'">Events</router-link>
                     </li>
                     <li>
                       <router-link :to="{name: 'Photos'}">Photos</router-link>
@@ -291,7 +288,6 @@ export default {
     },
 
     updateUserData() {
-      console.log("dataaaaaa");
       this.updateUser({
         name: this.users.user.user.name,
         surname: this.users.user.user.surname,
@@ -313,7 +309,6 @@ export default {
         });
     },
     test() {
-      console.log(this.currentUserId, "testts");
       /* this.friendRequest({
                 currentUserId: this.currentUserId,
                 friendRequestId: this.friendRequestId
@@ -336,7 +331,6 @@ export default {
         .then(res => {
           if (res.data.success) {
             this.image = null;
-            console.log(res.data.posts.posts, "Profile");
           }
         })
         .catch(err => {
@@ -352,7 +346,6 @@ export default {
         .then(res => {
           if (res.data.success) {
             this.image = null;
-            console.log(res.data.posts.posts, "Cover");
           }
         })
         .catch(err => {

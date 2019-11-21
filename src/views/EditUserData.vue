@@ -129,9 +129,7 @@ export default {
       })
         .then(res => {
           localStorage.removeItem("user");
-          console.log(res.data.token,"USEEEEERRRRRRR")
           localStorage.setItem('user', JSON.stringify(res.data))
-          console.log(res.data.token, "RESPONSE");
         })
         .catch(err => {
           console.log(err);
@@ -140,7 +138,6 @@ export default {
   },
   created() {
     this.token = apiService.getToken()
-    console.log(this.users.user.user);
   },
   mounted() {},
   computed: {

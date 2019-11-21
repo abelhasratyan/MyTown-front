@@ -198,13 +198,11 @@ export default {
     Search(){ 
       this.isActive = true;
       this.result = [];
-       console.log( this.isActive,"ACTIVE")
       this.findeUser({
         searchUser : this.searchUser,
           token:  apiService.getToken()
       })
         .then(res => {
-          console.log(res.data.result.length,"USEEEEERRRRRRR")
           this.result = res.data.result;
           this.searchUser = "";
         })

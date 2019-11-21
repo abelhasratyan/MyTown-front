@@ -417,7 +417,6 @@ export default {
         .then(res => {
           console.log('res',res)
             this.postsList = res.data.result
-            console.log(this.postsList,"TEEEEEEEEEEEEE")
           })
         .catch(err => {
             console.log(err);

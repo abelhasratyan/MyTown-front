@@ -100,7 +100,6 @@ export default {
     }).then(friends => {
       console.log(friends);
     });
-    console.log(this.friends, "friends1111111111");
   },
   computed: {
     ...mapState(["users", "friends"])
