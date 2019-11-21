@@ -49,7 +49,7 @@ export const actions = {
         const id = data.id
         const formData = new FormData()
         if (file_profile,id) {
-            formData.append('file_profile', file_profile)
+            formData.append('file', file_profile)
             formData.append('id', id)
         } else {
             return {
@@ -76,7 +76,7 @@ export const actions = {
         const id = data.id
         const formData = new FormData()
         if (file_cover,id) {
-            formData.append('file_cover', file_cover)
+            formData.append('file', file_cover)
             formData.append('id', id)
         } else {
             return {
