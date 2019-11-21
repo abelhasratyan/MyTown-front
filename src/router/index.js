@@ -130,13 +130,13 @@ const router = new Router({
                     path: 'friends',
                     name: 'Friends',
                     component: Friends
-                }
+                },
+                {
+                    path: '/addevents',
+                    name: 'AddEvents',
+                    component: AddEvents
+                },
             ]
-        },
-        {
-            path: '/addevents',
-            name: 'AddEvents',
-            component: AddEvents
         },
         {
             path: '/login',

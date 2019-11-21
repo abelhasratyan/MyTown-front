@@ -5,6 +5,8 @@ import photo from './modules/photos/photo'
 import friends from './modules/friends/friends'
 import posts from './modules/posts/posts'
 import search from './modules/search/search'
+import events from './modules/events/events'
+
 // import story from './modules/story'
 // import profession from './modules/profession'
 // import notification from './modules/notification'
@@ -20,6 +22,7 @@ export default new Vuex.Store({
         photo,
         friends,
         posts,
-        search
+        search,
+        events
     }
 })

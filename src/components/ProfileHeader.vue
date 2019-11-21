@@ -7,7 +7,10 @@
           <div class="coverImg" :style="{ 'background-image': `url(${msg.coverPhoto})`}">
             <div class="iconBtn">
               <div v-b-modal.changeCavor style="cursor:pointer">
-                <button class="changeImg">Change Cover <img src="../assets/images/icons/changeCover.png" alt=""></button>
+                <button class="changeImg">
+                  Change Cover
+                  <img src="../assets/images/icons/changeCover.png" alt />
+                </button>
               </div>
               <b-modal
                 header-class="profile-edit-modal-header"
@@ -40,7 +43,7 @@
               </div>
               <div class="iconBtn centeredIcon">
                 <div v-b-modal.changeAvatar>
-                  <img src="../assets/images/icons/changeCover.png" alt="">
+                  <img src="../assets/images/icons/changeCover.png" alt />
                 </div>
                 <b-modal
                   header-class="profile-edit-modal-header"
@@ -101,6 +104,9 @@
                   <ul class="subMenu shadow pt-3 pb-3 rounded">
                     <li>
                       <router-link to>Ads</router-link>
+                    </li>
+                    <li>
+                      <router-link :to="'addevents'">Add Events</router-link>
                     </li>
                     <li>
                       <router-link :to="'events'">Events</router-link>
@@ -234,7 +240,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(["friendRequest", "updateUser", "changeAvatar","changeCavorPhoto" ]),
+    ...mapActions([
+      "friendRequest",
+      "updateUser",
+      "changeAvatar",
+      "changeCavorPhoto"
+    ]),
 
     showEditProfile() {
       this.showEdit = true;
@@ -259,7 +270,7 @@ export default {
       this.image = "";
     },
 
-       onCoverChange(e) {
+    onCoverChange(e) {
       this.file_cover = e.target.files[0];
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -412,12 +423,13 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color:#d4d4d496;
+  background-color: #d4d4d496;
   border-radius: 50%;
 }
 button {
 }
-.profileImageWrapper:hover > .profileUserBox:after, .profileImageWrapper:hover > .centeredIcon {
-  opacity:1
+.profileImageWrapper:hover > .profileUserBox:after,
+.profileImageWrapper:hover > .centeredIcon {
+  opacity: 1;
 }
 </style>
