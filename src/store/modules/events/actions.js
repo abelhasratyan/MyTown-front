@@ -3,7 +3,7 @@ import axios from 'axios'
 export const actions = {
     async createEvent({ commit }, data) {
         console.log(data, 'ACTIONJS')
-        const response = await axios.post('/user/addevent', { data }, {
+        const response = await axios.post('/user/event/create', { data }, {
             headers: {
                 "Authorization": data.token
             }
@@ -26,7 +26,7 @@ export const actions = {
     },
 
     async DeleteEvent({ commit }, data) {
-        const response = await axios.post('/user/deleteevent', data, {
+        const response = await axios.post('/user/event/delete', data, {
             headers: {
                 "Authorization": data.token
             }
