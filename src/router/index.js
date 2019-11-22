@@ -4,9 +4,9 @@ const Token = require('./Auth').Token
 
 const Login = () => import('@/views/Login')
 const Register = () => import('@/views/Register')
-const ForgetPassword = () => import('@/views/ForgetPassword')
-const ValidateEmail = () => import('@/views/ValidateEmail')
-const CreateNewPassword = () => import('@/views/CreateNewPassword')
+const ForgetPassword = () => import('@/views/ForgetPassword/ForgetPassword')
+const ValidateEmail = () => import('@/views/ForgetPassword/ValidateEmail')
+const CreateNewPassword = () => import('@/views/ForgetPassword/CreateNewPassword')
 
 //Users
 
@@ -31,6 +31,7 @@ const Friends = () => import('@/views/Friends/Friends')
 //Events
 const AddEvents = () => import('@/views/Events/AddEvents')
 const Events = () => import('@/views/Events/Events')
+const EditEvent = () => import('@/views/Events/EditEvent')
 
 //Search
 const Search = () => import('@/views/Search/Search')
@@ -133,7 +134,7 @@ const router = new Router({
                     component: Friends
                 },
                 {
-                    path: '/addevents',
+                    path: '/addevent',
                     name: 'AddEvents',
                     component: AddEvents
                 },
@@ -141,6 +142,11 @@ const router = new Router({
                     path: '/events',
                     name: 'Events',
                     component: Events
+                },
+                {
+                    path: '/editevent/:index',
+                    name: 'EditEvent',
+                    component: EditEvent
                 },
 
             ]

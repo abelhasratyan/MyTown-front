@@ -54,7 +54,7 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
-import forgertPassword from "@/views/ForgetPassword.vue";
+import forgertPassword from "@/views/ForgetPassword/ForgetPassword.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
 

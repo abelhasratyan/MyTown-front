@@ -24,7 +24,18 @@ export const actions = {
         commit('GET_EVENTS', response.data)
         return response.data
     },
-
+    
+    async editEvent({ commit }, data) {
+        const response = await axios.post('/user/event/update', data, {
+            headers: {
+                "Authorization": data.token
+            }
+        })
+        console.log(response);
+        commit('GET_EVENTS', response.data)
+        return response.data
+    },
+    
     async DeleteEvent({ commit }, data) {
         const response = await axios.post('/user/event/delete', data, {
             headers: {

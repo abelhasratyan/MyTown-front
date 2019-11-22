@@ -10,19 +10,10 @@
                   <img src="@/assets/images/logo.png" alt />
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Create new password</label>
+                  <label for="exampleFormControlInput1">Email address</label>
                   <input
-                    v-model="password"
-                    type="password"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Confirm new password</label>
-                  <input
-                    v-model="c_password"
-                    type="password"
+                    v-model="email"
+                    type="email"
                     class="form-control"
                     id="exampleFormControlInput1"
                   />
@@ -31,12 +22,12 @@
                   v-if="notFound"
                   class="alert alert-danger"
                   role="alert"
-                >Does not math!</div>
+                >The email is not found!</div>
                 <div class="form-group">
                   <input
                     type="button"
                     class="btn_4 w-100"
-                    value="Sign In"
+                    value="Send message"
                     @click="sendMessage()"
                   />
                 </div>
@@ -45,55 +36,53 @@
           </div>
         </div>
       </section>
+      <ValidateEmail  v-if="emailValid" ></ValidateEmail>
     </main>
+    <Footer />
   </div>
 </template>
 <script>
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
-import { Token } from "../router/Auth";
+import { Token } from "../../router/Auth";
+import ValidateEmail from "./ValidateEmail";
 
 export default {
-  name: "createNewPassword",
+  name: "ForgetPassword",
+  props: {},
   components: {
-    Footer
+    Footer,
+    ValidateEmail
   },
   data() {
     return {
-      password: null,
-      c_password: null,
-      notFound:false,
+      email: "",
+      emailValid: false,
+      notFound: false,
+      userData: null
     };
   },
   methods: {
-    ...mapActions(["createNewPassword"]),
+    ...mapActions(["ForgetPass"]),
 
     sendMessage() {
-      if(this.password !== this.c_password){
-        this.notFound = true;
-      }
-      else{
-      const mail =  JSON.parse(localStorage.getItem("mail"));
-      this.createNewPassword({
-        password: this.password,
-        c_password: this.c_password,
-        mail: mail
+      this.ForgetPass({
+        email: this.email
       })
         .then(res => {
-          if (res.data.success) {       
-            localStorage.removeItem("mail");
-            this.$router.push('/')
+          console.log(res);
+          if (res.data.success) {
+            this.emailValid = true;
+            this.userData = JSON.parse(res.config.data).email;
+            localStorage.setItem('mail', JSON.stringify(this.email))
+            this.$router.push("/validatemail");
+
           }
         })
         .catch(err => {
+          this.notFound = true;
           console.log(err);
         });
-      }
-    }
-  },
-  created() {
-    if (Token.get.user()) {
-      this.$router.push("/");
     }
   },
   ...mapState(["users"])

@@ -106,7 +106,7 @@
                       <router-link to>Ads</router-link>
                     </li>
                     <li>
-                      <router-link :to="'addevents'">Add Events</router-link>
+                      <router-link :to="'addevent'">Add Events</router-link>
                     </li>
                     <li>
                       <router-link :to="{name: 'Photos'}">Photos</router-link>

@@ -46,7 +46,7 @@
 <script>
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
-import { Token } from "../router/Auth";
+import { Token } from "../../router/Auth";
 import CreateNewPassword from "./CreateNewPassword";
 
 export default {

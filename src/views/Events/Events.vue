@@ -16,7 +16,7 @@
                   <img src="@/assets/images/empty.png" alt />
                 </div>
                 <div class="text-center my-2">
-                  <a class="btn_3" href="javascript:void(0);">Add Post</a>
+                  <a class="btn_3" @click="addEvent" style="cursor:pointer">Add Event</a>
                 </div>
               </div>
             </div>
@@ -43,8 +43,10 @@
                             <img src="@/assets/images/icons/moreIconPost.png" alt />
                             <span class="sr-only">Search</span>
                           </template>
-                          <b-dropdown-item href="#"  v-b-modal.modal-delete>Delete Event</b-dropdown-item>
-                          <b-dropdown-item href="#">Edit Event</b-dropdown-item>
+                          <b-dropdown-item href="#" v-b-modal.modal-delete>Delete Event</b-dropdown-item>
+                         
+                            <b-dropdown-item > <router-link  :to="`editevent/${index}`">Edit Event</router-link></b-dropdown-item>
+                          
                           <b-dropdown-item href="#">Something else here...</b-dropdown-item>
                         </b-dropdown>
                       </div>
@@ -68,15 +70,15 @@
                   </div>
                 </div>
                 <b-modal
-                    header-class="profile-edit-modal-header"
-                    id="modal-delete"
-                    ref="modal"
-                    title="Delete Event"
-                    title-class="edit-modal-title"
-                    footer-class="edit-modal-footer"
-                    @ok="Delete(index)"
+                  header-class="profile-edit-modal-header"
+                  id="modal-delete"
+                  ref="modal"
+                  title="Delete Event"
+                  title-class="edit-modal-title"
+                  footer-class="edit-modal-footer"
+                  @ok="Delete(index)"
                 >
-                <span class="deleteEvent">Are you sure you want to delete  this event?</span>
+                  <span class="deleteEvent">Are you sure you want to delete this event?</span>
                 </b-modal>
               </div>
             </div>
@@ -129,15 +131,18 @@ export default {
         userId: this.users.user.user._id,
         token: apiService.getToken()
       });
-       this.events.shift(event_index);
+      this.events.shift(event_index);
       console.log(this.events, "EVENT_INDEX");
-    }
-  }
+    },
+      addEvent(){
+         this.$router.push('/addevent')
+       }
+  },
 };
 </script>
 <style scoped>
-.deleteEvent{
-    color: #e44e4e;
-    font-size: 1.3rem
+.deleteEvent {
+  color: #e44e4e;
+  font-size: 1.3rem;
 }
 </style>
