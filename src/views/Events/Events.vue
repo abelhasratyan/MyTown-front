@@ -43,7 +43,7 @@
                             <img src="@/assets/images/icons/moreIconPost.png" alt />
                             <span class="sr-only">Search</span>
                           </template>
-                          <b-dropdown-item href="#" @click="Delete(index)">Delete Event</b-dropdown-item>
+                          <b-dropdown-item href="#"  v-b-modal.modal-delete>Delete Event</b-dropdown-item>
                           <b-dropdown-item href="#">Edit Event</b-dropdown-item>
                           <b-dropdown-item href="#">Something else here...</b-dropdown-item>
                         </b-dropdown>
@@ -67,6 +67,17 @@
                     </p>
                   </div>
                 </div>
+                <b-modal
+                    header-class="profile-edit-modal-header"
+                    id="modal-delete"
+                    ref="modal"
+                    title="Delete Event"
+                    title-class="edit-modal-title"
+                    footer-class="edit-modal-footer"
+                    @ok="Delete(index)"
+                >
+                <span class="deleteEvent">Are you sure you want to delete  this event?</span>
+                </b-modal>
               </div>
             </div>
           </div>
@@ -124,3 +135,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.deleteEvent{
+    color: #e44e4e;
+    font-size: 1.3rem
+}
+</style>
