@@ -113,11 +113,12 @@ export default {
     ...mapActions(["getEvents", "DeleteEvent"]),
 
     Delete(event_index) {
-      this.events.shift(event_index);
       this.DeleteEvent({
-        index: event_index,
+        eventId: this.events[event_index]._id,
+        userId: this.users.user.user._id,
         token: apiService.getToken()
       });
+       this.events.shift(event_index);
       console.log(this.events, "EVENT_INDEX");
     }
   }
