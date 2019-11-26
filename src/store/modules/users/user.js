@@ -54,9 +54,14 @@ const mutations = {
         }
     },
 
+    // GET_USERS: (state, users) => {
+    //     state.users = users.filter(user => user._id != apiService.getId())
+    // },
+
     GET_USERS: (state, users) => {
-        state.users = users.filter(user => user._id != apiService.getId())
+        state.users = users
     },
+   
     GET_USER: (state, user) => {
         state.user = user
     },
