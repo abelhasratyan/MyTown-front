@@ -57,7 +57,7 @@ const router = new Router({
                         requiresAuth: true
                     }
                 },
-                {
+                { 
                     path: 'profile',
                     name: 'Profile',
                     component: Profile,

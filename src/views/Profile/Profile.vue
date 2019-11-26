@@ -1,18 +1,19 @@
 <template>
-  <div>
+  <div v-if="users && users.user">
     <ProfileHeader :msg="users.user.user" />
     <div class="container">
       <div class="row my-3">
         <LeftContent :msg="users.user.user" />
         <div class="centerContent col-lg-8 col-md-12">
           <AddNewsContent :msg="users.user.user" />
-               <div ref="container">
+               <div ref="container" >
                  <PostOnTimeline 
                   v-for="(postElement, postIndex) of postsList"
                   :key="postIndex"
                   :postParams="postElement"
                  ></PostOnTimeline>
-                </div>          <div class="shadow mb-2 bg-white newsContent">
+                </div>         
+          <div class="shadow mb-2 bg-white newsContent">
             <div class="addNewsBox">
               <div class="userBox">
                 <div class="imgBox pl-3 pr-3 pt-3">
@@ -126,7 +127,7 @@
                   Lorem ipsum dolor sit ametvoluptatem.
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do et dolore magna aliqua.
                 </p>
-                <div class="videoBox">
+                <div class="videoBox" v-if='false'>
                   <video class="videoContent" poster="../../assets/images/videoPoster.png">
                     <source src="#" type="video/mp4" />
                     <source src="#" type="video/ogg" />
@@ -297,9 +298,13 @@ export default {
     this.bus.$on("your-call", (res) => {
       if(res){
         if(res.data) {
+          console.log('---------------------')
+          console.log(res)
+            console.log(this.postsList)
           const postItem = res.data.result;
           this.postsList.unshift(postItem);
         }
+        
       }
       /*var ComponentClass = Vue.extend(PostOnTimeline);
       var instance = new ComponentClass({
@@ -318,8 +323,9 @@ export default {
           userId: currentUser.user._id
         })
         .then(res => {
-            this.postsList = res.data.postsList
-            console.log(res);
+            this.postsList = res.data.result
+          
+            console.log('res--------',this.postsList);
           })
         .catch(err => {
             console.log(err);

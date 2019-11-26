@@ -27,6 +27,7 @@ const mutations = {
         }
     },
     GETPOSTS:(state, data) => {
+        console.log(data,'____________________________')
         if (data.success) {
             state.data = data
 

@@ -25,11 +25,12 @@ export const actions = {
   },
 
   async getPosts({ commit }, data = {}) {
-        console.log(data,"getPost")
-    const response = await axios.get(`/user/${data.userId}/posts`,  {
+        console.log(data.userId,"getPost")
+        const id = data.userId;
+    const response = await axios.get(`/user/${id}/posts`,  {
       headers: { 
         //'Content-Type': 'multipart/form-data',
-        "Authorization": data.token
+        "Authorization": data.token,
       }
     }) ;
     if (response.data.success) {
