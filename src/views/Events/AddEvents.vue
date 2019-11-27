@@ -289,7 +289,7 @@ export default {
         .then(res => {
           if (res.data.success) {
               this.$router.push('/events')
-            this.title = null,
+              this.title = null,
               this.tag = null,
               this.description = null,
               this.categories = null,

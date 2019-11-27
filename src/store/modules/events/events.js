@@ -16,6 +16,7 @@ const getters = {};
 
 const mutations = {
     EVENT: (state, events) => {
+        console.log(events,"events")
         state.events = events
     },
 
