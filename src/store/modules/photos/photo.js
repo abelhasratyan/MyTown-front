@@ -45,7 +45,7 @@ const mutations = {
     },
 
     CHANGE_AVATAR: (state, image) => {
-        state.image = image
+        state.image = image.user
     }
     
 };

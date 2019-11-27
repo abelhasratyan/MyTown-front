@@ -39,7 +39,7 @@
           <div class="userBox row m-0">
             <div class="col-lg-3 col-md-2 col-sm-12 profileImageWrapper">
               <div class="profileUserBox">
-                <img :src="msg.avatar" alt="img" />
+                <img :src="userAvatar" alt="img" />
               </div>
               <div class="iconBtn centeredIcon">
                 <div v-b-modal.changeAvatar>
@@ -219,21 +219,43 @@ export default {
   },
   data() {
     return {
-      currentUser: null,
-      currentUserId: null,
-      friendRequestId: null,
-      showEdit: false,
-      name: null,
-      submittedNames: [],
-      token: null,
-      //   apiEndPoint,
-      image: "",
-      file_profile: null,
-      file_cover: null
+        currentUser: null,
+        currentUserId: null,
+        friendRequestId: null,
+        showEdit: false,
+        name: null,
+        submittedNames: [],
+        token: null,
+        //   apiEndPoint,
+        image: "",
+        file_profile: null,
+        file_cover: null,
+        userAvatar: null,
     };
   },
+
   props: {
-    msg: Object
+    msg: Object,
+    userImages: [Object, Array],
+  },
+
+
+  computed: {
+    ...mapState(["users"])
+  },
+
+    watch: {
+        'msg.avatar': function checkingIfAvatarIsChanged(avatar) {
+            this.userAvatar = avatar;
+        },
+
+        'userImages.avatar': function checkingIfAvatarIsChanged(newAvatar) {
+            this.userAvatar = newAvatar;
+        }
+    },
+
+  created() {
+    this.token = apiService.getToken();
   },
 
   methods: {
@@ -374,12 +396,6 @@ export default {
     //     this.currentUser = this.selectedUser ? this.selectedUser : this.user
     //   }
   },
-  created() {
-    this.token = apiService.getToken();
-  },
-  computed: {
-    ...mapState(["users"])
-  }
 };
 </script>
 <style  >

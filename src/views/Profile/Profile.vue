@@ -1,6 +1,6 @@
 <template>
   <div v-if="users && users.user">
-    <ProfileHeader :msg="users.user.user" />
+    <ProfileHeader :msg="users.user.user" :userImages="pageImagesData.image"/>
     <div class="container">
       <div class="row my-3">
         <LeftContent :msg="users.user.user" />
@@ -282,18 +282,23 @@ export default {
         PostOnTimeline
     },
     computed: {
-        ...mapState(['users'])
+        ...mapState(['users', 'photo'])
     },
-      data() {
-    return {
-      postsList: [],
-    }
+    data() {
+      return {
+        postsList: [],
+        pageImagesData: null,
+      }
   },
-  
 
   methods: {
     ...mapActions(["getPosts",]),
   },
+
+  created() {
+    this.pageImagesData = this.photo;
+  },
+
   mounted() {
     this.bus.$on("your-call", (res) => {
       if(res){
