@@ -16,8 +16,6 @@
                     <img src="@/assets/images/icons/moreIcon.png" alt="icon" />
                   </template>
                   <b-dropdown-item href="javascript:void(0)" @click="Delete(postParams._id)">Delete post</b-dropdown-item>
-                  <b-dropdown-item href="javascript:void(0)">Another action</b-dropdown-item>
-                  <b-dropdown-item href="javascript:void(0)">Something else here...</b-dropdown-item>
                 </b-dropdown>
               </div>
             </span>
