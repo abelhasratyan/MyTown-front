@@ -1,7 +1,7 @@
 <template>
   <section class="profile">
     <div class="container" v-if="msg">
-      <!-- {{ msg }} -->
+       <!-- {{ msg }}  -->
       <div class="row">
         <div class="col-md-12">
           <div class="coverImg" :style="{ 'background-image': `url(${msg.coverPhoto})`}">
@@ -245,10 +245,6 @@ export default {
   },
 
     watch: {
-        'msg.avatar': function checkingIfAvatarIsChanged(avatar) {
-            this.userAvatar = avatar;
-        },
-
         'userImages.avatar': function checkingIfAvatarIsChanged(newAvatar) {
             this.userAvatar = newAvatar;
         }
@@ -257,7 +253,9 @@ export default {
   created() {
     this.token = apiService.getToken();
   },
-
+mounted(){
+          this.userAvatar = this.msg.avatar;
+      },
   methods: {
     ...mapActions([
       "friendRequest",
