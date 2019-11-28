@@ -80,7 +80,6 @@ export default {
         password: this.password
       })
         .then(res => {
-          console.log(res,"RES")
           if (res.data.status == "success") {
             this.$router.push("/");
           }

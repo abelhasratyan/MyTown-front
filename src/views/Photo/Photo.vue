@@ -8,10 +8,10 @@
                     <div class="underLine  p-2 spaceBox">
                         <h1 class="title-md">{{ title }}</h1>
                         <div>
-                            <a class="btn_3 pointer" @click="addImage">Add Photo</a>
+                            <a class="btn_3 pointer" style="cursor:pointer" @click="addImage">Add Photo</a>
                         </div>
                         <div>
-                            <a class="btn_3 pointer" @click="addAlbum">Add Album</a>
+                            <a class="btn_3 pointer" style="cursor:pointer" @click="addAlbum">Add Album</a>
                         </div>
                     </div>
                     <!-- <div class="underLine  p-2 spaceBox">

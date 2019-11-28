@@ -2,7 +2,6 @@ import axios from 'axios'
 
 export const actions = {
     async createEvent({ commit }, data) {
-        console.log(data, 'ACTIONJS')
         const response = await axios.post('/user/event/create', { data }, {
             headers: {
                 "Authorization": data.token
@@ -20,7 +19,6 @@ export const actions = {
                 "Authorization": data.token
             }
         })
-        console.log(response);
         commit('GET_EVENTS', response.data)
         return response.data
     },
@@ -31,7 +29,6 @@ export const actions = {
                 "Authorization": data.token
             }
         })
-        console.log(response);
         commit('GET_EVENTS', response.data)
         return response.data
     },
@@ -42,7 +39,6 @@ export const actions = {
                 "Authorization": data.token
             }
         })
-        console.log(response);
         commit('GET_EVENTS', response.data)
         return response.data
     },

@@ -25,7 +25,6 @@ export const actions = {
   },
 
   async getPosts({ commit }, data = {}) {
-    console.log(data.userId, "getPost")
     const id = data.userId;
     const response = await axios.get(`/user/${id}/posts`, {
       headers: {

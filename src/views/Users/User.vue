@@ -409,13 +409,11 @@ export default {
     });
     if(Token.get.user()) {
         let currentUser = JSON.parse(Token.get.user());
-        console.log('currentUser',currentUser);
         this.getPosts({
           token: apiService.getToken(),
           userId: currentUser.user._id
         })
         .then(res => {
-          console.log('res',res)
             this.postsList = res.data.result
           })
         .catch(err => {

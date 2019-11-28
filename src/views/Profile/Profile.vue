@@ -303,9 +303,6 @@ export default {
     this.bus.$on("your-call", (res) => {
       if(res){
         if(res.data) {
-          console.log('---------------------')
-          console.log(res)
-            console.log(this.postsList)
           const postItem = res.data.result;
           this.postsList.unshift(postItem);
         }
@@ -329,9 +326,7 @@ export default {
         })
         .then(res => {
             this.postsList = res.data.result
-          
-            console.log('res--------',this.postsList);
-          })
+           })
         .catch(err => {
             console.log(err);
       });

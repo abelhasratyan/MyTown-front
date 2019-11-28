@@ -109,9 +109,7 @@ export const actions = {
         }        
     },
 
-    async getMyAlbum({ commit }, data) {
-        console.log(data);
-        
+    async getMyAlbum({ commit }, data) {        
         const response = await axios.get(`/albums/${data.id}`, {
             headers: {
                 "Authorization": data.token

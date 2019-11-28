@@ -7,7 +7,6 @@ export const actions = {
                 "Authorization": data.token
             }
         })
-        console.log(response);
         commit('GET_FRIENDS', response.data)
         return response.data
     },

@@ -312,7 +312,6 @@ export default {
       
         const index = this.$router.currentRoute.params.index;
         this.event = this.events.events.result[index];
-        console.log(this.event,"EVEEEEEEEEEE");
   },
   computed: {
         ...mapState(["users","events"])

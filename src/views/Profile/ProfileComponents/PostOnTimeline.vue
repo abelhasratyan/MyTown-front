@@ -79,7 +79,7 @@ export default {
       });
       //this.events.shift(event_index);
     }
-  }
+  },
 };
 </script>
 <style scoped>

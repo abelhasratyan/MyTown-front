@@ -144,7 +144,6 @@ export default {
         });
     },
     test() {
-      console.log(this.currentUserId, "testts");
       /* this.friendRequest({
                 currentUserId: this.currentUserId,
                 friendRequestId: this.friendRequestId

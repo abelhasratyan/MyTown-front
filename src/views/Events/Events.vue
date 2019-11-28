@@ -132,7 +132,6 @@ export default {
         token: apiService.getToken()
       });
       this.events.shift(event_index);
-      console.log(this.events, "EVENT_INDEX");
     },
       addEvent(){
          this.$router.push('/addevent')

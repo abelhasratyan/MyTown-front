@@ -54,9 +54,6 @@ import { APIService } from "@/APIService";
 const apiService = new APIService();
 
 export default {
-  mounted() {
-    console.log(this.search, "SEARCH");
-  },
   computed: {
     ...mapState(["search"])
   },
@@ -69,7 +66,6 @@ export default {
   methods: {
     ...mapActions(['searcheduser']),
       finde(index) {
-      //console.log(this.search.data.result[index].id,"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
       this.searcheduser({
         id: this.search.data.result[index].id,
         token: this.token
@@ -77,7 +73,6 @@ export default {
         .then(res => {
           if (res.data.success) {
            // localStorage.setItem('searchedUser', JSON.stringify(res.data))
-             console.log(res, "RESPONSE");
           }
         })
         .catch(err => {
