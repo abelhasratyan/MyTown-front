@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: './../fb-back/view',
+  outputDir: './dist',
   lintOnSave: false,
   runtimeCompiler: true,
   devServer: {
