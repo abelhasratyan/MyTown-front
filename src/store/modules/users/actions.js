@@ -54,7 +54,7 @@ export const actions = {
   async Register({ commit }, data) {
     const response = await axios.post('/registration', data, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
     if (response.data.success) {
