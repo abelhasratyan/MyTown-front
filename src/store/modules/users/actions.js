@@ -1,12 +1,13 @@
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '../../../services/axios-interceptor';
 
 export const actions = {
   async Login({ commit }, data) {
-    const response = await axios.post('/login', data, {
+    const response = await axios.post('/login',data, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
-    })
+    });
 
     if (response.data.status === 'success') {
       commit('LOGIN', response.data)
