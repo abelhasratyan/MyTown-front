@@ -25,7 +25,7 @@
               Birthday date
               <span style="color:red">*</span>
             </label>
-            <input v-model="birthday" type="text" class="form-control" id="birthday" />
+            <flat-pickr v-model="birthday" class="form-control" id="birthday"></flat-pickr>
           </div>
           <div class="form-group">
             <label for="country">Country</label>
@@ -68,6 +68,8 @@
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
 
 export default {
   data() {
@@ -80,11 +82,13 @@ export default {
       country: null,
       city: null,
       password: null,
-      c_password: null
+      c_password: null,
+      //date: null,   
     };
   },
   components: {
-    Footer
+    Footer,
+    flatPickr
   },
   methods: {
     ...mapActions(["Register"]),
