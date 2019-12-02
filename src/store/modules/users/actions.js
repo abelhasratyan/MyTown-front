@@ -3,12 +3,7 @@ import axios from '../../../services/axios-interceptor';
 
 export const actions = {
   async Login({ commit }, data) {
-    const response = await axios.post('/login',data, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-
+    const response = await axios.post('/login',data);
     if (response.data.status === 'success') {
       commit('LOGIN', response.data)
       return response
@@ -16,11 +11,7 @@ export const actions = {
   },
 
   async ForgetPass({ commit }, data) {
-    const response = await axios.post('/validateuser', data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await axios.post('/validateuser', data);
     if (response.data.success) {
       commit('FORGETPASS', response.data)
       return response
@@ -28,11 +19,7 @@ export const actions = {
   },
 
   async ValidEmail({ commit }, data) {
-    const response = await axios.post('/validatenumber', data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await axios.post('/validatenumber', data);
     if (response.data.success) {
       commit('VALIDEMAIL', response.data)
       return response
@@ -40,11 +27,7 @@ export const actions = {
   },
 
   async createNewPassword({ commit }, data) {
-    const response = await axios.post('/changepassword',{ data} , {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await axios.post('/changepassword',{ data});
     if (response.data.success) {
       commit('CREATENEWPASSWORD', response.data)
       return response
@@ -52,11 +35,7 @@ export const actions = {
   },
 
   async Register({ commit }, data) {
-    const response = await axios.post('/registration', data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const response = await axios.post('/registration', data);
     if (response.data.success) {
       commit('REGISTER', response.data)
       return response.data
@@ -64,11 +43,7 @@ export const actions = {
   },
 
   async getUsers({ commit }, token) {
-    const response = await axios.get('/admin/users', {
-      headers: {
-        "Authorization": token
-      }
-    })
+    const response = await axios.get('/admin/users' )
     commit('GET_USERS', response.data.users)
   },
 
