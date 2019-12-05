@@ -29,9 +29,15 @@
           </div>
           <div class="form-group">
             <label for="country">Country</label>
-            <input v-model="country" type="text" class="form-control" id="country" />
+            <b-form-select v-model="selectedCountry" :options="countres"></b-form-select>
+          </div>
+          <div class="form-group">
+            <label for="city">State</label>
+            <b-form-select v-model="selectedRegion" :options="regions"></b-form-select>
+          </div>
+          <div class="form-group">
             <label for="city">City</label>
-            <input v-model="city" type="text" class="form-control" id="city" />
+            <b-form-select v-model="selectedCity" :options="cites"></b-form-select>
           </div>
           <div class="form-group">
             <label for="mail">
@@ -70,8 +76,14 @@ import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
 import flatPickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.css';
-
+import { usa, canada } from '../../src/countries';
+ 
 export default {
+  components: {
+    Footer,
+    flatPickr
+  },
+
   data() {
     return {
       errors: [],
@@ -80,18 +92,86 @@ export default {
       email: null,
       birthday: null,
       country: null,
+      state: null,
       city: null,
       password: null,
       c_password: null,
       //date: null,   
+      countres: [
+        {
+          text: 'USA',
+          value: 'USA',
+        },
+        {
+          text: 'Canada',
+          value: 'Canada',
+        },
+      ],
+      regionsList: [
+        {
+          name: 'USA',
+          region: usa
+        },
+        {
+          name: 'Canada',
+          region: canada
+        }
+      ],
+      cityList: [
+        {
+          name: 'USA',
+          region: usa
+        },
+        {
+          name: 'Canada',
+          region: canada
+        }
+      ],
+      regions: [],
+      cites: [],
+      selectedCountry: null,
+      selectedRegion: null,
+      selectedCity: null,
     };
   },
-  components: {
-    Footer,
-    flatPickr
+
+  watch: {
+    selectedCountry(country) {
+      this.regions.length = 0;
+      this.regionsList.forEach(region => {
+        if (region.name === country) {
+          for (let i = 0; i < region.region.length; i++) {
+            this.regions.push(region.region[i][0])
+            console.log(this.regions)
+          }
+        }
+      });
+    },
+    selectedRegion(region) {
+      this.cites.length = 0;
+      this.regionsList.forEach(region => {
+          if (region.name === this.selectedCountry) {
+            region.region.forEach(regions => {
+              if (regions[0] === this.selectedRegion) {
+                for(let index = 0; index < regions[1].length; index++) {
+                  this.cites.push(regions[1][index]);
+                }
+              }
+            })
+          }
+      })
+    }
+  },
+  mounted() {
+    this.setOptionsParams();
+    
   },
   methods: {
     ...mapActions(["Register"]),
+
+    setOptionsParams() {
+     this.regions.push(usa)
+    },
 
     registerUser() {
       let data = {
@@ -99,8 +179,9 @@ export default {
         surname: this.surname,
         email: this.email,
         birthday: this.birthday,
-        country: this.country,
-        city: this.city,
+        country: this.selectedCountry,
+        state: this.selectedRegion,
+        city: this.selectedCity,
         password: this.password,
         c_password: this.c_password
       };
