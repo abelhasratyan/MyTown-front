@@ -142,7 +142,6 @@ export default {
         if (region.name === country) {
           for (let i = 0; i < region.region.length; i++) {
             this.regions.push(region.region[i][0])
-            console.log(this.regions)
           }
         }
       });
