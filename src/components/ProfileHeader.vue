@@ -75,7 +75,7 @@
                   </a>
                   <ul class="subMenu shadow pt-3 pb-3 rounded">
                     <li>
-                      <div style="cursor:pointer" v-b-modal.modal-1>Edit</div>
+                      <div style="cursor:pointer" @click="updateUserProfile">Edit</div>
                     </li>
                     <li>
                       <router-link to>Subscribe</router-link>
@@ -143,7 +143,7 @@
 
       <b-modal
         header-class="profile-edit-modal-header"
-        id="modal-1"
+        id = "editProfileData"
         ref="modal"
         title="Edit Profile"
         title-class="edit-modal-title"
@@ -318,6 +318,19 @@ export default {
     },
     setOptionsParams() {
       this.regions.push(usa);
+    },
+    updateUserProfile(){    
+      this.setModalData().then( ()=> {
+        this.$root.$emit('bv::toggle::modal','editProfileData');
+      })
+    },
+    setModalData(){
+      return new Promise( (resolve) => {
+          this.selectedCountry = this.users.user.user.country;
+          this.selectedRegion = this.users.user.user.state;
+          this.selectedCity = this.users.user.user.city;
+          resolve();
+      });
     },
     onFileChange(e) {
       this.file_profile = e.target.files[0];
