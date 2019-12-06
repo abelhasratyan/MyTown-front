@@ -163,19 +163,12 @@
             <label for="mail">Mail</label>
             <b-form-input id="mail-input" v-model="users.user.user.email" required></b-form-input>
           </div>
-          <b-form-group
-            label="Birthday"
-            label-for="birthday-input"
-            invalid-feedback="Birthday is required"
-          >
-            <the-mask
-              :mask="['####.##.##']"
-              placeholder="Birthday date"
-              class="input form-group"
-              id="Birthday-date"
-              v-model="users.user.user.birthday"
-            />
-          </b-form-group>
+           <div class="form-group">
+            <label for="birthday">
+              Birthday date
+            </label>
+            <flat-pickr v-model="users.user.user.birthday"  class="form-control" id="birthday"></flat-pickr>
+          </div>
           <div class="form-group">
             <label for="country">Country</label>
             <b-form-select v-model="selectedCountry" :options="countres"></b-form-select>
@@ -203,13 +196,16 @@ import { APIService } from "@/APIService";
 import EditUserData from "../views/EditUserData";
 import { TheMask } from "vue-the-mask";
 import { usa, canada } from "../../src/countries";
+import flatPickr from "vue-flatpickr-component";
+import "flatpickr/dist/flatpickr.css";
 
 const apiService = new APIService();
 
 export default {
   components: {
     EditUserData: EditUserData,
-    TheMask
+    TheMask,
+    flatPickr
   },
   data() {
     return {
