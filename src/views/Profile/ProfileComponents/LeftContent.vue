@@ -4,11 +4,13 @@
             <p class="title-md  underLine  p-3">my info</p>
             <div class="myInfo p-3">
                 <h3 class="title">Full Name</h3>
-                <p class="description">{{ msg.name }} {{ msg.surname }}</p>
+                <p class="description m-b-15">{{ msg.name }} {{ msg.surname }}</p>
                 <h3 class="title">Birthday</h3>
-                <p class="description">{{ msg.birthday }}</p>
+                <p class="description m-b-15">{{ msg.birthday }}</p>
                 <h3 class="title">Country</h3>
-                <p class="description">{{ msg.country }}</p>
+                <p class="description m-b-15">{{ msg.country }}</p>
+                <h3 class="title">State</h3>
+                <p class="description m-b-15">{{ msg.state }}</p>
                 <h3 class="title">City</h3>
                 <p class="description">{{ msg.city }}</p>
             </div>
@@ -52,3 +54,8 @@ export default {
     }
 }
 </script>
+<style scoped>
+.m-b-15{
+    margin-bottom: 15px
+}
+</style>

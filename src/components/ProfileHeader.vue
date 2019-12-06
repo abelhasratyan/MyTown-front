@@ -1,7 +1,7 @@
 <template>
   <section class="profile">
     <div class="container" v-if="msg">
-       <!-- {{ msg }}  -->
+     <!-- {{ msg }} -->
       <div class="row">
         <div class="col-md-12">
           <div class="coverImg" :style="{ 'background-image': `url(${msg.coverPhoto})`}">
@@ -151,23 +151,18 @@
         @ok="updateUserData"
       >
         <form ref="form" @submit.stop.prevent="handleSubmit">
-          <b-form-group
-            label="First name"
-            label-for="name-input"
-            invalid-feedback="Name is required"
-          >
-            <b-form-input id="name-input" v-model="users.user.user.name" required></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="Last name"
-            label-for="last-input"
-            invalid-feedback="last name is required"
-          >
-            <b-form-input id="last-input" v-model="users.user.user.surname" required></b-form-input>
-          </b-form-group>
-          <b-form-group label="Email" label-for="mail-input" invalid-feedback="mail is required">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <b-form-input id="name" v-model="users.user.user.name" required>></b-form-input>
+          </div>
+          <div class="form-group">
+            <label for="surname">Surname</label>
+            <b-form-input id="surname" v-model="users.user.user.surname" required>></b-form-input>
+          </div>
+          <div class="form-group">
+            <label for="mail">Mail</label>
             <b-form-input id="mail-input" v-model="users.user.user.email" required></b-form-input>
-          </b-form-group>
+          </div>
           <b-form-group
             label="Birthday"
             label-for="birthday-input"
@@ -181,20 +176,18 @@
               v-model="users.user.user.birthday"
             />
           </b-form-group>
-          <b-form-group
-            label="Country name"
-            label-for="country-input"
-            invalid-feedback="Country is required"
-          >
-            <b-form-input id="country-input" v-model="users.user.user.country" required></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="City name"
-            label-for="city-input"
-            invalid-feedback="City is required"
-          >
-            <b-form-input id="last-input" v-model="users.user.user.city" required></b-form-input>
-          </b-form-group>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <b-form-select v-model="selectedCountry" :options="countres"></b-form-select>
+          </div>
+          <div class="form-group">
+            <label for="city">State</label>
+            <b-form-select v-model="selectedRegion" :options="regions"></b-form-select>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <b-form-select v-model="selectedCity" :options="cites"></b-form-select>
+          </div>
         </form>
       </b-modal>
     </div>
@@ -209,6 +202,7 @@ import { Token } from "../router/Auth";
 import { APIService } from "@/APIService";
 import EditUserData from "../views/EditUserData";
 import { TheMask } from "vue-the-mask";
+import { usa, canada } from "../../src/countries";
 
 const apiService = new APIService();
 
@@ -219,43 +213,102 @@ export default {
   },
   data() {
     return {
-        currentUser: null,
-        currentUserId: null,
-        friendRequestId: null,
-        showEdit: false,
-        name: null,
-        submittedNames: [],
-        token: null,
-        //   apiEndPoint,
-        image: "",
-        file_profile: null,
-        file_cover: null,
-        userAvatar: null,
+      currentUser: null,
+      currentUserId: null,
+      friendRequestId: null,
+      showEdit: false,
+      name: null,
+      submittedNames: [],
+      token: null,
+      //   apiEndPoint,
+      image: "",
+      file_profile: null,
+      file_cover: null,
+      userAvatar: null,
+      countres: [
+        {
+          text: "USA",
+          value: "USA"
+        },
+        {
+          text: "Canada",
+          value: "Canada"
+        }
+      ],
+      regionsList: [
+        {
+          name: "USA",
+          region: usa
+        },
+        {
+          name: "Canada",
+          region: canada
+        }
+      ],
+      cityList: [
+        {
+          name: "USA",
+          region: usa
+        },
+        {
+          name: "Canada",
+          region: canada
+        }
+      ],
+      regions: [],
+      cites: [],
+      selectedCountry: null,
+      selectedRegion: null,
+      selectedCity: null
     };
   },
 
   props: {
     msg: Object,
-    userImages: [Object, Array],
+    userImages: [Object, Array]
   },
-
 
   computed: {
     ...mapState(["users"])
   },
 
-    watch: {
-        'userImages.avatar': function checkingIfAvatarIsChanged(newAvatar) {
-            this.userAvatar = newAvatar;
-        }
+  watch: {
+    "userImages.avatar": function checkingIfAvatarIsChanged(newAvatar) {
+      this.userAvatar = newAvatar;
     },
 
+    selectedCountry(country) {
+      this.regions.length = 0;
+      this.regionsList.forEach(region => {
+        if (region.name === country) {
+          for (let i = 0; i < region.region.length; i++) {
+            this.regions.push(region.region[i][0]);
+          }
+        }
+      });
+    },
+    selectedRegion(region) {
+      this.cites.length = 0;
+      this.regionsList.forEach(region => {
+        if (region.name === this.selectedCountry) {
+          region.region.forEach(regions => {
+            if (regions[0] === this.selectedRegion) {
+              for (let index = 0; index < regions[1].length; index++) {
+                this.cites.push(regions[1][index]);
+              }
+            }
+          });
+        }
+      });
+    }
+  },
   created() {
     this.token = apiService.getToken();
   },
-mounted(){
-          this.userAvatar = this.msg.avatar;
-      },
+  mounted() {
+    this.userAvatar = this.msg.avatar;
+    this.setOptionsParams();
+  },
   methods: {
     ...mapActions([
       "friendRequest",
@@ -266,6 +319,9 @@ mounted(){
 
     showEditProfile() {
       this.showEdit = true;
+    },
+    setOptionsParams() {
+      this.regions.push(usa);
     },
     onFileChange(e) {
       this.file_profile = e.target.files[0];
@@ -313,8 +369,9 @@ mounted(){
         surname: this.users.user.user.surname,
         email: this.users.user.user.email,
         birthday: this.users.user.user.birthday,
-        country: this.users.user.user.country,
-        city: this.users.user.user.city,
+        country: this.selectedCountry,
+        state: this.selectedRegion,
+        city: this.selectedCity,
         id: this.users.user.user._id,
         //password: this.password,
         //c_password: this.c_password,
@@ -393,7 +450,7 @@ mounted(){
     //   mounted() {
     //     this.currentUser = this.selectedUser ? this.selectedUser : this.user
     //   }
-  },
+  }
 };
 </script>
 <style  >

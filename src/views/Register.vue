@@ -63,6 +63,7 @@
           <div class="form-group">
             <input @click.prevent="registerUser" type="submit" class="btn_4 w-100" value="Sign In" />
           </div>
+          <div v-if="userExist" class="alert alert-danger" role="alert">User already exist,use another mail !</div>
         </form>
       </section>
     </main>
@@ -74,10 +75,10 @@
 import Footer from "@/components/Footer.vue";
 import { mapState, mapGetters, mapActions } from "vuex";
 import { Token } from "../router/Auth";
-import flatPickr from 'vue-flatpickr-component';
-import 'flatpickr/dist/flatpickr.css';
-import { usa, canada } from '../../src/countries';
- 
+import flatPickr from "vue-flatpickr-component";
+import "flatpickr/dist/flatpickr.css";
+import { usa, canada } from "../../src/countries";
+
 export default {
   components: {
     Footer,
@@ -96,34 +97,35 @@ export default {
       city: null,
       password: null,
       c_password: null,
-      //date: null,   
+      userExist: false,
+      //date: null,
       countres: [
         {
-          text: 'USA',
-          value: 'USA',
+          text: "USA",
+          value: "USA"
         },
         {
-          text: 'Canada',
-          value: 'Canada',
-        },
+          text: "Canada",
+          value: "Canada"
+        }
       ],
       regionsList: [
         {
-          name: 'USA',
+          name: "USA",
           region: usa
         },
         {
-          name: 'Canada',
+          name: "Canada",
           region: canada
         }
       ],
       cityList: [
         {
-          name: 'USA',
+          name: "USA",
           region: usa
         },
         {
-          name: 'Canada',
+          name: "Canada",
           region: canada
         }
       ],
@@ -131,7 +133,7 @@ export default {
       cites: [],
       selectedCountry: null,
       selectedRegion: null,
-      selectedCity: null,
+      selectedCity: null
     };
   },
 
@@ -141,7 +143,7 @@ export default {
       this.regionsList.forEach(region => {
         if (region.name === country) {
           for (let i = 0; i < region.region.length; i++) {
-            this.regions.push(region.region[i][0])
+            this.regions.push(region.region[i][0]);
           }
         }
       });
@@ -149,27 +151,26 @@ export default {
     selectedRegion(region) {
       this.cites.length = 0;
       this.regionsList.forEach(region => {
-          if (region.name === this.selectedCountry) {
-            region.region.forEach(regions => {
-              if (regions[0] === this.selectedRegion) {
-                for(let index = 0; index < regions[1].length; index++) {
-                  this.cites.push(regions[1][index]);
-                }
+        if (region.name === this.selectedCountry) {
+          region.region.forEach(regions => {
+            if (regions[0] === this.selectedRegion) {
+              for (let index = 0; index < regions[1].length; index++) {
+                this.cites.push(regions[1][index]);
               }
-            })
-          }
-      })
+            }
+          });
+        }
+      });
     }
   },
   mounted() {
     this.setOptionsParams();
-    
   },
   methods: {
     ...mapActions(["Register"]),
 
     setOptionsParams() {
-     this.regions.push(usa)
+      this.regions.push(usa);
     },
 
     registerUser() {
@@ -185,7 +186,11 @@ export default {
         c_password: this.c_password
       };
       this.Register(data).then(res => {
-        this.$router.push("/profile");
+        if (res) {
+          this.$router.push("/profile");
+        } else {
+         this.userExist = true;
+        }
       });
     }
   },
